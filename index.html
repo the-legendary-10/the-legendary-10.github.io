@@ -10,21 +10,8 @@
 <link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/1.4.0/jqm-datebox-1.4.0.mode.flipbox.js"/>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
-
-<script type="text/javascript">
-$( document ).on( "pageinit", "#main-page", function() {
-    $( document ).on( "swiperight", "#main-page", function( e ) {
-        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
-            if ( e.type === "swiperight"  ) {
-                $( "#left-panel" ).panel( "open" );
-            }
-        }
-    });
-});
-</script>
-
-
 </head>
+
 <body>
 
 <div data-role="page" id="main-page" data-theme="a" data-url="main">
@@ -76,8 +63,11 @@ $( document ).on( "pageinit", "#main-page", function() {
 		<p>Zeitauswahl</p></br>
 		<div class="content-primary"> 
 				<div data-role="fieldcontain">
-					<label for="deftime">Time</label><input name="deftime" type="date" data-role="datebox" id="deftime" data-options='{"mode": "timebox"}' />
+					<label for="deftime">Von:</label><input name="deftime" type="date" data-role="datebox" id="deftime" data-options='{"mode": "timebox"}' />
 				</div>		
+				<div data-role="fieldcontain">
+					<label for="deftime">Bis:</label><input name="deftime" type="date" data-role="datebox" id="deftime" data-options='{"mode": "timebox"}' />
+				</div>	
 			</div> 
 	</div><!-- /content -->
 	<div data-role="panel" id="left-panel" data-theme="a">
@@ -90,8 +80,6 @@ $( document ).on( "pageinit", "#main-page", function() {
 		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io">Impressum</a><br/>
   </div>
 </div>
-
-
 
 </body>
 </html>

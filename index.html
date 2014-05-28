@@ -1,11 +1,156 @@
+<!DOCTYPE html>
 <html>
 <head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/dhbwstyle.css" />
+<link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.mobile-1.4.2.min.js"></script>
 </head>
 <body>
-<ul>
-<li><a href="application">Application</a></li>
-<li><a href="presentation">Presentation</a></li>
-</ul>
+
+<div data-role="page" id="pagehome">
+  <div data-role="header">
+    <h1>Page Header</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>Hello WWI11SEB!</p>
+	
+	<a href="#pagetext">Text</a><br/>
+	<a href="#pagebuttons">Buttons</a><br/>
+	<a href="#pagehome">Home</a>
+  </div>
+  
+  
+
+  <div data-role="footer">
+    <h1>Page Footer</h1>
+  </div>
+    
+</div> 
+
+<div data-role="page" id="pagetext">
+  <div data-role="main" class="ui-content">
+  <div data-role="content">
+  </div>
+  <div data-role="fieldcontain"> 
+	         <label for="textbox">Textbox:</label> 
+	         <input type="text" name="textbox" id="textbox" value="" /> 
+		</div>
+		
+		<div data-role="fieldcontain"> 
+	         <label for="textarea">Textarea:</label> 
+	         <textarea name="textarea" id="textarea" value=""></textarea>
+		</div>
+		
+		<div data-role="fieldcontain"> 
+	         <label for="search">Search:</label> 
+	         <input type="search" name="search" id="search" value="" /> 
+		</div>
+    
+    <a href="#pagehome">Home</a>
+  </div>
+</div>
+
+
+<div data-role="page" id="pagebuttons">
+  <div data-role="main" class="ui-content">
+  <div data-role="content">
+		
+		
+		<div data-role="fieldcontain"> 
+			<label for="slider">Slider:</label> 
+			<select name="slider" id="slider" data-role="slider"> 
+				<option value="Off">Off</option>
+				<option value="On">On</option>
+			</select>
+		</div>
+		
+		<div data-role="fieldcontain"> 
+			<label for="range">Range:</label>
+			<input type="range" name="range" id="range" value="0" min="0" max="100" /> 
+		</div>
+		
+		<div data-role="fieldcontain"> 
+			<fieldset data-role="controlgroup"> 
+				<legend>Checklist:</legend>
+				<input type="checkbox" name="checkbox1" id="checkbox1" /> 
+				<label for="checkbox1">Chrome</label> 
+ 
+				<input type="checkbox" name="checkbox2" id="checkbox2" /> 
+				<label for="checkbox2">Firefox</label> 
+ 
+				<input type="checkbox" name="checkbox3" id="checkbox3" /> 
+				<label for="checkbox3">Internet Explorer</label>
+		    </fieldset>
+		</div>
+		
+		<div data-role="fieldcontain"> 
+			<fieldset data-role="controlgroup" data-type="horizontal"> 
+		    	<legend>Horizontal Checklist:</legend>
+				<input type="checkbox" name="checkbox4" id="checkbox4" /> 
+				<label for="checkbox4">Online</label>
+ 
+				<input type="checkbox" name="checkbox5" id="checkbox5" /> 
+				<label for="checkbox5">Offline</label>
+		    </fieldset> 
+		</div>
+		
+		<div data-role="fieldcontain"> 
+			<fieldset data-role="controlgroup">
+				<legend>Radio Buttons:</legend>
+					<input type="radio" name="radio1" id="radio1a" value="a" /> 
+					<label for="radio1a">Chrome</label>
+
+					<input type="radio" name="radio1" id="radio1b" value="b" /> 
+					<label for="radio1b">Firefox</label>
+
+					<input type="radio" name="radio1" id="radio1c" value="c" /> 
+					<label for="radio1c">Internet Explorer</label>
+			</fieldset>
+		</div>
+		
+		<div data-role="fieldcontain"> 
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>Horizontal Radio Buttons:</legend>
+					<input type="radio" name="radio2" id="radio2a" value="a" /> 
+					<label for="radio2a">Online</label>
+
+					<input type="radio" name="radio2" id="radio2b" value="b" /> 
+					<label for="radio2b">Offline</label>
+			</fieldset>
+		</div>
+		
+		<div data-role="fieldcontain">
+			<label for="select1" class="select">Standard Select:</label>
+			<select name="select1" id="select1">
+				<option value="1">Chrome</option>
+				<option value="2">Firefox</option>
+				<option value="3">Internet Explorer</option>
+			</select>
+		</div>
+		
+		<div data-role="fieldcontain">
+			<label for="select2" class="select">Custom Select:</label>
+			<select name="select2" id="select2" data-native-menu="false">
+				<option value="1">Chrome</option>
+				<option value="2">Firefox</option>
+				<option value="3">Internet Explorer</option>
+			</select>
+		</div>
+		
+		<button type="button" name="submit" onclick="submit_clicked()">Submit</button>
+	</div>
+   
+  
+  
+  
+    <a href="#pagehome">Home</a>
+  </div>
+</div>
+
+
 </body>
 </html>

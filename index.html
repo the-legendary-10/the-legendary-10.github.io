@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"> 
 <link rel="stylesheet" href="css/dhbwstyle.css" />
 
 <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
@@ -64,12 +65,16 @@
 		<p>Zeitauswahl</p></br>
 		<div class="content-primary"> 
 				<div data-role="fieldcontain">
+					<label for="deftime">Daum:</label><input name="deftime" type="date" data-role="datebox" id="deftime" data-options='{"mode": "timebox"}' />
+				</div>
+				<div data-role="fieldcontain">
 					<label for="deftime">Von:</label><input name="deftime" type="time" data-role="datebox" id="deftime" data-options='{"mode": "timebox"}' />
 				</div>		
 				<div data-role="fieldcontain">
 					<label for="deftime">Bis:</label><input name="deftime" type="time" data-role="datebox" id="deftime" data-options='{"mode": "timebox"}' />
 				</div>	
 			</div> 
+			<button type="button" name="addTime">Hinzufügen</button></br>
 	</div><!-- /content -->
 	<div data-role="panel" id="left-panel" data-theme="a">
 		<a href="#main-page" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="home" data-iconpos="right">Home</a></br>

@@ -3,8 +3,12 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/dhbwstyle.css" />
+
 <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
+<link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/1.4.0/jqm-datebox-1.4.0.core.js"/>
+<link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/1.4.0/jqm-datebox-1.4.0.mode.flipbox.js"/>
+<script type="text/javascript" src="http://dev.jtsage.com/jQM-DateBox/demos/extras.js"></script>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
 </head>
@@ -20,7 +24,8 @@
 	
 	<a href="#pagetext">Text</a><br/>
 	<a href="#pagebuttons">Buttons</a><br/>
-	<a href="#pagehome">Home</a>
+	<a href="#pagehome">Home</a><br/>
+	<a href="#pagecalender">Calender</a>
   </div>
   
   
@@ -148,7 +153,24 @@
   
   
     <a href="#pagehome">Home</a>
+	
+	
+	
   </div>
+</div>
+
+<div data-role="page" id="pagecalender">
+  <div data-role="main" class="ui-content">
+
+	<div data-role="content">
+			
+			<div class="content-primary"> 
+				<div data-role="fieldcontain">
+					<label for="deftime">Time</label><input name="deftime" type="date" data-role="datebox" id="deftime" data-options='{"mode": "timebox"}' />
+				</div>		
+			</div> 
+			 <a href="#pagehome">Home</a>
+	</div>
 </div>
 
 

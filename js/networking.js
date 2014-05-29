@@ -5,7 +5,7 @@
 $(document).ready( function(){
 	//load LocalStorage data into UI
 	var requestData=createRequestData();
-	postRequest(requestData);
+	//postRequest(requestData);
 });
 
 /*
@@ -13,7 +13,10 @@ $(document).ready( function(){
 * request data as an Object.
 */
 function createRequestData(){
-	//TODO -- dummy function
+	/*
+	*TODO -- dummy function
+	*remember md5'ing phone numbers
+	*/
 	return JSON.parse('{"identity":"A559EF3AB440F83CA0E0B42D6F1A20CA","invitees":["B25BF7426FABCADF01103045FD7707CE","A9B9D2ED66A5DA2AFB3247F6947F5591"],"currentPosition":{"longitude":9.170299499999999,"latitude":48.773556600000006},"timeslots":[{"startTime":1401377098763,"endTime":1401384298763},{"startTime":1401384298763,"endTime":1401391498763}]}');
 }
 

@@ -5,15 +5,17 @@
 <meta charset="utf-8"> 
 <link rel="stylesheet" href="css/dhbwstyle.css" />
 
+<!--<link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />-->
 <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
-<!--
+
 <link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/1.4.0/jqm-datebox-1.4.0.core.js"/>
-<link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/1.4.0/jqm-datebox-1.4.0.mode.flipbox.js"/> -->
+<link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/1.4.0/jqm-datebox-1.4.0.mode.flipbox.js"/> 
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
 <script src="js/mampf.js"></script>
-<script src="js/networking.js"></script> <!--Ajax Polling-->
+<script src="js/networking.js"></script>
 </head>
 
 <body>
@@ -24,8 +26,37 @@
 	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
 	</div><!-- /header -->
 	<div data-role="content">
-		<p>Ergebnisse</p></br>
-		<p>Map</p></br>	
+		<div id="results">
+			<p>Ergebnisse</p></br>
+			<table data-role="table" id="result_table" data-mode="reflow">
+				<tr>
+					<th>Nummer</th>
+					<th>Vorname</th>
+					<th>Nachname</th>
+					<th>Startzeit</th>
+					<th>Endzeit</th>
+				</tr>
+				<tr>
+					<td>12345</td>
+					<td>Max</td>
+					<td>Mustermann</td>
+					<td>12:30</td>
+					<td>13:45</td>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		
+			<p>Map</p></br>	
+		
+		</div>
+		
 		<button type="button" name="refresh" onclick="refresh()">Refresh</button></br>
 	</div><!-- /content -->
 	<div data-role="panel" id="left-panel" data-theme="a">

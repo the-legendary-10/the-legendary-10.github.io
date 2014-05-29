@@ -740,4 +740,29 @@ button[disabled],
 	outline-width: 1px;
 	outline-style: auto;
 }
+
+/*Style for listview with checkboxes
+-----------------------------------------------------------------------------------------------------------*/
+
+li.listview{
+	padding: 0em;
+}
+
+a.listview {
+	text-decoration: none; 
+	border-color: #dddddd ;
+	background-color: #ededed;
+}
+
+div.listview {
+	
+	color:#5c6971; 
+	padding: .7em 1em;
+}
+
+label.listview {
+	padding:0em;  
+	border:none;
+	
+}
 			

@@ -37,13 +37,159 @@
   </div>
 </div>
 
+
+<!-- Begin: Contact-Page -->
 <div data-role="page" id="contact-page" data-theme="a" data-url="contacts">
 	<div data-role="header" data-theme="a">
 	<h1>Kontakte</h1>
 	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
 	</div><!-- /header -->
 	<div data-role="content">
-		<p>Kontaktauswahl</p></br>
+		<h3> Kontaktauswahl</h3>
+	
+		<p>Wähle <b>einen oder mehrere Kontakte</b> aus, mit denen Du gerne Essen gehen möchtest. <br />
+		   Durch Deine Auswahl legst Du eine <b>Gruppe</b> von Kontakten an. 
+		</p>
+		
+		<!-- Filter contacts: via first and second name -->
+		<form class="ui-filterable">
+			  <input id="filterContacts" data-type="search" placeholder="Suche: Vor- und Nachnamen eingeben">
+		</form>
+		
+		<!-- Fieldset covers all checkboxes -->
+		<fieldset data-role="controlgroup">
+		
+		<!-- Listview is divided by capital letters ...  Connection to filter-field via data-input --> 
+		<ul data-role="listview"  data-autodividers="true" data-inset="true" data-filter="true" data-icon="false" data-input="#filterContacts" >
+		
+		<!-- Display of a contact with a checkbox. Building a workaround, since JQM does not provide standard listview functionality with integrated checkboxes -->
+		
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Christian Müller</div>
+		       		<input data-iconpos="right" id="Person1" name="Person1" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+		
+		
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Christoph Bey</div>
+		       		<input data-iconpos="right" id="Person2" name="Person2" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+		
+		
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Claudia Meier</div>
+		       		<input data-iconpos="right" id="Person3" name="Person3" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+		
+		
+				
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Daniel Stoll</div>
+		       		<input data-iconpos="right" id="Person4" name="Person4" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+		
+		
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Kevin Sandermann</div>
+		       		<input data-iconpos="right" id="Person5" name="Person5" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+		
+		
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Lisa Hanstein</div>
+		       		<input data-iconpos="right" id="Person6" name="Person6" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+		
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Marc-Oliver-Seidler</div>
+		       		<input data-iconpos="right" id="Person7" name="Person7" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+				
+				
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Nicolas Koch</div>
+		       		<input data-iconpos="right" id="Person8" name="Person8" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+						
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Patrick Heinze</div>
+		       		<input data-iconpos="right" id="Person9" name="Person9" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+		
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Philipp Schramm</div>
+		       		<input data-iconpos="right" id="Person10" name="Person10" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+		
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Simon Rech</div>
+		       		<input data-iconpos="right" id="Person11" name="Person11" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+		
+		
+		<li style=" padding: 0em;  ">
+			<label class="listview" >
+		    	<a  href="#" class="listview">
+		    		<div class="listview" >Ulrike Piontek</div>
+		       		<input data-iconpos="right" id="Person12" name="Person12" type="checkbox" value="true" />
+		       	</a>   
+			</label>
+		</li>
+		
 	</div><!-- /content -->
 	<div data-role="panel" id="left-panel" data-theme="a">
 		<a href="#main-page" data-rel="close" data-role="button" data-mini="true" data-inline="true" data-icon="home" data-iconpos="right">Home</a></br>
@@ -55,6 +201,8 @@
 		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io">Impressum</a><br/>
   </div>
 </div>
+<!-- End: Contact-Page -->
+
 
 <div data-role="page" id="time-page" data-theme="a" data-url="time">
 	<div data-role="header" data-theme="a">

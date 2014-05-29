@@ -3,18 +3,16 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8"> 
-
 <link rel="stylesheet" href="css/dhbwstyle.css" />
-<link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
 
+<link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
-<!--
 <link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/1.4.0/jqm-datebox-1.4.0.core.js"/>
-<link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/1.4.0/jqm-datebox-1.4.0.mode.flipbox.js"/> -->
+<link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/1.4.0/jqm-datebox-1.4.0.mode.flipbox.js"/>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
+<script src="js/networking.js"/>
 <script src="js/mampf.js"></script>
-<script src="js/networking.js"></script>
 </head>
 
 <body>
@@ -26,36 +24,26 @@
 	</div><!-- /header -->
 	<div data-role="content">
 		<div id="results">
-			<p>Ergebnisse</p></br>
-			<table data-role="table" id="result_table" data-mode="reflow">
+			<table id="result_table">
+				<caption>Ergebnisse</caption>
+				<thead>
 				<tr>
 					<th>Nummer</th>
-					<th>Vorname</th>
-					<th>Nachname</th>
-					<th>Startzeit</th>
-					<th>Endzeit</th>
+					<th>Name</th>
+					<th>Zeitraum</th>
 				</tr>
+				</thead>
+				<tbody>
 				<tr>
-					<td>12345</td>
-					<td>Max</td>
-					<td>Mustermann</td>
-					<td>12:30</td>
-					<td>13:45</td>
+					<td>1234</td>
+					<td>Max Mustermann</td>
+					<td>12:30 - 13:15</td>
 				</tr>
-				
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				</tbody>
 			</table>
-		
-			<p>Map</p></br>	
-		
+			
+			<p>Map</p></br>
 		</div>
-		
 		<button type="button" name="refresh" onclick="refresh()">Refresh</button></br>
 	</div><!-- /content -->
 	<div data-role="panel" id="left-panel" data-theme="a">

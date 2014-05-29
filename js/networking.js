@@ -3,10 +3,18 @@
 */
 
 $(document).ready( function(){
-	//load LocalStorage data into UI
-	var requestData=createRequestData();
-	//postRequest(requestData);
+	//TODO - load LocalStorage data into UI
+	setInterval(refresh, 5000);
 });
+
+/*
+* Meta function - gets called every X seconds
+*/
+function refresh(){
+	var requestData=createRequestData();
+	postRequest(requestData);
+	//renderResponse(JSON.parse('{"subjects":["B25BF7426FABCADF01103045FD7707CE"],"timeslot":{"startTime":1401390559163,"endTime":1401397759164}}'));
+}
 
 /*
 * Reads values from UI-elements and returns the 
@@ -39,4 +47,17 @@ function postRequest(requestData){
 */
 function renderResponse(json){
 	console.log(json);
+	$("#result_table > tbody").empty();
+	json.subjects.forEach(function(subject){
+		var contact = md5ToContact(subject);
+		//TODO: Timeslot(s)?
+		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.name+"</td><td></td></tr>");
+	});
+}
+/*
+* Converts an MD5-Hashed phone number to a contact
+*/
+function md5ToContact(md5){
+	//TODO
+	return {phoneNumber : md5, name : "Testperson"};
 }

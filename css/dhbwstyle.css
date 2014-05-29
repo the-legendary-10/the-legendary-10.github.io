@@ -765,4 +765,9 @@ label.listview {
 	border:none;
 	
 }
+
+/*CUSTOM-----------------------------------------------------------------------------------------------*/
+table { width:100%; }
+table caption { text-align:left;  }
+table th, td{ text-align:left; padding:6px;} 
 			

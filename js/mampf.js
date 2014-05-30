@@ -8,13 +8,9 @@ $( document ).on( "pageinit", "#main-page", function() {
     });
 });
 
-function SaveMyTime(){
-	date= $("#mydate").val();
-	from = $("#fromtime").val();
-	to = $("#totime").val();
-	
-	localStorage.Date=date;
-	localStorage.FromTime=from;
-	localStorage.ToTime=to;
+function SaveMyTime(){	
+	localStorage.Date = $("#mydate").val();;
+	localStorage.FromTime = $("#fromtime").val();
+	localStorage.ToTime = $("#totime").val();
 	location.reload(true);
 }

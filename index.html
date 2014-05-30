@@ -229,25 +229,26 @@
 	<h1>Zeit</h1>
 	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
 	</div><!-- /header -->
+	
 	<div data-role="content">
 		<p>Zeitauswahl</p></br>
 		<div class="content-primary"> 
-		
-				<!-- TODO: Default-Werte setzen-->
-				<div data-role="fieldcontain">
-					<label for="deftime">Daum:</label><input name="mydate" id="mydate" type="date" data-role="datebox" data-options='{"mode": "datebox"}'>
-				</div>
-				<div data-role="fieldcontain">
-					<label for="deftime">Von:</label><input name="fromtime" id="fromtime" type="time" data-role="datebox"  data-options='{"mode": "timebox"}' />
-				</div>		
-				<div data-role="fieldcontain">
-					<label for="deftime">Bis:</label><input name="totime" id="totime" type="time" data-role="datebox"  data-options='{"mode": "timebox"}' />
-				</div>	
-			</div> 
-			<!-- Die eingegebenen Daten werden mit Klick auf den Button im LocalStorage abgespeichert-->
-			<div>
-				<button onClick="SaveMyTime()">Hinzufügen</button>
+			<!-- TODO: Default-Werte setzen-->
+			<div data-role="fieldcontain">
+				<label for="deftime">Daum:</label><input name="mydate" id="mydate" type="date" data-role="datebox" data-options='{"mode": "datebox"}'>
 			</div>
+			<div data-role="fieldcontain">
+				<label for="deftime">Von:</label><input name="fromtime" id="fromtime" type="time" data-role="datebox"  data-options='{"mode": "timebox"}' />
+			</div>		
+			<div data-role="fieldcontain">
+				<label for="deftime">Bis:</label><input name="totime" id="totime" type="time" data-role="datebox"  data-options='{"mode": "timebox"}' />
+			</div>	
+		</div> 
+		<!-- Die eingegebenen Daten werden mit Klick auf den Button im LocalStorage abgespeichert-->
+		<div>
+			<button onClick="SaveMyTime()">Hinzufügen</button>
+		</div>
+			
 	</div><!-- /content -->
 	<div data-role="panel" id="left-panel" data-theme="a">
 		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right">Home</a></br>

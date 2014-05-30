@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="http://dev.jtsage.com/cdn/datebox/1.4.0/jqm-datebox-1.4.0.mode.flipbox.js"/>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
-<script src="js/networking.js"/>
+<script src="js/networking.js"></script>
 <script src="js/mampf.js"></script>
 </head>
 
@@ -232,17 +232,22 @@
 	<div data-role="content">
 		<p>Zeitauswahl</p></br>
 		<div class="content-primary"> 
+		
+				<!-- Default-Werte scheinen nicht zu funktionieren obwohl sie gesetzt werden-->
 				<div data-role="fieldcontain">
-					<label for="deftime">Daum:</label><input name="deftime" type="date" data-role="datebox" id="deftime" data-options='{"mode": "timebox"}' />
+					<label for="deftime">Daum:</label><input name="mydate" id="mydate" type="date" data-role="datebox" data-options='{"mode": "datebox", "defaultValue": [2013,7,10]}'>
 				</div>
 				<div data-role="fieldcontain">
-					<label for="deftime">Von:</label><input name="deftime" type="time" data-role="datebox" id="deftime" data-options='{"mode": "timebox"}' />
+					<label for="deftime">Von:</label><input name="fromtime" id="fromtime" type="time" data-role="datebox"  data-options='{"mode": "timebox", "defaultValue": "12:00"}' />
 				</div>		
 				<div data-role="fieldcontain">
-					<label for="deftime">Bis:</label><input name="deftime" type="time" data-role="datebox" id="deftime" data-options='{"mode": "timebox"}' />
+					<label for="deftime">Bis:</label><input name="totime" id="totime" type="time" data-role="datebox"  data-options='{"mode": "timebox", "defaultValue": "12:00"}' />
 				</div>	
 			</div> 
-			<button type="button" name="addTime">Hinzufügen</button></br>
+			<!-- Die eingegebenen Daten werden mit Klick auf den Button im LocalStorage abgespeichert-->
+			<div>
+				<button onClick="SaveMyTime()">Hinzufügen</button>
+			</div>
 	</div><!-- /content -->
 	<div data-role="panel" id="left-panel" data-theme="a">
 		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right">Home</a></br>

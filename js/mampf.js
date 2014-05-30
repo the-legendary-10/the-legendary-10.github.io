@@ -7,3 +7,12 @@ $( document ).on( "pageinit", "#main-page", function() {
         }
     });
 });
+
+function SaveMyTime(){
+	var MyTime = new Object();
+	MyTime.date= $("#mydate").val();
+	MyTime.from = $("#fromtime").val();
+	MyTime.to = $("#totime").val();
+	
+	localStorage.myTimes=MyTime;
+}

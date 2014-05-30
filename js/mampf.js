@@ -9,10 +9,12 @@ $( document ).on( "pageinit", "#main-page", function() {
 });
 
 function SaveMyTime(){
-	var MyTime = new Object();
-	MyTime.date= $("#mydate").val();
-	MyTime.from = $("#fromtime").val();
-	MyTime.to = $("#totime").val();
+	date= $("#mydate").val();
+	from = $("#fromtime").val();
+	to = $("#totime").val();
 	
-	localStorage.myTimes=MyTime;
+	localStorage.Date=date;
+	localStorage.FromTime=from;
+	localStorage.ToTime=to;
+	location.reload(true);
 }

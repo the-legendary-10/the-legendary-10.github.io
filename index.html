@@ -64,7 +64,7 @@
 
 <!-- Begin: group-overview-page - overview -->
 <div data-role="page" id="group-overview-page" data-theme="a" data-url="group-overview-page">
-	<div data-role="header" data-theme="a" data-position="fixed">
+	<div data-role="header" data-theme="a" data-position="fixed"  data-id="group">>
 	<h1>Gruppen-Übersicht</h1>
 	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
 	</div><!-- /header -->
@@ -103,14 +103,14 @@
 		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
 		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>		
 	</div><!-- /panel -->
-	 <div data-role="footer" data-position="fixed">
-	     <div data-role="navbar">
-	         <ul>
-	             <li><a href="#" class="ui-btn-active ui-state-persist" data-role="button" data-icon="user">Gruppen-Übersicht</a></li>
-	             <li><a href="#group-edit-page" data-role="button" data-icon="edit">Gruppe bearbeiten</a></li>
-	         </ul>
-	     </div>
-	 </div>
+	<div data-role="footer" data-position="fixed" data-id="group">
+	    <div data-role="navbar">
+	        <ul>
+				<li><a href="#group-overview-page" class="ui-btn-active ui-state-persist" data-role="button" data-icon="user" >Gruppen-Übersicht</a></li>
+				<li><a href="#"   data-role="button" data-icon="edit">Gruppe bearbeiten</a></li>
+	        </ul>
+	    </div>
+	</div>
 	 </div>
 </div>
 <!-- End: group-overview-page - overview -->
@@ -118,7 +118,7 @@
 
 <!-- Begin: group-overview-page - create new group -->
 <div data-role="page" id="group-edit-page" data-theme="a" data-url="group-edit-page">
-	<div data-role="header" data-theme="a" data-position="fixed">
+	<div data-role="header" data-theme="a" data-position="fixed"  data-id="group">>
 	<h1>Gruppe bearbeiten</h1>
 	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
 	<a href="#group-overview-page"  id="saveContacts" data-theme="a" data-icon="check"   >Speichern</a>
@@ -155,7 +155,7 @@
 		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
 		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>		
 	</div><!-- /panel -->
-	 <div data-role="footer" data-position="fixed">
+	 <div data-role="footer" data-position="fixed"  data-id="group">>
 	     <div data-role="navbar">
 	         <ul>
 				<li><a href="#group-overview-page" data-role="button" data-icon="user" >Gruppen-Übersicht</a></li>

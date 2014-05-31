@@ -757,7 +757,7 @@ a.listview {
 div.listview {
 	
 	color:#5c6971; 
-	padding: .7em 1em;
+	padding: .9em 3em;
 }
 
 label.listview {
@@ -770,4 +770,38 @@ label.listview {
 table { width:100%; }
 table caption { text-align:left;  }
 table th, td{ text-align:left; padding:6px;} 
-			
+
+
+/*Style for information message (error)
+-----------------------------------------------------------------------------------------------------------*/
+.infobox {
+background-image: url('images/Info.png');
+background-position: 10px center;
+background-repeat: no-repeat;
+background-color: #FFCCCC;
+color: #000000;
+border: 1.1px solid;
+margin: 10px 0px;
+padding:15px 10px 15px 50px;
+margin: 15px
+
+}
+
+
+/* Readonly style for listview
+-----------------------------------------------------------------------------------------------------------*/
+
+.read-only-list {
+    background: #eee !important;
+    color: #2F3E46 !important;
+    font-weight: bold !important;
+    text-shadow: 0 /*{c-bup-shadow-x}*/ 1px /*{c-bup-shadow-y}*/ 0 /*{c-bup-shadow-radius}*/ #ffffff /*{c-bup-shadow-color}*/ !important;
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #ffffff /*{c-bup-background-start}*/), to( #f1f1f1 /*{c-bup-background-end}*/)) !important; /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #ffffff /*{c-bup-background-start}*/, #f1f1f1 /*{c-bup-background-end}*/) !important; /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #ffffff /*{c-bup-background-start}*/, #f1f1f1 /*{c-bup-background-end}*/) !important; /* FF3.6 */
+    background-image:     -ms-linear-gradient( #ffffff /*{c-bup-background-start}*/, #f1f1f1 /*{c-bup-background-end}*/) !important; /* IE10 */
+    background-image:      -o-linear-gradient( #ffffff /*{c-bup-background-start}*/, #f1f1f1 /*{c-bup-background-end}*/) !important; /* Opera 11.10+ */
+    background-image:         linear-gradient( #ffffff /*{c-bup-background-start}*/, #f1f1f1 /*{c-bup-background-end}*/) !important;   
+    cursor: default !important;
+}
+

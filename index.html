@@ -13,6 +13,10 @@
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
 <script src="js/networking.js"></script>
 <script src="js/mampf.js"></script>
+<script src="js/contact-data.js"></script>
+<script src="js/jquerymd5.js"></script>
+<script src="js/group-edit-page.js"></script>
+<script src="js/group-overview-page.js"></script>
 </head>
 
 <body>
@@ -48,7 +52,7 @@
 	</div><!-- /content -->
 	<div data-role="panel" id="left-panel" data-theme="a">
 		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right" class="ui-btn-active ui-state-persist" >Home</a></br>
-		<a href="#contact-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Kontakte</a></br>
+		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
 		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
 		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>		
 	</div><!-- /panel -->
@@ -58,170 +62,111 @@
 </div>
 
 
-<!-- Begin: Contact-Page -->
-<div data-role="page" id="contact-page" data-theme="a" data-url="contacts">
-	<div data-role="header" data-theme="a">
-	<h1>Kontakte</h1>
+<!-- Begin: group-overview-page - overview -->
+<div data-role="page" id="group-overview-page" data-theme="a" data-url="group-overview-page">
+	<div data-role="header" data-theme="a" data-position="fixed">
+	<h1>Gruppen-Übersicht</h1>
 	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
 	</div><!-- /header -->
 	<div data-role="content">
-		<h3> Kontaktauswahl</h3>
-	
-		<p>Wähle <b>einen oder mehrere Kontakte</b> aus, mit denen Du gerne Essen gehen möchtest. <br />
-		   Durch Deine Auswahl legst Du eine <b>Gruppe</b> von Kontakten an. 
-		</p>
-		
-		<!-- Filter contacts: via first and second name -->
-		<form class="ui-filterable">
-			  <input id="filterContacts" data-type="search" placeholder="Suche: Vor- und Nachnamen eingeben">
-		</form>
-		
-		<!-- Fieldset covers all checkboxes -->
-		<fieldset data-role="controlgroup">
-		
-		<!-- Listview is divided by capital letters ...  Connection to filter-field via data-input --> 
-		<ul data-role="listview"  data-autodividers="true" data-inset="true" data-filter="true" data-icon="false" data-input="#filterContacts" >
-		
-		<!-- Display of a contact with a checkbox. Building a workaround, since JQM does not provide standard listview functionality with integrated checkboxes -->
-		
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Christian Müller</div>
-		       		<input data-iconpos="right" id="Person1" name="Person1" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-		
-		
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Christoph Bey</div>
-		       		<input data-iconpos="right" id="Person2" name="Person2" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-		
-		
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Claudia Meier</div>
-		       		<input data-iconpos="right" id="Person3" name="Person3" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-		
-		
-				
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Daniel Stoll</div>
-		       		<input data-iconpos="right" id="Person4" name="Person4" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-		
-		
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Kevin Sandermann</div>
-		       		<input data-iconpos="right" id="Person5" name="Person5" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-		
-		
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Lisa Hanstein</div>
-		       		<input data-iconpos="right" id="Person6" name="Person6" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-		
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Marc-Oliver-Seidler</div>
-		       		<input data-iconpos="right" id="Person7" name="Person7" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-				
-				
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Nicolas Koch</div>
-		       		<input data-iconpos="right" id="Person8" name="Person8" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-						
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Patrick Heinze</div>
-		       		<input data-iconpos="right" id="Person9" name="Person9" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-		
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Philipp Schramm</div>
-		       		<input data-iconpos="right" id="Person10" name="Person10" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-		
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Simon Rech</div>
-		       		<input data-iconpos="right" id="Person11" name="Person11" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-		
-		
-		<li style=" padding: 0em;  ">
-			<label class="listview" >
-		    	<a  href="#" class="listview">
-		    		<div class="listview" >Ulrike Piontek</div>
-		       		<input data-iconpos="right" id="Person12" name="Person12" type="checkbox" value="true" />
-		       	</a>   
-			</label>
-		</li>
-		
+	<p >Im Folgenden werden alle Kontakte angezeigt, die derzeit zu Deiner Mittagessen-Gruppe gehören. <br/> <br /> <br/>
+	</p>
+	  
+	 <ul data-role="listview" id="group-over-list" >
+	 
+	 </ul>
+	 
+	 <div data-role="popup" id="popup-action" 
+	     class="ui-corner-bottom ui-content" data-overlay-theme="a">
+	     <div data-role="header">
+	       <h1>Löschen?</h1>
+	     </div>
+	 
+	     <div data-role="content" >
+	         
+	        		<p id="popup-content"></p>
+	         
+	 
+	         <a href="#" data-role="button" data-rel="back" data-inline="true" data-theme="a" >
+	             Abbrechen
+	         </a>
+	 
+	         <a href="#" id="deleteCon" class="ui-corner-all" data-role="button" data-inline="true"  data-transition="flow" data-theme="a">
+	            Löschen
+	         </a>
+	     </div>
+			
 	</div><!-- /content -->
-	<div data-role="panel" id="left-panel" data-theme="a">
+	<div data-role="panel" id="left-panel" data-theme="a" >
 		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right">Home</a></br>
-		<a href="#contact-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right" class="ui-btn-active ui-state-persist" >Kontakte</a></br>
+		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right" class="ui-btn-active ui-state-persist" >Gruppe</a></br>
 		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
 		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>		
 	</div><!-- /panel -->
-	<div data-role="footer">
-		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io">Impressum</a><br/>
-  </div>
+	 <div data-role="footer" data-position="fixed">
+	     <div data-role="navbar">
+	         <ul>
+	             <li><a href="#" class="ui-btn-active ui-state-persist" data-role="button" data-icon="user">Gruppen-Übersicht</a></li>
+	             <li><a href="#group-edit-page" data-role="button" data-icon="edit">Gruppe bearbeiten</a></li>
+	         </ul>
+	     </div>
+	 </div>
+	 </div>
 </div>
-<!-- End: Contact-Page -->
+<!-- End: group-overview-page - overview -->
+
+
+<!-- Begin: group-overview-page - create new group -->
+<div data-role="page" id="group-edit-page" data-theme="a" data-url="group-edit-page">
+	<div data-role="header" data-theme="a" data-position="fixed">
+	<h1>Gruppe bearbeiten</h1>
+	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	<a href="#group-overview-page"  id="saveContacts" data-theme="a" data-icon="check"   >Speichern</a>
+	</div><!-- /header -->
+	<div data-role="content">
+	
+		<p>Im Folgenden hast Du die Möglichkeit, Deine Mittagessen-Gruppe zu bearbeiten, indem Du neue Kontakte aus dem Adressbuch auswählst bzw. alte Bekanntschaften entfernst.
+		</p>
+		
+		<!-- Filter contacts: via first and second name -->
+
+	<!-- Filter contacts: via first and second name -->
+	<form id="selectContacts" class="ui-filterable">
+		  <input id="filterContacts" data-type="search" placeholder="Suche: Vor- und Nachnamen eingeben">
+	
+	</form>
+	
+	<!-- Fieldset covers all checkboxes -->
+	<fieldset data-role="controlgroup">
+	
+	<!-- Listview is divided by capital letters ...  Connection to filter-field via data-input --> 
+	<ul data-role="listview"  data-autodividers="true" data-inset="true" data-filter="true" data-icon="false" data-input="#filterContacts" id="groupList">
+	
+	<!-- Display of a contact with a checkbox. Building a workaround, since JQM does not provide standard listview functionality with integrated checkboxes -->
+	
+	</ul>
+	</fieldset>
+
+
+	</div><!-- /content -->
+	<div data-role="panel" id="left-panel" data-theme="a" >
+		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right">Home</a></br>
+		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right" class="ui-btn-active ui-state-persist" >Gruppe</a></br>
+		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
+		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>		
+	</div><!-- /panel -->
+	 <div data-role="footer" data-position="fixed">
+	     <div data-role="navbar">
+	         <ul>
+				<li><a href="#group-overview-page" data-role="button" data-icon="user" >Gruppen-Übersicht</a></li>
+				<li><a href="#"  class="ui-btn-active ui-state-persist" data-role="button" data-icon="edit">Gruppe bearbeiten</a></li>
+	         </ul>
+	     </div>
+	 </div>
+	 </div>
+</div>
+<!-- End: group-overview-page - create new group -->
+
 
 
 <div data-role="page" id="time-page" data-theme="a" data-url="time">
@@ -251,7 +196,7 @@
 	</div><!-- /content -->
 	<div data-role="panel" id="left-panel" data-theme="a">
 		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right">Home</a></br>
-		<a href="#contact-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Kontakte</a></br>
+		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
 		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right" class="ui-btn-active ui-state-persist" >Zeit</a></br>
 		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>		
 	</div><!-- /panel -->

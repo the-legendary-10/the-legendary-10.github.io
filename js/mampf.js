@@ -14,3 +14,9 @@ function SaveMyTime(){
 	localStorage.ToTime = $("#totime").val();
 	location.reload(true);
 }
+
+function LoadMyTime(){
+	var date = localStorage.Date;
+	var fromtime = localStorage.FromTime;
+	var totime= localStorage.ToTime;
+}

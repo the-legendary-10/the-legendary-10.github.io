@@ -25,6 +25,7 @@ $("#time-page").ready(function(){
 			if(totime != null){
 				var d = new Date(date);
 				$( "#LastValues" ).append("<p>Die aktuell gespeicherten Werte sind: am "+d.getDate()+"."+d.getMonth()+"."+d.getUTCFullYear()+" von: "+fromtime+" bis "+totime+"</p>");
+				$( "#ButtonSaveTime").html("Ändern");
 			}
 		}
 	}	

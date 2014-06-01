@@ -103,9 +103,11 @@ $(function() {
             
             
             
-          // Remove the item from the group-overview-page  
+          // Remove the item from the group-overview-page  & trigger pagecreate
           var hashNumberString = '#' + hashNumber;
           $('li').remove(hashNumberString);
+          
+          $( "#group-overview-page" ).trigger("pagecreate");
           
           
           // Uncheck the checkbox in the group-edit-page (id: E (prefix) + hashNumber)

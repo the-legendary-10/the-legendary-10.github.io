@@ -51,9 +51,7 @@ function dynamicListView(contacts) {
         	    	
 
         	                	        
-        	        // Is contact already in the storage? If yes, checkbox will be checked 
-        	           hashString = '#' + hashNumber;
-        	                   	       
+        	        // Is contact already in the storage? If yes, checkbox will be checked        	       
         	           var checkedString = "";
         	        
         	           if(IsContactInStorage(hashNumber)) {
@@ -62,17 +60,16 @@ function dynamicListView(contacts) {
         	           }
         	           
         	           //  Appending new list view element to the listview
-        	           $('#groupList').append('<li style=" padding: 0em;  "><label class="listview" ><a  href="#" class="listview" ><div class="listview" >' + contact.firstName + ' ' + contact.lastName + '</div><input data-iconpos="left"  class="allCheckboxesContacts" name="' + hashNumber + '" id="' + hashNumber + '" type="checkbox" value="true" ' + checkedString + ' /></a></label></li>');
+        	           // id gets the letter 'E' (for Edit-page) as prefix, since there are already listitems with IDs based on hash numbers (on group-overview-page).
+        	           // However the value of name is the hash number without a prefix.
+        	           $('#groupList').append('<li style=" padding: 0em;  "><label class="listview" ><a  href="#" class="listview" ><div class="listview" >' + contact.firstName + ' ' + contact.lastName + '</div><input data-iconpos="left"  class="allCheckboxesContacts" name="' + hashNumber + '" id="E' + hashNumber + '" type="checkbox" value="true" ' + checkedString + ' /></a></label></li>');
         	        
      
         	       });  
-        	       
-        	       
-        	        	       
+        	               	        	       
         	       // Updating listview
         	        $('#groupList').listview('refresh');
         	        $("[type=checkbox]").checkboxradio();
-        	        
         	        $("[data-role=controlgroup]").controlgroup("refresh");
         	   
 
@@ -107,7 +104,7 @@ $(function() {
          $('input[type="checkbox"]').filter('.allCheckboxesContacts').each(function(){
            	   if($(this).is(':checked')){
            	   
-           	   arrayPhoneNumbers.push(this.getAttribute('id'));
+           	   arrayPhoneNumbers.push(this.getAttribute('name'));
            	    
            	   }
            	
@@ -119,7 +116,6 @@ $(function() {
            
            
            // Trigger update of group-overview-page
-            $( "#group-over-list" ).children().remove();
             $( "#group-overview-page" ).trigger("pagecreate");
            	 
            	 
@@ -128,7 +124,7 @@ $(function() {
 });   
 //------------------------------------------------------------------------------
 
-// Is called, while 'contact-page' is being created (only once)
+// Is called, while 'contact-page' is being created 
 $(document).on("pagecreate","#group-edit-page",function(){
 		      
 		 

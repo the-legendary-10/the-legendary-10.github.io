@@ -48,8 +48,8 @@ $(function() {
          });    
          
          
-
 }); 
+
 //------------------------------------------------------------------------------
 // Removes individual text in the popup after closing the popup
 $(function() {
@@ -66,7 +66,7 @@ $(function() {
 }); 
 
 //------------------------------------------------------------------------------
-// Defines what should happen after a click on the button "Löschen" ("deleteCon") in the popup
+// Defines action after clicking on button "Löschen" ("deleteCon") in the popup
 
 $(function() {
       $("#deleteCon").click( function() {
@@ -103,13 +103,14 @@ $(function() {
             
             
             
-          // Remove the item from the page-overview-page  
+          // Remove the item from the group-overview-page  
           var hashNumberString = '#' + hashNumber;
+          $('li').remove(hashNumberString);
           
-          $(hashNumberString).remove();
+          
+          // Uncheck the checkbox in the group-edit-page (id: E (prefix) + hashNumber)
+          $("#E" + hashNumber).prop("checked", false).checkboxradio("refresh");
              
-                         
-          $( "#group-overview-page" ).trigger("pagecreate");
             
            
           // Close the popup
@@ -132,23 +133,21 @@ $(document).on("pagecreate","#group-overview-page",function(){
      $( "#group-over-list" ).children().remove();
     
    
-    // Creation of user interface (information message or listview with contacts)
+    // Creation of user interface (information message if no contact or listview with contacts)
     
    
    	   // If no contact is stored in the local Storage, show an information message
    		if(localStorage.getItem('group')== 0 || localStorage.getItem('group') == undefined ){ 
    		  $('#group-over-list').append('<div class="infobox" ><b>Hinweis:</b> <br/> Aktuell befinden sich <b>keine Kontakte</b> in Deiner Mitagessen-Gruppe. Füge welche über "Gruppe bearbeiten" hinzu.</div'); 
    		  
-   		  
-   		
    		
    		} else{ 					
-   					
+   				// Get group-value with md5-hash-numbers and convert it to an array	
    				phoneNumbers = localStorage.getItem('group');
    				phoneNumbersArray = phoneNumbers.split(",");
    				
-   		
    				
+   				// Generate listitem for each md5-hash-number (contact) and append it to the listview
    			    for (var k = 0; k < phoneNumbersArray.length; k++) {
    			    
    				  contactObj = searchPhoneNumber(phoneNumbersArray[k]);
@@ -159,7 +158,8 @@ $(document).on("pagecreate","#group-overview-page",function(){
    				
    				}
    				
-   				
+   			
+   			   // Update listview
                $('#group-over-list').listview('refresh');
    				
    								   			

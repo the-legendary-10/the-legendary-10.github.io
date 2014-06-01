@@ -15,8 +15,17 @@ function SaveMyTime(){
 	location.reload(true);
 }
 
-function LoadMyTime(){
+$("#time-page").ready(function(){
 	var date = localStorage.Date;
 	var fromtime = localStorage.FromTime;
 	var totime= localStorage.ToTime;
-}
+	
+	if(date != null){
+		if(fromtime != null){
+			if(totime != null){
+				var d = new Date(date);
+				$( "#LastValues" ).append("<p>Die aktuell gespeicherten Werte sind: am "+d.getDate()+"."+d.getMonth()+"."+d.getUTCFullYear()+" von: "+fromtime+" bis "+totime+"</p>");
+			}
+		}
+	}	
+});

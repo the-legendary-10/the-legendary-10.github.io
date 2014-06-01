@@ -7,8 +7,10 @@
 
 <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.min.css" />
-<script src="jqm-datebox-1.4.0.core.js"></script>
-<script src="jqm-datebox-1.4.0.mode.flipbox.js"></script>
+
+<script src="js/jqm-datebox.core.js"></script>
+<script src="js/jqm-datebox.comp.flipbox.js"></script>
+
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
 <script src="js/networking.js"></script>
@@ -176,6 +178,8 @@
 	<div data-role="content">
 		<p>Zeitauswahl</p></br>
 		<div class="content-primary"> 
+			<div id="LastValues"> </div>
+			
 			<!-- TODO: Default-Werte setzen-->
 			<div data-role="fieldcontain">
 				<label for="deftime">Daum:</label><input name="mydate" id="mydate" type="date" data-role="datebox" data-options='{"mode": "datebox"}'>

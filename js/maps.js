@@ -1,6 +1,8 @@
 $(document).on("pagecreate","#main-page",function(){
     var map = null; 
 	var userLocation = null;
+	//set pin for own location
+	var myLocPin = null;
     GetMap();
 	var mapHeight = document.documentElement.clientHeight * 0.9;
 	$( "#mapDiv" ).height(mapHeight);
@@ -21,7 +23,8 @@ function GetMap() {
         var cred = "Ak4YyNZDcqdffzA8v6abqlO_tlEhDs4ZK30zbET6AP9tTXokOsVX0E4FtaJEyAUB"; 
         // Initialize map 
         map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), 
-				{ credentials: cred }); 
+				{ credentials: cred });
+		Microsoft.Maps.Events.addHandler(map, 'click',getLatlng );			
         // Check if browser supports geolocation 
         if (navigator.geolocation) { 
             navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
@@ -38,7 +41,7 @@ function GetMap() {
         // Zoom in on user's location on map 
         map.setView({ center: userLocation, zoom: 13 });
             // Add a pin to the center of the map
-            var pin = new Microsoft.Maps.Pushpin(userLocation, { text:'Ich', draggable: true});
+            var pin = new Microsoft.Maps.Pushpin(userLocation, { draggable: false});
             map.entities.push(pin);
         // Draw circle of area where user is located 
         var locationArea = drawCircle(userLocation); 
@@ -81,11 +84,32 @@ function GetMap() {
         return new Microsoft.Maps.Polygon(locs, { fillColor: new Microsoft.Maps.Color(125, 0, 0, 255), strokeColor: new Microsoft.Maps.Color(0, 0, 0, 255) }); 
     } 
 	
+	function getLatlng(e) { 
+	//set own location if user wants to change location or if location could not be determined
+        if (e.targetType == "map") {
+			var point = new Microsoft.Maps.Point(e.getX(), e.getY());
+            var locTemp = e.target.tryPixelToLocation(point);
+			if (myLocPin !== null){
+				map.entities.pop();
+			}
+			var userLocation = new Microsoft.Maps.Location(locTemp.latitude, locTemp.longitude);
+            //alert(locTemp.latitude+"&"+locTemp.longitude);
+
+            var myLocPin = new Microsoft.Maps.Pushpin(userLocation, {'draggable': false});
+
+            map.entities.push(myLocPin);
+          //alert("Zum Ändern der Location bitte Pin verschieben");
+
+        }              
+       }
+	
 	function getLocation() {
 	
 		return userLocation;
 	
 	}
+	
+
 	
 /*Independent: save own phone number*/
 function savePhoneNumber(){

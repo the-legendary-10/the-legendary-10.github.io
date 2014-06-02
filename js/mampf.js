@@ -75,21 +75,24 @@ function SaveMyTime(){
 				//save the values to localStorage
 				localStorage.dates=old;
 				
-//				//Minuten mit einer "0" auffüllen
-//				var fromMinutes = myDate.FromTime.getMinutes();
-//				fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
-//				var toMinutes = myDate.ToTime.getMinutes();
-//				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
-//				
-//				//Ausgabe
-//				$( "#time-over-list" ).append("<li>Am "+myDate.FromTime.getDate()+"."+(myDate.FromTime.getMonth()+1)+
-//				"."+myDate.FromTime.getUTCFullYear()+" von: "+(myDate.FromTime.getHours()-2)+":"+
-//				fromMinutes+" bis "+(myDate.ToTime.getHours()-2)+":"+toMinutes+
-//				"</li>");
+				//Minuten mit einer "0" auffüllen
+				var fromMinutes = myDate.FromTime.getMinutes();
+				fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
+				var toMinutes = myDate.ToTime.getMinutes();
+				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 				
-				$( "#time-over-page" ).trigger("pagecreate");
+				//Ausgabe
+				$( "#time-over-list" ).append("<li>Am "+myDate.FromTime.getDate()+"."+(myDate.FromTime.getMonth()+1)+
+				"."+myDate.FromTime.getUTCFullYear()+" von: "+(myDate.FromTime.getHours()-2)+":"+
+				fromMinutes+" bis "+(myDate.ToTime.getHours()-2)+":"+toMinutes+
+				"</li>");
 				
 				
+				// Remove information message, if visible
+				 $('#time-content-msg').remove(); 
+				 
+				 // Update listview
+				 $('#time-over-list').listview('refresh');
 			
 			}
 		}
@@ -97,8 +100,8 @@ function SaveMyTime(){
 }
 
 
-$(document).on("pagecreate","#time-over-page",function(){
-//$("#time-over-page").ready(function(){
+//$(document).on("pagecreate","#time-over-page",function(){
+$("#time-over-page").ready(function(){
 
 
    // Initialize
@@ -113,8 +116,8 @@ $(document).on("pagecreate","#time-over-page",function(){
 	
 		if(dates != null){
 					
-			//Ausgabe
-		//	$( "#time-over-list" ).append("Die aktuell gespeicherten Werte sind:<br>");
+			// Ausgabe
+			$( "#time-over-list" ).append("Die aktuell gespeicherten Werte sind:<br>");
 			
 			for (var i=0; i<dates.length; i++){
 				//display the values

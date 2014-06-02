@@ -82,16 +82,13 @@ function SaveMyTime(){
 				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 				
 				//Ausgabe
-				$( "#time-over-list" ).append("<li>Am "+myDate.FromTime.getDate()+"."+(myDate.FromTime.getMonth()+1)+
-				"."+myDate.FromTime.getUTCFullYear()+" von: "+(myDate.FromTime.getHours()-2)+":"+
-				fromMinutes+" bis "+(myDate.ToTime.getHours()-2)+":"+toMinutes+
-				"</li>");
+				$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von: '+(from.getHours()-2)+':'+fromMinutes+' bis '+(to.getHours()-2)+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
 				
 				
 				// Remove information message, if visible
 				 $('#time-content-msg').remove(); 
 				 
-				 // Update listview
+				 
 				 $('#time-over-list').listview('refresh');
 			
 			}
@@ -130,9 +127,7 @@ $("#time-over-page").ready(function(){
 				var toMinutes = to.getMinutes();
 				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 				
-				$( "#time-over-list" ).append("<li>Am "+from.getDate()+"."+(from.getMonth()+1)+"."+
-				from.getUTCFullYear()+" von: "+(from.getHours()-2)+":"+fromMinutes+" bis "+(to.getHours()-2)+
-				":"+toMinutes+"</li>");
+				$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von: '+(from.getHours()-2)+':'+fromMinutes+' bis '+(to.getHours()-2)+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
 			}
 		}	
 		//Textfelder mit den letzten Weerten befüllen

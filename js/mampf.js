@@ -88,13 +88,17 @@ function SaveMyTime(){
 				"</li>");
 				
 				$('#time-over-list').listview('refresh');
+				$('#time-content-msg').remove(); 
 			
 			}
 		}
 	}	
 }
 
-$("#time-page").ready(function(){
+$("#time-over-page").ready(function(){
+
+   $('#time-content-msg').remove(); 
+   
 	//if there are already saved values, display them
 	if(localStorage.dates != null){
 	
@@ -122,10 +126,14 @@ $("#time-page").ready(function(){
 				":"+toMinutes+"</li>");
 			}
 		}	
-
 		//Textfelder mit den letzten Weerten befüllen
 		$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());
 		$("#fromtime").val((from.getHours()-2)+":"+from.getMinutes());
 		$("#totime").val((to.getHours()-2)+":"+to.getMinutes());
 	}
+	
+	else {
+		  $('#time-content-info').append('<div class="infobox" id="time-content-msg" ><b>Hinweis:</b> <br/> Aktuell hast Du <b>keine Zeiten</b> angelegt. Erstelle Zeiten über "Hinzufügen".</div'); 
+	}
+	
 });

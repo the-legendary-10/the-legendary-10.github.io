@@ -3,7 +3,6 @@
 */
 
 $(document).ready( function(){
-	//TODO - load LocalStorage data into UI
 	//setInterval(refresh, 5000); --turned off temporarily
 });
 
@@ -12,8 +11,11 @@ $(document).ready( function(){
 */
 function refresh(){
 	var requestData=createRequestData();
+	if(requestData == undefined){
+		return;
+	}
 	postRequest(requestData);
-	//renderResponse(JSON.parse('{"subjects":["B25BF7426FABCADF01103045FD7707CE"],"timeslot":{"startTime":1401390559163,"endTime":1401397759164}}'));
+	renderResponse(JSON.parse('{"subjects":["B25BF7426FABCADF01103045FD7707CE"],"timeslot":{"startTime":1401390559163,"endTime":1401397759164}}'));
 }
 
 /*
@@ -21,18 +23,46 @@ function refresh(){
 * request data as an Object.
 */
 function createRequestData(){
+	/*Identity */ //TODO
+	var ownPhone = localStorage.getItem("ownphone");
+	if(ownPhone == undefined){
+		alert("Bitte Telefonnummer eingeben");
+		return undefined;
+	}
+	var ownPhone = $.md5(ownPhone);
 	
+	/*Invitees */
+	var phoneNumbersMD5 = localStorage.getItem('group');
+	if(phoneNumbersMD5 == undefined || phoneNumbersMD5 == 0){
+		alert("Bitte Kontaktgruppe erstellen");
+		return undefined;
+	}
+	phoneNumbersArray = phoneNumbersMD5.split(",");
+	
+	/*Location */
+	var location = getLocation();
+	
+	/* Timeslots TODO*/
+	var timeslots = localStorage.getItem('dates');
+	if(timeslots == undefined){
+		alert("Bitte Zeitspanne definieren");
+		return undefined;
+	}
+	console.log(timeslots);
+	
+	
+	var result;
 	
 	/*
 	*TODO -- dummy function
 	*remember md5'ing phone numbers
 	*/
 	var result = {
-		identity : "A559EF3AB440F83CA0E0B42D6F1A20CA",
-		invitees : ["B25BF7426FABCADF01103045FD7707CE","A9B9D2ED66A5DA2AFB3247F6947F5591"],
+		identity : ownPhone,
+		invitees : phoneNumbersArray,
 		currentPosition : {
-			longitude : 9.170299499999999,
-			latitude : 48.773556600000006,
+			longitude : location.longitude,
+			latitude : location.latitude,
 		},
 		timeslots : [
 			{
@@ -68,16 +98,33 @@ function postRequest(requestData){
 function renderResponse(json){
 	console.log(json);
 	$("#result_table > tbody").empty();
+	var startTime = new Date(json.timeslot.startTime);
+	var endTime = new Date(json.timeslot.startTime);
 	json.subjects.forEach(function(subject){
 		var contact = md5ToContact(subject);
-		//TODO: Timeslot(s)?
-		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.name+"</td><td></td></tr>");
+		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+" "+contact.lastName +"</td>"+startTime.toLocaleString()+"<td>"+endTime.toLocaleString()+"</td></tr>");
 	});
+	
 }
+
+
 /*
 * Converts an MD5-Hashed phone number to a contact
 */
-function md5ToContact(md5){
-	//TODO
-	return {phoneNumber : md5, name : "Testperson"};
+
+function md5ToContact(md5number) {
+var contactObj;
+  $.each( contacts, function( i, contact ) {
+  
+  		if(md5Number == $.md5(contact.phoneNumber)) {
+  		
+			contactObj = {"phoneNumber": contact.phoneNumber,
+  		 		       "firstName": contact.firstName,
+  		               "lastName": contact.lastName
+			};  	
+  		}
+  });
+  return contactObj;		
 }
+
+

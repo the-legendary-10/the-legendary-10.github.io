@@ -7,6 +7,8 @@
 
 <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.min.css" />
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
 <script src="js/jqm-datebox.core.js"></script>
 <script src="js/jqm-datebox.comp.flipbox.js"></script>
@@ -22,10 +24,23 @@
 
 <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> 
 <script src="js/maps.js"></script>
+
+<style>
+
+ 
+</style>
+
 </head>
 
 <body>
+<div data-role="panel" id="left-panel" data-position="left" data-display="overlay" data-theme="a">
 
+		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right" class="ui-btn-active ui-state-persist" >Home</a></br>
+		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
+		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
+		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>
+</div><!-- /leftpanel1 -->
+	
 <div data-role="page" id="main-page" data-theme="a" data-url="main">
 	<div data-role="header" data-theme="a">
 	<h1>MAMPF!</h1>
@@ -33,6 +48,16 @@
 	</div><!-- /header -->
 	<div data-role="content">
 		<div id="results">
+			
+		<table>
+			<tr >
+				<td style="width:2%">Eigene Nummer:</td>
+				<td> <input name="vorname" type="tel" size="30" maxlength="30" id="telephone" placeholder="4916726799466"> </td>
+				<td style="width:2%" > <a href="#"  data-role="button" id="telephoneButton"  data-icon="check" >OK</a> </td>
+			</tr>
+			
+		
+		</table>
 			<table id="result_table">
 				<caption>Ergebnisse</caption>
 				<thead>
@@ -44,26 +69,22 @@
 				</thead>
 				<tbody>
 				<tr>
-					<td>1234</td>
+					<td>0163468749854</td>
 					<td>Max Mustermann</td>
 					<td>12:30 - 13:15</td>
 				</tr>
 				</tbody>
 			</table>
-			
-			<p>Map</p></br>
-			<div id="mapDiv" style="position: relative; width: 800px; height: 600px;"></div>
+			<br/>
+			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 100px; height: 600px; align: left;">
+				<!-- map loads here -->
+			</div>
 		</div>
 		<button type="button" name="refresh" onclick="refresh()">Refresh</button></br>
 	</div><!-- /content -->
-	<div data-role="panel" id="left-panel" data-theme="a">
-		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right" class="ui-btn-active ui-state-persist" >Home</a></br>
-		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
-		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
-		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>		
-	</div><!-- /panel -->
-	<div data-role="footer">
-		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io">Impressum</a><br/>
+	
+	<div data-role="footer" class="footer-class">
+		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io" data-rel="close" data-role="button" data-icon="grid" data-iconpos="left">Github</a></br>
   </div>
 </div>
 
@@ -104,12 +125,7 @@
 			
 	</div><!-- /content -->
 	</div>
-	<div data-role="panel" id="left-panel" data-theme="a" >
-		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right">Home</a></br>
-		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right" class="ui-btn-active ui-state-persist" >Gruppe</a></br>
-		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
-		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>		
-	</div><!-- /panel -->
+	
 	<div data-role="footer" data-position="fixed" data-id="group-footer" data-tap-toggle="false">
 	    <div data-role="navbar">
 	        <ul>
@@ -154,12 +170,7 @@
 
 
 	</div><!-- /content -->
-	<div data-role="panel" id="left-panel" data-theme="a" >
-		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right">Home</a></br>
-		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right" class="ui-btn-active ui-state-persist" >Gruppe</a></br>
-		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
-		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>		
-	</div><!-- /panel -->
+	
 	 <div data-role="footer" data-position="fixed"  data-id="group-footer" data-tap-toggle="false">
 	     <div data-role="navbar">
 	         <ul>
@@ -202,14 +213,9 @@
 		</div>
 			
 	</div><!-- /content -->
-	<div data-role="panel" id="left-panel" data-theme="a">
-		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right">Home</a></br>
-		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
-		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right" class="ui-btn-active ui-state-persist" >Zeit</a></br>
-		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>		
-	</div><!-- /panel -->
-	<div data-role="footer">
-		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io">Impressum</a><br/>
+	
+	<div data-role="footer" class="footer-class">
+		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io" data-rel="close" data-role="button" data-icon="grid" data-iconpos="left">Github</a></br>
   </div>
 </div>
 

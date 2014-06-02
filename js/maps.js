@@ -1,6 +1,18 @@
-$(document).on("pagecreate","#main-page",function(){
+$(document).on("pageshow","#main-page",function(){ //pagecreate instead of pageshow
     var map = null; 
-    GetMap()
+	var userLocation = null;
+    GetMap();
+	var mapHeight = document.documentElement.clientHeight * 0.9;
+	$( "#mapDiv" ).height(mapHeight);
+
+	var mapWidth = document.documentElement.clientWidth * 0.7;
+	$( "#mapDiv" ).width(mapWidth);
+	
+	$("#telephoneButton").on("click",savePhoneNumber);
+	var ownPhone = localStorage.getItem("ownphone");
+	if(ownPhone != undefined){
+		$("#telephone").val(ownPhone);
+	}
 });
 function GetMap() { 
             /* Replace YOUR_BING_MAPS_KEY with your own credentials. 
@@ -9,7 +21,7 @@ function GetMap() {
         var cred = "Ak4YyNZDcqdffzA8v6abqlO_tlEhDs4ZK30zbET6AP9tTXokOsVX0E4FtaJEyAUB"; 
         // Initialize map 
         map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), 
-           { credentials: cred }); 
+				{ credentials: cred }); 
         // Check if browser supports geolocation 
         if (navigator.geolocation) { 
             navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
@@ -22,9 +34,9 @@ function GetMap() {
     // Successful geolocation 
     function locateSuccess(loc) { 
         // Set the user's location 
-        var userLocation = new Microsoft.Maps.Location(loc.coords.latitude, loc.coords.longitude); 
+        userLocation = new Microsoft.Maps.Location(loc.coords.latitude, loc.coords.longitude); 
         // Zoom in on user's location on map 
-        map.setView({ center: userLocation, zoom: 17 }); 
+        map.setView({ center: userLocation, zoom: 13 }); 
         // Draw circle of area where user is located 
         var locationArea = drawCircle(userLocation); 
         map.entities.push(locationArea);
@@ -65,3 +77,15 @@ function GetMap() {
         } 
         return new Microsoft.Maps.Polygon(locs, { fillColor: new Microsoft.Maps.Color(125, 0, 0, 255), strokeColor: new Microsoft.Maps.Color(0, 0, 0, 255) }); 
     } 
+	
+	function getLocation() {
+	
+		return userLocation;
+	
+	}
+	
+/*Independent: save own phone number*/
+function savePhoneNumber(){
+	var phoneNumber = $('#telephone').val();
+	localStorage.setItem("ownphone", phoneNumber);
+}

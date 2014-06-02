@@ -13,7 +13,7 @@ $(document).ready( function(){
 function refresh(){
 	var requestData=createRequestData();
 	postRequest(requestData);
-	//renderResponse(JSON.parse('{"subjects":["B25BF7426FABCADF01103045FD7707CE"],"timeslot":{"startTime":1401390559163,"endTime":1401397759164}}'));
+	// renderResponse(JSON.parse('{"subjects":["B25BF7426FABCADF01103045FD7707CE"],"timeslot":{"startTime":1401390559163,"endTime":1401397759164}}'));
 }
 
 /*
@@ -71,6 +71,7 @@ function renderResponse(json){
 		//TODO: Timeslot(s)?
 		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.name+"</td><td></td></tr>");
 	});
+	
 }
 
 /*

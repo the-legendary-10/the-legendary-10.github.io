@@ -60,12 +60,10 @@
 			<tr >
 		<td> <a href="#"  data-role="button" id="telephoneButton"  data-icon="check"  >Speichern</a></td>
 		    </tr>
-		    
 		</table>
-		 <br />
-		
+        </br>
+        
 			<table id="result_table">
-            <button type="button" name="refresh" onclick="refresh()">Ergebnisse aktualisieren</button></br>
 				<thead>
 				<tr>
 					<th>Nummer</th>
@@ -81,6 +79,13 @@
 				</tr>
 				</tbody>
 			</table>
+            
+        <table>
+			<tr >
+		<td><button type="button" data-icon="refresh" name="refresh" onclick="refresh()">Ergebnisse aktualisieren</button></td>
+		    </tr>
+		</table>
+            
 			<br/>
 			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 100px; height: 600px; align: left;">
 				<!-- map loads here -->
@@ -190,7 +195,7 @@
 			
 			<!-- TODO: Default-Werte setzen-->
 			<div data-role="fieldcontain">
-				<label for="deftime">Daum:</label><input name="mode1" id="mode1" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
+				<label for="deftime">Datum:</label><input name="mode1" id="mode1" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
 			</div>
 			<div data-role="fieldcontain">
 				<label for="deftime">Von:</label><input name="fromtime" id="fromtime" type="time" data-role="datebox"  data-options='{"mode": "timebox", "overrideTimeFormat": 24}' />

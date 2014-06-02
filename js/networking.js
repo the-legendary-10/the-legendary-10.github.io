@@ -72,10 +72,20 @@ function renderResponse(json){
 		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.name+"</td><td></td></tr>");
 	});
 }
+
 /*
 * Converts an MD5-Hashed phone number to a contact
 */
-function md5ToContact(md5){
-	//TODO
-	return {phoneNumber : md5, name : "Testperson"};
+function md5ToContact(md5Number){	
+	var contactObj;
+	$.each(contacts, function(i, contact) {
+  		if(md5Number == $.md5(contact.phoneNumber)) {
+			contactObj = {	"phoneNumber": contact.phoneNumber,
+							"name": contact.Name,
+			};
+  		}
+	});
+	return contactObj;
 }
+
+

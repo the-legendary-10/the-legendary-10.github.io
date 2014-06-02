@@ -8,6 +8,47 @@ $( document ).on( "pageinit", "#main-page", function() {
     });
 });
 
+$( document ).on( "pageinit", "#group-overview-page", function() {
+    $( document ).on( "swiperight", "#group-overview-page", function( e ) {
+        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+            if ( e.type === "swiperight"  ) {
+                $( "#left-panel" ).panel( "open" );
+            }
+        }
+    });
+});
+
+$( document ).on( "pageinit", "#group-edit-page", function() {
+    $( document ).on( "swiperight", "#group-edit-page", function( e ) {
+        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+            if ( e.type === "swiperight"  ) {
+                $( "#left-panel" ).panel( "open" );
+            }
+        }
+    });
+});
+
+$( document ).on( "pageinit", "#time-page", function() {
+    $( document ).on( "swiperight", "#time-page", function( e ) {
+        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+            if ( e.type === "swiperight"  ) {
+                $( "#left-panel" ).panel( "open" );
+            }
+        }
+    });
+});
+
+/*$(document).on("pagecreate", function () {
+    $("[data-role=panel]").one("panelbeforeopen", function () {
+        var height = $.mobile.pageContainer.pagecontainer("getActivePage").outerHeight();
+        $(".ui-panel-wrapper").css("height", height + 1);
+    });
+});*/
+
+$(function () {
+  $("[data-role=panel]").panel().enhanceWithin();
+});
+
 function SaveMyTime(){	
 	var myDate = new Object();
 	myDate.Date = $("#mydate").val();;

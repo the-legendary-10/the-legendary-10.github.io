@@ -21,6 +21,8 @@ function refresh(){
 * request data as an Object.
 */
 function createRequestData(){
+	
+	
 	/*
 	*TODO -- dummy function
 	*remember md5'ing phone numbers

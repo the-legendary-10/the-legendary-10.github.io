@@ -4,6 +4,8 @@ $(document).on("pageshow","#main-page",function(){ //pagecreate instead of pages
     GetMap();
 	var mapHeight = document.documentElement.clientHeight * 0.9;
 	$( "#mapDiv" ).height(mapHeight);
+	var mapWidth = document.documentElement.clientWidth * 0.9;
+	$( "#mapDiv" ).width(mapWidth);
 });
 function GetMap() { 
             /* Replace YOUR_BING_MAPS_KEY with your own credentials. 

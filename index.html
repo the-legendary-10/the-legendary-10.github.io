@@ -7,6 +7,8 @@
 
 <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.min.css" />
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
 <script src="js/jqm-datebox.core.js"></script>
 <script src="js/jqm-datebox.comp.flipbox.js"></script>
@@ -49,9 +51,9 @@
 			
 		<table>
 			<tr >
-				<td style="width:21%">Eigene Handynummer:</td>
+				<td style="width:5%">Eigene Nummer:</td>
 				<td> <input name="vorname" type="tel" size="30" maxlength="30"> </td>
-				<td> <a href="#" data-rel="close" data-role="button" data-mini="true"  >Speichern</a> </td>
+				<td style="width:3%"> <a href="#" data-rel="close" data-role="button" data-mini="true" data-icon="check" > </a> </td>
 			</tr>
 			
 		
@@ -67,15 +69,16 @@
 				</thead>
 				<tbody>
 				<tr>
-					<td>1234</td>
+					<td>0163468749854</td>
 					<td>Max Mustermann</td>
 					<td>12:30 - 13:15</td>
 				</tr>
 				</tbody>
 			</table>
-			<p>Map</p></br>
-			<!-- width: 800px; height: 600px;" || style="position: relative; margin: 10px; padding:1% 5% 45% 5%;-->
-			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 30px; height: 600px;"></div>
+			<br/>
+			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 100px; height: 600px; align: left;">
+				<!-- map loads here -->
+			</div>
 		</div>
 		<button type="button" name="refresh" onclick="refresh()">Refresh</button></br>
 	</div><!-- /content -->

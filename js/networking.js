@@ -75,6 +75,7 @@ function renderResponse(json){
 	
 }
 
+
 /*
 * Converts an MD5-Hashed phone number to a contact
 */
@@ -83,7 +84,7 @@ function md5ToContact(md5Number){
 	$.each(contacts, function(i, contact) {
   		if(md5Number == $.md5(contact.phoneNumber)) {
 			contactObj = {	"phoneNumber": contact.phoneNumber,
-							"name": contact.Name,
+							"name": contact.name,
 			};
   		}
 	});

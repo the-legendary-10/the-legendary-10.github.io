@@ -34,7 +34,7 @@
 <body>
 <div data-role="panel" id="left-panel" data-position="left" data-display="overlay" data-theme="a">
 
-		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right" class="ui-btn-active ui-state-persist" >Home</a></br>
+		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right" >Home</a></br>
 		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
 		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
 		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>
@@ -50,13 +50,20 @@
 			
 		<table>
 			<tr >
-				<td style="width:2%">Eigene Nummer</td>
+				<td style="width:11%">Eigene Nummer</td>
 				<td> <input name="vorname" type="tel" size="30" maxlength="30" id="telephone" placeholder="4916726799466"> </td>
-				<td style="width:2%" > <a href="#"  data-role="button" id="telephoneButton"  data-icon="check" >OK</a> </td>
+				
 			</tr>
-			
 		
 		</table>
+		<table>
+			<tr >
+		<td> <a href="#"  data-role="button" id="telephoneButton"  data-icon="check"  >Speichern</a></td>
+		    </tr>
+		    
+		</table>
+		 <br />
+		
 			<table id="result_table">
 				<caption>Ergebnisse</caption>
 				<thead>

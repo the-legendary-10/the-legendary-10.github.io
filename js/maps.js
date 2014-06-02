@@ -1,4 +1,4 @@
-$(document).on("pageshow","#main-page",function(){ //pagecreate instead of pageshow
+$(document).on("pagecreate","#main-page",function(){
     var map = null; 
 	var userLocation = null;
     GetMap();
@@ -36,7 +36,10 @@ function GetMap() {
         // Set the user's location 
         userLocation = new Microsoft.Maps.Location(loc.coords.latitude, loc.coords.longitude); 
         // Zoom in on user's location on map 
-        map.setView({ center: userLocation, zoom: 13 }); 
+        map.setView({ center: userLocation, zoom: 13 });
+            // Add a pin to the center of the map
+            var pin = new Microsoft.Maps.Pushpin(userLocation, { text:'Ich', draggable: true});
+            map.entities.push(pin);
         // Draw circle of area where user is located 
         var locationArea = drawCircle(userLocation); 
         map.entities.push(locationArea);

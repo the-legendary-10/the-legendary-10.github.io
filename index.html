@@ -191,6 +191,9 @@
 	<div data-role="content">
 	<p >Im Folgenden werden alle Zeiten angezeigt, die blablabla <br/> <br /> 
 	</p>
+	<div id="time-content-info">
+	
+	</div>
 	
 		
 		<ul data-role="listview" id="time-over-list" >
@@ -212,6 +215,7 @@
 	<div data-role="header" data-theme="a">
 	<h1>Zeit hinzufügen</h1>
 	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	<a href="#time-over-page"   data-theme="a" data-icon="delete"   >Abbrechen</a>
 	</div><!-- /header -->
 	
 	<div data-role="content">
@@ -234,7 +238,7 @@
 		</div> 
 		<!-- Die eingegebenen Daten werden mit Klick auf den Button im LocalStorage abgespeichert-->
 		<div>
-			<a href="#time-over-page" data-role="button" id="ButtonSaveTime" onClick="SaveMyTime()">Hinzufügen</a>
+			<a href="#time-over-page" data-role="button" id="ButtonSaveTime" data-icon="check" onClick="SaveMyTime()">Hinzufügen</a>
 		</div>
 			
 	</div><!-- /content -->

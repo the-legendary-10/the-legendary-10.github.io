@@ -29,7 +29,7 @@ function GetMap() {
         // Set the user's location 
         userLocation = new Microsoft.Maps.Location(loc.coords.latitude, loc.coords.longitude); 
         // Zoom in on user's location on map 
-        map.setView({ center: userLocation, zoom: 17 }); 
+        map.setView({ center: userLocation, zoom: 13 }); 
         // Draw circle of area where user is located 
         var locationArea = drawCircle(userLocation); 
         map.entities.push(locationArea);

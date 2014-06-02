@@ -73,6 +73,9 @@ function SaveMyTime(){
 	}
 }
 
+
+
+
 $("#time-page").ready(function(){
 	//get dates from localStorage
 	var dates=localStorage.dates;

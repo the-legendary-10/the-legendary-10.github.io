@@ -36,7 +36,7 @@
 <div data-role="panel" id="left-panel" data-position="left" data-display="overlay" data-theme="a">
 		<a href="#main-page" id="mainpage" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right" >Home</a></br>
 		<a href="#group-overview-page" id="contacts" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
-		<a href="#time-page"   id="calendar" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
+		<a href="#time-over-page"   id="calendar" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
 		<!--<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>-->
 </div><!-- /leftpanel1 -->
 	
@@ -181,17 +181,45 @@
 
 
 
+<div data-role="page" id="time-over-page" data-theme="a" data-url="time-over-page">
+	<div data-role="header" data-theme="a">
+	<h1>Übersicht</h1>
+	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	<a href="#time-page"  id="addTimes" data-theme="a" data-icon="check"   >Hinzufügen</a>
+	</div><!-- /header -->
+	
+	<div data-role="content">
+	<p >Im Folgenden werden alle Zeiten angezeigt, die blablabla <br/> <br /> 
+	</p>
+	
+		
+		<ul data-role="listview" id="time-over-list" >
+		
+		</ul>
+		
+		<br / > <br /> 
+					
+	</div><!-- /content -->
+	
+	<div data-role="footer" class="footer-class">
+		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io" data-rel="close" data-role="button" data-icon="grid" data-iconpos="left">Github</a></br>
+  </div>
+</div>
+
+
+
 <div data-role="page" id="time-page" data-theme="a" data-url="time-page">
 	<div data-role="header" data-theme="a">
-	<h1>Zeit</h1>
+	<h1>Zeit hinzufügen</h1>
 	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
 	</div><!-- /header -->
 	
 	<div data-role="content">
 		<p>Zeitauswahl</p></br>
+		
 		<div class="content-primary"> 
 		
-			<div id="LastValues"></div>
+		<!--	<div id="LastValues"></div>  -->
 			
 			<!-- TODO: Default-Werte setzen-->
 			<div data-role="fieldcontain">
@@ -206,7 +234,7 @@
 		</div> 
 		<!-- Die eingegebenen Daten werden mit Klick auf den Button im LocalStorage abgespeichert-->
 		<div>
-			<button id="ButtonSaveTime" onClick="SaveMyTime()">Hinzufügen</button>
+			<a href="#time-over-page" data-role="button" id="ButtonSaveTime" onClick="SaveMyTime()">Hinzufügen</a>
 		</div>
 			
 	</div><!-- /content -->

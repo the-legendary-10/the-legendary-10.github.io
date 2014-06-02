@@ -12,6 +12,9 @@ $(document).ready( function(){
 */
 function refresh(){
 	var requestData=createRequestData();
+	if(requestData == undefined){
+		return;
+	}
 	postRequest(requestData);
 	renderResponse(JSON.parse('{"subjects":["B25BF7426FABCADF01103045FD7707CE"],"timeslot":{"startTime":1401390559163,"endTime":1401397759164}}'));
 }
@@ -21,7 +24,22 @@ function refresh(){
 * request data as an Object.
 */
 function createRequestData(){
+	/*Identity */ //TODO
 	
+	/*Invitees */
+	var phoneNumbersMD5 = localStorage.getItem('group');
+	if(phoneNumbersMD5 == undefined || phoneNumbersMD5 == 0){
+		return undefined;
+	}
+	phoneNumbersArray = phoneNumbersMD5.split(",");
+	
+	/*Location */
+	
+	/* Timeslots*/
+	
+	
+	
+	var result;
 	
 	/*
 	*TODO -- dummy function

@@ -51,11 +51,12 @@ function SaveMyTime(){
 			just set old to the current JSON object
 			*/
 			var old = localStorage.getItem("dates");
+			
 			if(old!=null){
-				old = old+"#"+JSONdate;
+				old = old.substring(0, old.length-1) + "," + JSONdate + "]";
 			}
 			else{
-				old= JSONdate;
+				old= "[" + JSONdate + "]";
 			}
 			
 			//save the values to localStorage and reload the page

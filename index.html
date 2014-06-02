@@ -10,8 +10,6 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
-<script src="js/jqm-datebox.core.js"></script>
-<script src="js/jqm-datebox.comp.flipbox.js"></script>
 
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
@@ -25,10 +23,11 @@
 <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> 
 <script src="js/maps.js"></script>
 
-<style>
+<link type="text/css" href="css/jqm-datebox.min.css" rel="stylesheet" /> 
 
- 
-</style>
+<script src="js/jqm-datebox.core.min.js"></script>
+<script src="js/jqm-datebox.mode.calbox.min.js"></script>
+<script src="js/jqm-datebox.mode.datebox.min.js"></script>
 
 </head>
 
@@ -198,13 +197,13 @@
 			
 			<!-- TODO: Default-Werte setzen-->
 			<div data-role="fieldcontain">
-				<label for="deftime">Daum:</label><input name="mydate" id="mydate" type="date" data-role="datebox" data-options='{"mode": "datebox"}'>
+				<label for="deftime">Daum:</label><input name="mode1" id="mode1" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
 			</div>
 			<div data-role="fieldcontain">
-				<label for="deftime">Von:</label><input name="fromtime" id="fromtime" type="time" data-role="datebox"  data-options='{"mode": "timebox"}' />
+				<label for="deftime">Von:</label><input name="fromtime" id="fromtime" type="time" data-role="datebox"  data-options='{"mode": "timebox", "overrideTimeFormat": 24}' />
 			</div>		
 			<div data-role="fieldcontain">
-				<label for="deftime">Bis:</label><input name="totime" id="totime" type="time" data-role="datebox"  data-options='{"mode": "timebox"}' />
+				<label for="deftime">Bis:</label><input name="totime" id="totime" type="time" data-role="datebox"  data-options='{"mode": "timebox","overrideTimeFormat": 24}' />
 			</div>	
 		</div> 
 		<!-- Die eingegebenen Daten werden mit Klick auf den Button im LocalStorage abgespeichert-->

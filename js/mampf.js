@@ -9,6 +9,9 @@ $(function () {
 var dates = new Array();
 function SaveMyTime(){	
 
+	//Check if Times and Dates make sense and are empty
+	
+
 	//Create a new JSON Object containing the date and time values 
 	var myDate = new Object();
 	myDate.Date = $("#mydate").val();;

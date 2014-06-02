@@ -66,10 +66,10 @@ function postRequest(requestData){
 function renderResponse(json){
 	console.log(json);
 	$("#result_table > tbody").empty();
+	var timeslot = json.timeslot;
 	json.subjects.forEach(function(subject){
 		var contact = md5ToContact(subject);
-		//TODO: Timeslot(s)?
-		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.name+"</td><td></td></tr>");
+		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.name+"</td>"+timeslot.startTime"<td>"+timeslot.endTime"</td></tr>");
 	});
 	
 }

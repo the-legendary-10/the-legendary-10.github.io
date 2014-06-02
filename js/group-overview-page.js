@@ -166,6 +166,8 @@ $(document).on("pagecreate","#group-overview-page",function(){
    				
    								   			
    		}  
+		
+		$("#calendar").addClass('ui-btn-active ui-date-persist');
    		       
       
 });

@@ -19,9 +19,18 @@ function SaveMyTime(){
 	var unconvDate = $("#datefield").val();
 	var Datum = unconvDate.split(".");
 	myDate.Date = new Date(Datum[2]+"-"+Datum[1]+"-"+Datum[0]);
+	var convDate = Datum[2]+"-"+Datum[1]-1+"-"+Datum[0];
+		
+	//convert times
+	var unconvFrom = $("#fromtime").val();
+	var unconvFromPart = unconvFrom.split(":");
+	var NewFromTime = new Date(Datum[2], Datum[1]-1, Datum[0], unconvFromPart[0], unconvFromPart[1], "00");
+	myDate.FromTime = NewFromTime;
 	
-	myDate.FromTime = $("#fromtime").val();
-	myDate.ToTime = $("#totime").val();
+	var unconvTo = $("#totime").val();
+	var unconvToPart = unconvTo.split(":");
+	var NewToTime = new Date(Datum[2], Datum[1]-1, Datum[0], unconvToPart[0], unconvToPart[1], "00");	
+	myDate.ToTime = NewToTime;
 	
 	//Check if Times and Dates make sense and are empty
 	if ((myDate.Date!= null) && (myDate.FromTime!= null) && (myDate.ToTime!= null)){

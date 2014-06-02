@@ -3,7 +3,6 @@
 */
 
 $(document).ready( function(){
-	//TODO - load LocalStorage data into UI
 	//setInterval(refresh, 5000); --turned off temporarily
 });
 
@@ -35,9 +34,13 @@ function createRequestData(){
 	
 	/*Location */
 	var location = getLocation();
-	console.log(location);
-	/* Timeslots*/
 	
+	/* Timeslots*/
+	var timeslots = localStorage.getItem('dates');
+	if(timeslots == undefined){
+		return undefined;
+	}
+	console.log(timeslots);
 	
 	
 	var result;
@@ -105,7 +108,7 @@ function md5ToContact(md5number) {
 var contactObj;
   $.each( contacts, function( i, contact ) {
   
-  		if(md5number == $.md5(contact.phoneNumber)) {
+  		if(md5Number == $.md5(contact.phoneNumber)) {
   		
 			contactObj = {"phoneNumber": contact.phoneNumber,
   		 		       "firstName": contact.firstName,

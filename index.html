@@ -60,12 +60,10 @@
 			<tr >
 		<td> <a href="#"  data-role="button" id="telephoneButton"  data-icon="check"  >Speichern</a></td>
 		    </tr>
-		    
 		</table>
-		 <br />
-		
+        </br>
+        
 			<table id="result_table">
-            <button type="button" name="refresh" onclick="refresh()">Ergebnisse aktualisieren</button></br>
 				<thead>
 				<tr>
 					<th>Nummer</th>
@@ -81,6 +79,13 @@
 				</tr>
 				</tbody>
 			</table>
+            
+        <table>
+			<tr >
+		<td><button type="button" data-icon="refresh" name="refresh" onclick="refresh()">Ergebnisse aktualisieren</button></td>
+		    </tr>
+		</table>
+            
 			<br/>
 			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 100px; height: 600px; align: left;">
 				<!-- map loads here -->

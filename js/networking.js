@@ -70,24 +70,29 @@ function renderResponse(json){
 	var endTime = new Date(json.timeslot.startTime);
 	json.subjects.forEach(function(subject){
 		var contact = md5ToContact(subject);
-		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.name+"</td>"+startTime.toLocaleString()+"<td>"+endTime.toLocaleString()+"</td></tr>");
+		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+"</td>"+startTime.toLocaleString()+"<td>"+endTime.toLocaleString()+"</td></tr>");
 	});
 	
 }
 
+
 /*
 * Converts an MD5-Hashed phone number to a contact
 */
-function md5ToContact(md5Number){	
-	var contactObj;
-	$.each(contacts, function(i, contact) {
-  		if(md5Number == $.md5(contact.phoneNumber)) {
-			contactObj = {	"phoneNumber": contact.phoneNumber,
-							"name": contact.Name,
-			};
+
+function md5ToContact(md5Number) {
+var contactObj;
+  $.each( contacts, function( i, contact ) {
+  
+  		if(md5number == $.md5(contact.phoneNumber)) {
+  		
+			contactObj = {"phoneNumber": contact.phoneNumber,
+  		 		       "firstName": contact.firstName,
+  		               "lastName": contact.lastName
+			};  	
   		}
-	});
-	return contactObj;
+  });
+  return contactObj;		
 }
 
 

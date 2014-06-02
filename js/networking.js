@@ -70,7 +70,7 @@ function renderResponse(json){
 	var endTime = new Date(json.timeslot.startTime);
 	json.subjects.forEach(function(subject){
 		var contact = md5ToContact(subject);
-		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+"</td>"+startTime.toLocaleString()+"<td>"+endTime.toLocaleString()+"</td></tr>");
+		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+" "+contact.lastName +"</td>"+startTime.toLocaleString()+"<td>"+endTime.toLocaleString()+"</td></tr>");
 	});
 	
 }
@@ -80,7 +80,7 @@ function renderResponse(json){
 * Converts an MD5-Hashed phone number to a contact
 */
 
-function md5ToContact(md5Number) {
+function md5ToContact(md5number) {
 var contactObj;
   $.each( contacts, function( i, contact ) {
   

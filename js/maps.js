@@ -4,7 +4,7 @@ $(document).on("pageshow","#main-page",function(){ //pagecreate instead of pages
     GetMap();
 	var mapHeight = document.documentElement.clientHeight * 0.9;
 	$( "#mapDiv" ).height(mapHeight);
-	var mapWidth = document.documentElement.clientWidth * 0.9;
+	var mapWidth = document.documentElement.clientWidth * 0.7;
 	$( "#mapDiv" ).width(mapWidth);
 });
 function GetMap() { 

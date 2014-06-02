@@ -140,7 +140,7 @@ $(document).on("pagecreate","#group-overview-page",function(){
    
    	   // If no contact is stored in the local Storage, show an information message
    		if(localStorage.getItem('group')== 0 || localStorage.getItem('group') == undefined ){ 
-   		  $('#group-over-list').append('<div class="infobox" ><b>Hinweis:</b> <br/> Aktuell befinden sich <b>keine Kontakte</b> in Deiner Mitagessen-Gruppe. Füge welche über "Gruppe bearbeiten" hinzu.</div'); 
+   		  $('#group-over-list').append('<div class="infobox" ><b>Hinweis:</b> <br/> Aktuell befinden sich <b>keine Kontakte</b> in Deiner Mitagessen-Gruppe. Füge welche über "Bearbeiten" hinzu.</div'); 
    		  
    		
    		} else{ 					

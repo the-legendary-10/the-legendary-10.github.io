@@ -112,7 +112,7 @@ $(function() {
             
             
           // Remove the item from the group-overview-page  & trigger pagecreate
-          var hashNumberString = '#O' + numberH5;
+          var hashNumberString = '#I' + numberH5;
           $('li').remove(hashNumberString);
           
           $( "#group-overview-page" ).trigger("pagecreate");

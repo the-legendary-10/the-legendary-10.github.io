@@ -14,7 +14,12 @@ function SaveMyTime(){
 	var myDate = new Object();
 	
 	//Read Values from input fields
-	myDate.Date = $("#datefield").val();
+	
+	//convert Date in usable format
+	var unconvDate = $("#datefield").val();
+	var Datum = unconvDate.split(".");
+	myDate.Date = new Date(Datum[2]+"-"+Datum[1]+"-"+Datum[0]);
+	
 	myDate.FromTime = $("#fromtime").val();
 	myDate.ToTime = $("#totime").val();
 	
@@ -23,13 +28,9 @@ function SaveMyTime(){
 		
 		//get todays date
 		var today = new Date();
-		
-		//convert Date in usable format
-		var Datum = myDate.Date.split(".");
-		var myDateD= new Date(Datum[2]+"-"+Datum[1]+"-"+Datum[0]);
-		
+			
 		//check if data makes sense
-		if((myDateD >= today) && (myDate.FromTime < myDate.ToTime) ){
+		if((myDate.Date >= today) && (myDate.FromTime < myDate.ToTime) ){
 		
 			//Create a new JSON Object containing the date and time values 
 			var JSONdate = JSON.stringify(myDate);

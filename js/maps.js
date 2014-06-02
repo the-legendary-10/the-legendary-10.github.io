@@ -1,5 +1,6 @@
 $(document).on("pagecreate","#main-page",function(){
     var map = null; 
+	var userLocation = null;
     GetMap()
 });
 function GetMap() { 
@@ -9,7 +10,7 @@ function GetMap() {
         var cred = "Ak4YyNZDcqdffzA8v6abqlO_tlEhDs4ZK30zbET6AP9tTXokOsVX0E4FtaJEyAUB"; 
         // Initialize map 
         map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), 
-           { credentials: cred }); 
+				{ credentials: cred }); 
         // Check if browser supports geolocation 
         if (navigator.geolocation) { 
             navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
@@ -22,7 +23,7 @@ function GetMap() {
     // Successful geolocation 
     function locateSuccess(loc) { 
         // Set the user's location 
-        var userLocation = new Microsoft.Maps.Location(loc.coords.latitude, loc.coords.longitude); 
+        userLocation = new Microsoft.Maps.Location(loc.coords.latitude, loc.coords.longitude); 
         // Zoom in on user's location on map 
         map.setView({ center: userLocation, zoom: 17 }); 
         // Draw circle of area where user is located 
@@ -65,3 +66,9 @@ function GetMap() {
         } 
         return new Microsoft.Maps.Polygon(locs, { fillColor: new Microsoft.Maps.Color(125, 0, 0, 255), strokeColor: new Microsoft.Maps.Color(0, 0, 0, 255) }); 
     } 
+	
+	function getLocation() {
+	
+		return userLocation;
+	
+	}

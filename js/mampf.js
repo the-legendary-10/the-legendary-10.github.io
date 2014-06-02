@@ -92,4 +92,14 @@ $("#time-page").ready(function(){
 			//$( "#ButtonSaveTime").html("Ändern");
 		}
 	}	
+	
+	
+	//Load the actual values into the date- and time-fields ("YIIIIEEEHHAAAAA!")
+	var x = JSON.parse(JSON.stringify(obj));
+	var y = new Date(x.Date);
+	
+	$("#datefield").val(y.getDate()+"."+y.getMonth()+"."+y.getUTCFullYear());
+	$("#fromtime").val(x.FromTime);
+	$("#totime").val(x.ToTime);
+	
 });

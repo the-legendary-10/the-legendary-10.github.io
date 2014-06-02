@@ -8,12 +8,16 @@ $(function () {
 
 var dates = new Array();
 function SaveMyTime(){	
+
+	//TODO Sanatize INPUT / Check INPUT
+	
 	var myDate = new Object();
 	myDate.Date = $("#mydate").val();;
 	myDate.FromTime = $("#fromtime").val();
 	myDate.ToTime = $("#totime").val();
 	var JSONdate = JSON.stringify(myDate);
 	
+	//TODO umwandeln in Array mit push, nicht mit Übergangslösung über # getrennts
 	var old = localStorage.getItem("dates");
 	if(old!=null){
 		old = old+"#"+JSONdate;
@@ -29,23 +33,16 @@ $("#time-page").ready(function(){
 	var dates=localStorage.dates;
 
 	if(dates != null){
-		console.log(dates);
 		var myDates = dates.split('#');
-		console.log(myDates);
-		console.log(myDates[0]);
+		$( "#LastValues" ).append("Die aktuell gespeicherten Werte sind:<br>");
 		
-		for (var date in myDates){
-			console.log(date);
+		for (var i=0; i<myDates.length; i++){
+			var obj = eval('('+myDates[i]+')');
+			var myDate = JSON.parse(JSON.stringify(obj));
+			
+			var d = new Date(myDate.Date);
+			$( "#LastValues" ).append("am "+d.getDate()+"."+d.getMonth()+"."+d.getUTCFullYear()+" von: "+myDate.FromTime+" bis "+myDate.ToTime+"</p>");
+			$( "#ButtonSaveTime").html("Ändern");
 		}
-		/*
-		var myDate=JSON.parse(date[0]);
-		var d = new Date(myDate.Date);
-		$( "#LastValues" ).append("<p>Die aktuell gespeicherten Werte sind: am "+d.getDate()+"."+d.getMonth()+"."+d.getUTCFullYear()+" von: "+myDate.FromTime+" bis "+myDate.ToTime+"</p>");
-		$( "#ButtonSaveTime").html("Ändern");
-		*/
-	}
-	else{
-		//alert("null");
-	}
-	
+	}	
 });

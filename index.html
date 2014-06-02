@@ -24,6 +24,12 @@
 
 <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> 
 <script src="js/maps.js"></script>
+
+<style>
+
+ 
+</style>
+
 </head>
 
 <body>
@@ -42,6 +48,16 @@
 	</div><!-- /header -->
 	<div data-role="content">
 		<div id="results">
+			
+		<table>
+			<tr >
+				<td style="width:10%">Eigene Nummer:</td>
+				<td> <input name="vorname" type="tel" size="30" maxlength="30"> </td>
+				<td> <a href="#" data-rel="close" data-role="button" data-mini="true"  >Speichern</a> </td>
+			</tr>
+			
+		
+		</table>
 			<table id="result_table">
 				<caption>Ergebnisse</caption>
 				<thead>
@@ -53,15 +69,16 @@
 				</thead>
 				<tbody>
 				<tr>
-					<td>1234</td>
+					<td>0163468749854</td>
 					<td>Max Mustermann</td>
 					<td>12:30 - 13:15</td>
 				</tr>
 				</tbody>
 			</table>
-			<p>Map</p></br>
-			<!-- width: 800px; height: 600px;" || style="position: relative; margin: 10px; padding:1% 5% 45% 5%;-->
-			<div id="mapDiv" style="position: relative; width: device-width - 20px; height: 600px;"></div>
+			<br/>
+			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 30px; height: 600px;">
+				<!-- map loads here -->
+			</div>
 		</div>
 		<button type="button" name="refresh" onclick="refresh()">Refresh</button></br>
 	</div><!-- /content -->

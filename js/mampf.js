@@ -7,36 +7,59 @@ $(function () {
 });
 
 var dates = new Array();
+
+
 function SaveMyTime(){	
 
-	//Check if Times and Dates make sense and are empty
-	
-
-	//Create a new JSON Object containing the date and time values 
 	var myDate = new Object();
-	myDate.Date = $("#mydate").val();;
+	
+	//Read Values from input fields
+	myDate.Date = $("#mydate").val();
 	myDate.FromTime = $("#fromtime").val();
 	myDate.ToTime = $("#totime").val();
-	var JSONdate = JSON.stringify(myDate);
 	
-	//TODO umwandeln in Array mit push, nicht mit Übergangslösung über # getrennt
-	
-	/*
-	if there are already saved values, read them and append the new value, otherwise 
-	just set old to the current JSON object
-	*/
-	var old = localStorage.getItem("dates");
-	if(old!=null){
-		old = old+"#"+JSONdate;
+	//Check if Times and Dates make sense and are empty
+	if ((myDate.Date!= null) && (myDate.FromTime!= null) && (myDate.ToTime!= null)){
+		
+		//get todays date
+		var today = new Date();
+		
+		//convert Date in usable format
+		var Datum = myDate.Date.split(".");
+		var myDateD= new Date(Datum[2]+"-"+Datum[1]+"-"+Datum[0]);
+		
+		//check if data makes sense
+		if((myDateD >= today) && (myDate.FromTime < myDate.ToTime) ){
+		
+			//Create a new JSON Object containing the date and time values 
+			var JSONdate = JSON.stringify(myDate);
+			
+			//TODO umwandeln in Array mit push, nicht mit Übergangslösung über # getrennt
+			
+			/*
+			if there are already saved values, read them and append the new value, otherwise 
+			just set old to the current JSON object
+			*/
+			var old = localStorage.getItem("dates");
+			if(old!=null){
+				old = old+"#"+JSONdate;
+			}
+			else{
+				old= JSONdate;
+			}
+			
+			//save the values to localStorage and reload the page
+			localStorage.dates=old;
+			location.reload(true);
+		
+		}
+		else{
+			alert("Bitte sinnvolle Werte eingeben");
+		}
 	}
 	else{
-		old= JSONdate;
+		alert("Bitte die fehlenden Werte Werte ausfüllte!");
 	}
-	
-	
-	//save the values to localStorage and reload the page
-	localStorage.dates=old;
-	location.reload(true);
 }
 
 $("#time-page").ready(function(){

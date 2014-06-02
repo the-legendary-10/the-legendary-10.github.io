@@ -75,28 +75,34 @@ function SaveMyTime(){
 				//save the values to localStorage
 				localStorage.dates=old;
 				
-				//Minuten mit einer "0" auffüllen
-				var fromMinutes = myDate.FromTime.getMinutes();
-				fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
-				var toMinutes = myDate.ToTime.getMinutes();
-				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
+//				//Minuten mit einer "0" auffüllen
+//				var fromMinutes = myDate.FromTime.getMinutes();
+//				fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
+//				var toMinutes = myDate.ToTime.getMinutes();
+//				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
+//				
+//				//Ausgabe
+//				$( "#time-over-list" ).append("<li>Am "+myDate.FromTime.getDate()+"."+(myDate.FromTime.getMonth()+1)+
+//				"."+myDate.FromTime.getUTCFullYear()+" von: "+(myDate.FromTime.getHours()-2)+":"+
+//				fromMinutes+" bis "+(myDate.ToTime.getHours()-2)+":"+toMinutes+
+//				"</li>");
 				
-				//Ausgabe
-				$( "#time-over-list" ).append("<li>Am "+myDate.FromTime.getDate()+"."+(myDate.FromTime.getMonth()+1)+
-				"."+myDate.FromTime.getUTCFullYear()+" von: "+(myDate.FromTime.getHours()-2)+":"+
-				fromMinutes+" bis "+(myDate.ToTime.getHours()-2)+":"+toMinutes+
-				"</li>");
+				$( "#time-over-page" ).trigger("pagecreate");
 				
-				$('#time-over-list').listview('refresh');
-				$('#time-content-msg').remove(); 
+				
 			
 			}
 		}
 	}	
 }
 
-$("#time-over-page").ready(function(){
 
+$(document).on("pagecreate","#time-over-page",function(){
+//$("#time-over-page").ready(function(){
+
+
+   // Initialize
+   $('#time-over-list').children().remove(); 
    $('#time-content-msg').remove(); 
    
 	//if there are already saved values, display them
@@ -108,7 +114,7 @@ $("#time-over-page").ready(function(){
 		if(dates != null){
 					
 			//Ausgabe
-			$( "#time-over-list" ).append("Die aktuell gespeicherten Werte sind:<br>");
+		//	$( "#time-over-list" ).append("Die aktuell gespeicherten Werte sind:<br>");
 			
 			for (var i=0; i<dates.length; i++){
 				//display the values
@@ -130,10 +136,12 @@ $("#time-over-page").ready(function(){
 		$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());
 		$("#fromtime").val((from.getHours()-2)+":"+from.getMinutes());
 		$("#totime").val((to.getHours()-2)+":"+to.getMinutes());
+		
+		$('#time-over-list').listview('refresh');
 	}
 	
 	else {
-		  $('#time-content-info').append('<div class="infobox" id="time-content-msg" ><b>Hinweis:</b> <br/> Aktuell hast Du <b>keine Zeiten</b> angelegt. Erstelle Zeiten über "Hinzufügen".</div'); 
+		  $('#time-content-info').append('<div class="infobox" id="time-content-msg" ><b>Hinweis:</b> <br/> Aktuell hast Du <b>keine Zeiten</b> angelegt. Erstelle Zeiten über den Button "Hinzufügen".</div'); 
 	}
 	
 });

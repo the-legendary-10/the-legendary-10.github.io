@@ -66,11 +66,11 @@ function postRequest(requestData){
 function renderResponse(json){
 	console.log(json);
 	$("#result_table > tbody").empty();
-	//var timeslot = json.timeslot;
+	var startTime = new Date(json.timeslot.startTime);
+	var endTime = new Date(json.timeslot.startTime);
 	json.subjects.forEach(function(subject){
 		var contact = md5ToContact(subject);
-		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.name+"</td><td></td></tr>");
-	//	$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.name+"</td>"+timeslot.startTime"<td>"+timeslot.endTime"</td></tr>");
+		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.name+"</td>"+startTime.toLocaleString()+"<td>"+endTime.toLocaleString()+"</td></tr>");
 	});
 	
 }

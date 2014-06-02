@@ -4,8 +4,15 @@ $(document).on("pageshow","#main-page",function(){ //pagecreate instead of pages
     GetMap();
 	var mapHeight = document.documentElement.clientHeight * 0.9;
 	$( "#mapDiv" ).height(mapHeight);
+
 	var mapWidth = document.documentElement.clientWidth * 0.7;
 	$( "#mapDiv" ).width(mapWidth);
+	
+	$("#telephoneButton").on("click",savePhoneNumber);
+	var ownPhone = localStorage.getItem("ownphone");
+	if(ownPhone != undefined){
+		$("#telephone").val(ownPhone);
+	}
 });
 function GetMap() { 
             /* Replace YOUR_BING_MAPS_KEY with your own credentials. 
@@ -76,3 +83,9 @@ function GetMap() {
 		return userLocation;
 	
 	}
+	
+/*Independent: save own phone number*/
+function savePhoneNumber(){
+	var phoneNumber = $('#telephone').val();
+	localStorage.setItem("ownphone", phoneNumber);
+}

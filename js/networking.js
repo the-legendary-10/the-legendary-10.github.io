@@ -24,10 +24,17 @@ function refresh(){
 */
 function createRequestData(){
 	/*Identity */ //TODO
+	var ownPhone = localStorage.getItem("ownphone");
+	if(ownPhone == undefined){
+		alert("Bitte Telefonnummer eingeben");
+		return undefined;
+	}
+	var ownPhone = $.md5(ownPhone);
 	
 	/*Invitees */
 	var phoneNumbersMD5 = localStorage.getItem('group');
 	if(phoneNumbersMD5 == undefined || phoneNumbersMD5 == 0){
+		alert("Bitte Kontaktgruppe erstellen");
 		return undefined;
 	}
 	phoneNumbersArray = phoneNumbersMD5.split(",");
@@ -35,9 +42,10 @@ function createRequestData(){
 	/*Location */
 	var location = getLocation();
 	
-	/* Timeslots*/
+	/* Timeslots TODO*/
 	var timeslots = localStorage.getItem('dates');
 	if(timeslots == undefined){
+		alert("Bitte Zeitspanne definieren");
 		return undefined;
 	}
 	console.log(timeslots);
@@ -50,7 +58,7 @@ function createRequestData(){
 	*remember md5'ing phone numbers
 	*/
 	var result = {
-		identity : "A559EF3AB440F83CA0E0B42D6F1A20CA",
+		identity : ownPhone,
 		invitees : phoneNumbersArray,
 		currentPosition : {
 			longitude : location.longitude,

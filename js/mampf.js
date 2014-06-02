@@ -82,10 +82,12 @@ function SaveMyTime(){
 				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 				
 				//Ausgabe
-				$( "#LastValues" ).append("am "+myDate.FromTime.getDate()+"."+(myDate.FromTime.getMonth()+1)+
+				$( "#time-over-list" ).append("<li>Am "+myDate.FromTime.getDate()+"."+(myDate.FromTime.getMonth()+1)+
 				"."+myDate.FromTime.getUTCFullYear()+" von: "+(myDate.FromTime.getHours()-2)+":"+
 				fromMinutes+" bis "+(myDate.ToTime.getHours()-2)+":"+toMinutes+
-				"</p>");
+				"</li>");
+				
+				$('#time-over-list').listview('refresh');
 			
 			}
 		}
@@ -102,7 +104,7 @@ $("#time-page").ready(function(){
 		if(dates != null){
 					
 			//Ausgabe
-			$( "#LastValues" ).append("Die aktuell gespeicherten Werte sind:<br>");
+			$( "#time-over-list" ).append("Die aktuell gespeicherten Werte sind:<br>");
 			
 			for (var i=0; i<dates.length; i++){
 				//display the values
@@ -115,9 +117,9 @@ $("#time-page").ready(function(){
 				var toMinutes = to.getMinutes();
 				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 				
-				$( "#LastValues" ).append("am "+from.getDate()+"."+(from.getMonth()+1)+"."+
+				$( "#time-over-list" ).append("<li>Am "+from.getDate()+"."+(from.getMonth()+1)+"."+
 				from.getUTCFullYear()+" von: "+(from.getHours()-2)+":"+fromMinutes+" bis "+(to.getHours()-2)+
-				":"+toMinutes+"</p>");
+				":"+toMinutes+"</li>");
 			}
 		}	
 

@@ -19,6 +19,9 @@
 <script src="js/jquerymd5.js"></script>
 <script src="js/group-edit-page.js"></script>
 <script src="js/group-overview-page.js"></script>
+
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> 
+<script src="js/maps.js"></script>
 </head>
 
 <body>
@@ -49,6 +52,7 @@
 			</table>
 			
 			<p>Map</p></br>
+			<div id="mapDiv" style="position: relative; width: 800px; height: 600px;"></div>
 		</div>
 		<button type="button" name="refresh" onclick="refresh()">Refresh</button></br>
 	</div><!-- /content -->

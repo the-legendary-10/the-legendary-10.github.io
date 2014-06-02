@@ -119,7 +119,7 @@ $(function() {
           
           
           // Uncheck the checkbox in the group-edit-page (id: E (prefix) + hashNumber)
-          $("#E" + hashNumber).prop("checked", false).checkboxradio("refresh");
+          $("#E" + numberH5).prop("checked", false).checkboxradio("refresh");
              
             
            

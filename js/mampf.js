@@ -75,38 +75,38 @@ function SaveMyTime(){
 
 
 
-
-$("#time-page").ready(function(){
-	//get dates from localStorage
-	var dates=localStorage.dates;
-
-	//if there are already saved values, display them
-	if(dates != null){
-		var myDates = dates.split('#');
-		$( "#LastValues" ).append("Die aktuell gespeicherten Werte sind:<br>");
-		
-		for (var i=0; i<myDates.length; i++){
-			//get individual data sets and parse them to get a JSON object
-			var obj = eval('('+myDates[i]+')');
-			var myDate = JSON.parse(JSON.stringify(obj));
-			
-			//display the values
-			var d = new Date(myDate.Date);
-			var from = new Date(myDate.FromTime);
-			var to = new Date (myDate.ToTime);
-			
-			$( "#LastValues" ).append("am "+d.getDate()+"."+d.getMonth()+"."+d.getUTCFullYear()+" von: "+to.getHours()+":"+to.getMinutes()+" bis "+to.getHours()+":"+to.getMinutes()+"</p>");
-			//$( "#ButtonSaveTime").html("Ändern");
-		}
-	}	
-	
-	
-	//Load the actual values into the date- and time-fields ("YIIIIEEEHHAAAAA!")
-	var x = JSON.parse(JSON.stringify(obj));
-	var y = new Date(x.Date);
-	
-	$("#datefield").val(y.getDate()+"."+y.getMonth()+"."+y.getUTCFullYear());
-	$("#fromtime").val(x.FromTime);
-	$("#totime").val(x.ToTime);
-	
-});
+// Commented out due to tests
+//$("#time-page").ready(function(){
+//	//get dates from localStorage
+//	var dates=localStorage.dates;
+//
+//	//if there are already saved values, display them
+//	if(dates != null){
+//		var myDates = dates.split('#');
+//		$( "#LastValues" ).append("Die aktuell gespeicherten Werte sind:<br>");
+//		
+//		for (var i=0; i<myDates.length; i++){
+//			//get individual data sets and parse them to get a JSON object
+//			var obj = eval('('+myDates[i]+')');
+//			var myDate = JSON.parse(JSON.stringify(obj));
+//			
+//			//display the values
+//			var d = new Date(myDate.Date);
+//			var from = new Date(myDate.FromTime);
+//			var to = new Date (myDate.ToTime);
+//			
+//			$( "#LastValues" ).append("am "+d.getDate()+"."+d.getMonth()+"."+d.getUTCFullYear()+" von: "+to.getHours()+":"+to.getMinutes()+" bis "+to.getHours()+":"+to.getMinutes()+"</p>");
+//			//$( "#ButtonSaveTime").html("Ändern");
+//		}
+//	}	
+//	
+//	
+//	//Load the actual values into the date- and time-fields ("YIIIIEEEHHAAAAA!")
+//	var x = JSON.parse(JSON.stringify(obj));
+//	var y = new Date(x.Date);
+//	
+//	$("#datefield").val(y.getDate()+"."+y.getMonth()+"."+y.getUTCFullYear());
+//	$("#fromtime").val(x.FromTime);
+//	$("#totime").val(x.ToTime);
+//	
+//});

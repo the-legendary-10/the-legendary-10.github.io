@@ -34,7 +34,8 @@ function createRequestData(){
 	phoneNumbersArray = phoneNumbersMD5.split(",");
 	
 	/*Location */
-	
+	var location = getLocation();
+	console.log(location);
 	/* Timeslots*/
 	
 	
@@ -47,10 +48,10 @@ function createRequestData(){
 	*/
 	var result = {
 		identity : "A559EF3AB440F83CA0E0B42D6F1A20CA",
-		invitees : ["B25BF7426FABCADF01103045FD7707CE","A9B9D2ED66A5DA2AFB3247F6947F5591"],
+		invitees : phoneNumbersArray,
 		currentPosition : {
-			longitude : 9.170299499999999,
-			latitude : 48.773556600000006,
+			longitude : location.longitude,
+			latitude : location.latitude,
 		},
 		timeslots : [
 			{

@@ -14,7 +14,7 @@ function SaveMyTime(){
 	var myDate = new Object();
 	
 	//Read Values from input fields
-	myDate.Date = $("#mydate").val();
+	myDate.Date = $("#datefield").val();
 	myDate.FromTime = $("#fromtime").val();
 	myDate.ToTime = $("#totime").val();
 	

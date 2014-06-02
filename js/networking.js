@@ -15,15 +15,15 @@ function refresh(){
 		return;
 	}
 	postRequest(requestData);
-	renderResponse(JSON.parse('{"subjects":["B25BF7426FABCADF01103045FD7707CE"],"timeslot":{"startTime":1401390559163,"endTime":1401397759164}}'));
+	//renderResponse(JSON.parse('{"subjects":["B25BF7426FABCADF01103045FD7707CE"],"timeslot":{"startTime":1401390559163,"endTime":1401397759164}}'));
 }
 
 /*
-* Reads values from UI-elements and returns the 
+* Reads values from localStorage and returns the 
 * request data as an Object.
 */
 function createRequestData(){
-	/*Identity */ //TODO
+	/*Identity */
 	var ownPhone = localStorage.getItem("ownphone");
 	if(ownPhone == undefined){
 		alert("Bitte Telefonnummer eingeben");
@@ -41,22 +41,33 @@ function createRequestData(){
 	
 	/*Location */
 	var location = getLocation();
-	
-	/* Timeslots TODO*/
+	if(location == undefined){
+	/* temporary change to work with location unavailable*/
+	//	alert("Bitte Locationabfrage erlauben");
+	//	return undefined;
+		location = new Object();
+		location.longitude = 80;
+		location.latitude = 80;
+	}
+
+	/* Timeslots*/
 	var timeslots = localStorage.getItem('dates');
 	if(timeslots == undefined){
 		alert("Bitte Zeitspanne definieren");
 		return undefined;
 	}
-	console.log(timeslots);
-	
-	
-	var result;
-	
-	/*
-	*TODO -- dummy function
-	*remember md5'ing phone numbers
-	*/
+	timeslots = JSON.parse(timeslots);
+
+	var resultSlots = new Array();
+	timeslots.forEach(function(slot){
+		startDate = new Date(slot.FromTime);
+		endDate = new Date(slot.ToTime);
+		resultSlots.push({
+			startTime : startDate.getTime(),
+			endTime : endDate.getTime(),
+		});
+	});
+
 	var result = {
 		identity : ownPhone,
 		invitees : phoneNumbersArray,
@@ -64,16 +75,7 @@ function createRequestData(){
 			longitude : location.longitude,
 			latitude : location.latitude,
 		},
-		timeslots : [
-			{
-				startTime : 1401377098763,
-				endTime : 1401384298763
-			},
-			{
-				startTime : 1401384298763,
-				endTime : 1401391498763
-			}	
-		],
+		timeslots : resultSlots,
 	};
 	return result;
 }
@@ -96,7 +98,7 @@ function postRequest(requestData){
 * After getting the server response, renders the data into DOM
 */
 function renderResponse(json){
-	console.log(json);
+	//console.log(json);
 	$("#result_table > tbody").empty();
 	var startTime = new Date(json.timeslot.startTime);
 	var endTime = new Date(json.timeslot.startTime);
@@ -113,14 +115,14 @@ function renderResponse(json){
 */
 
 function md5ToContact(md5number) {
-var contactObj;
-  $.each( contacts, function( i, contact ) {
-  
+	var contactObj;
+  	$.each( contacts, function( i, contact ) {
   		if(md5Number == $.md5(contact.phoneNumber)) {
   		
-			contactObj = {"phoneNumber": contact.phoneNumber,
-  		 		       "firstName": contact.firstName,
-  		               "lastName": contact.lastName
+			contactObj = { 
+				phoneNumber : contact.phoneNumber,
+  		 		firstName : contact.firstName,
+  				lastName : contact.lastName
 			};  	
   		}
   });

@@ -1,3 +1,4 @@
+var userLocation = undefined;
 $(document).on("pagecreate","#main-page",function(){
     var map = null; 
 	var userLocation = null;
@@ -104,9 +105,7 @@ function GetMap() {
        }
 	
 	function getLocation() {
-	
 		return userLocation;
-	
 	}
 	
 

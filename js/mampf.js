@@ -9,16 +9,21 @@ $( document ).on( "pageinit", "#main-page", function() {
 });
 
 function SaveMyTime(){	
-	localStorage.Date = $("#mydate").val();;
-	localStorage.FromTime = $("#fromtime").val();
-	localStorage.ToTime = $("#totime").val();
+	var myDate = new Object();
+	myDate.Date = $("#mydate").val();;
+	myDate.FromTime = $("#fromtime").val();
+	myDate.ToTime = $("#totime").val();
+	var Date = JSON.stringify(myDate);
+	
+	localStorage.Date=Date;
 	location.reload(true);
 }
 
 $("#time-page").ready(function(){
-	var date = localStorage.Date;
-	var fromtime = localStorage.FromTime;
-	var totime= localStorage.ToTime;
+	
+	var date = localStorage.Date.date;
+	var fromtime = localStorage.Date.FromTime;
+	var totime= localStorage.Date.ToTime;
 	
 	if(date != null){
 		if(fromtime != null){

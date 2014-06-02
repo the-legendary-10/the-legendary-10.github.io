@@ -99,8 +99,8 @@ function SaveMyTime(){
 }
 
 
-//$(document).on("pagecreate","#time-over-page",function(){
-$("#time-over-page").ready(function(){
+$(document).on("pagecreate","#time-over-page",function(){
+//$("#time-over-page").ready(function(){
 
 
    // Initialize

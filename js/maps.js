@@ -1,7 +1,9 @@
-$(document).on("pagecreate","#main-page",function(){
+$(document).on("pageshow","#main-page",function(){ //pagecreate instead of pageshow
     var map = null; 
 	var userLocation = null;
-    GetMap()
+    GetMap();
+	var mapHeight = document.documentElement.clientHeight * 0.9;
+	$( "#mapDiv" ).height(mapHeight);
 });
 function GetMap() { 
             /* Replace YOUR_BING_MAPS_KEY with your own credentials. 

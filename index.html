@@ -34,11 +34,10 @@
 
 <body>
 <div data-role="panel" id="left-panel" data-position="left" data-display="overlay" data-theme="a">
-
-		<a href="#main-page" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right" >Home</a></br>
-		<a href="#group-overview-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
-		<a href="#time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
-		<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>
+		<a href="#main-page" id="mainpage" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right" >Home</a></br>
+		<a href="#group-overview-page" id="contacts" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
+		<a href="#time-page"   id="calendar" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
+		<!--<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>-->
 </div><!-- /leftpanel1 -->
 	
 <div data-role="page" id="main-page" data-theme="a" data-url="main">
@@ -61,12 +60,10 @@
 			<tr >
 		<td> <a href="#"  data-role="button" id="telephoneButton"  data-icon="check"  >Speichern</a></td>
 		    </tr>
-		    
 		</table>
-		 <br />
-		
+        </br>
+        
 			<table id="result_table">
-				<caption>Ergebnisse</caption>
 				<thead>
 				<tr>
 					<th>Nummer</th>
@@ -82,12 +79,18 @@
 				</tr>
 				</tbody>
 			</table>
+            
+        <table>
+			<tr >
+		<td><button type="button" data-icon="refresh" name="refresh" onclick="refresh()">Ergebnisse aktualisieren</button></td>
+		    </tr>
+		</table>
+            
 			<br/>
 			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 100px; height: 600px; align: left;">
 				<!-- map loads here -->
 			</div>
 		</div>
-		<button type="button" name="refresh" onclick="refresh()">Refresh</button></br>
 	</div><!-- /content -->
 	
 	<div data-role="footer" class="footer-class">
@@ -101,6 +104,7 @@
 	<div data-role="header" data-theme="a" data-position="fixed"  data-id="group-header" data-tap-toggle="false">
 	<h1>Übersicht</h1>
 	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	<a href="#group-edit-page"  id="editContacts" data-theme="a" data-icon="check"   >Bearbeiten</a>
 	</div><!-- /header -->
 	<div data-role="content">
 	<p >Im Folgenden werden alle Kontakte angezeigt, die derzeit zu Deiner Mittagessen-Gruppe gehören. <br/> <br /> 
@@ -133,14 +137,7 @@
 	</div><!-- /content -->
 	</div>
 	
-	<div data-role="footer" data-position="fixed" data-id="group-footer" data-tap-toggle="false">
-	    <div data-role="navbar">
-	        <ul>
-				<li><a href="#" class="ui-btn-active ui-state-persist" data-role="button" data-icon="user"  >Gruppen-Übersicht</a></li>
-				<li><a href="#group-edit-page" data-transition="none"  data-role="button" data-icon="edit">Gruppe bearbeiten</a></li>
-	        </ul>
-	    </div>
-	</div>
+	
 </div>
 <!-- End: group-overview-page - overview -->
 
@@ -178,14 +175,7 @@
 
 	</div><!-- /content -->
 	
-	 <div data-role="footer" data-position="fixed"  data-id="group-footer" data-tap-toggle="false">
-	     <div data-role="navbar">
-	         <ul>
-				<li><a href="#group-overview-page" data-transition="none" data-role="button" data-icon="user" >Gruppen-Übersicht</a></li>
-				<li><a href="#"  class="ui-btn-active ui-state-persist" data-role="button" data-icon="edit">Gruppe bearbeiten</a></li>
-	         </ul>
-	     </div>
-	 </div>
+	 
 </div>
 <!-- End: group-edit-page - edit group -->
 

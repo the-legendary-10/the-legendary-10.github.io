@@ -79,7 +79,7 @@ $("#time-page").ready(function(){
 			//display the values
 			var d = new Date(myDate.Date);
 			$( "#LastValues" ).append("am "+d.getDate()+"."+d.getMonth()+"."+d.getUTCFullYear()+" von: "+myDate.FromTime+" bis "+myDate.ToTime+"</p>");
-			$( "#ButtonSaveTime").html("Ändern");
+			//$( "#ButtonSaveTime").html("Ändern");
 		}
 	}	
 });

@@ -33,13 +33,18 @@ $(function() {
             // get MD5-Hash-Number
             var number= $(this).parent().attr("id");
             
+            // Remove first letter of string, to get MD5-Hash-Number without the prefix
+            var numberH5 = number.substr(1, number.length);
+
+            
             
             // get contact based on MD5-Hash-NUmber
-            var contactObj = searchPhoneNumber(number);
+            var contactObj = searchPhoneNumber(numberH5);
             
             
             //append text to popup
-            var text = '<p class="toDelete" id ="' + number +'">Möchtest du den Kontakt <b>' +  contactObj.firstName + ' ' + contactObj.lastName + '</b> <br />aus der Gruppe entfernen?</p>';
+            // id = P (Praefix) + h5-hashNumber
+            var text = '<p class="toDelete" id ="P' + numberH5 +'">Möchtest du den Kontakt <b>' +  contactObj.firstName + ' ' + contactObj.lastName + '</b> <br />aus der Gruppe entfernen?</p>';
             
              $("#popup-content").append(text);
             
@@ -74,6 +79,9 @@ $(function() {
       	  // get MD5-Hash-Number of selected contact
           var hashNumber = $(".toDelete").attr("id");    
          
+          // Remove first letter of string, to get MD5-Hash-Number without the prefix
+           var numberH5 = hashNumber.substr(1, hashNumber.length);
+         
         
 
            // Get saved group from local storage
@@ -87,7 +95,7 @@ $(function() {
            // Identify the item to be deleted
            var itemToBeDeleted;
            for(var i = 0; i< groupLocalStorageArray.length;i++) {
-           			if(groupLocalStorageArray[i] == hashNumber) {
+           			if(groupLocalStorageArray[i] == numberH5) {
            			    itemToBeDeleted = i; 
            			};          	           
            };
@@ -104,7 +112,7 @@ $(function() {
             
             
           // Remove the item from the group-overview-page  & trigger pagecreate
-          var hashNumberString = '#' + hashNumber;
+          var hashNumberString = '#O' + numberH5;
           $('li').remove(hashNumberString);
           
           $( "#group-overview-page" ).trigger("pagecreate");
@@ -154,7 +162,9 @@ $(document).on("pagecreate","#group-overview-page",function(){
    			    
    				  contactObj = searchPhoneNumber(phoneNumbersArray[k]);
    			
-   			      appendString  =	'<li id="' + $.md5(contactObj.phoneNumber) + '"><a class="read-only-list">' + contactObj.firstName + ' ' + contactObj.lastName + '</a><a href="#popup-action" class="deleteField" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>';
+   			
+   				  // id gets the letter 'I' as prefix, since HTML4 does not support IDs starting with a digit.
+   			      appendString  =	'<li id="I' + $.md5(contactObj.phoneNumber) + '"><a class="read-only-list">' + contactObj.firstName + ' ' + contactObj.lastName + '</a><a href="#popup-action" class="deleteField" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>';
    				
    				   $('#group-over-list').append(appendString);
    				

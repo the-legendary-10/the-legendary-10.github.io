@@ -60,9 +60,8 @@ function dynamicListView(contacts) {
         	           }
         	           
         	           //  Appending new list view element to the listview
-        	           // id gets the letter 'E' (for Edit-page) as prefix, since there are already listitems with IDs based on hash numbers (on group-overview-page).
-        	           // However the value of name is the hash number without a prefix.
-        	           $('#groupList').append('<li style=" padding: 0em;  "><label class="listview" ><a  href="#" class="listview" ><div class="listview" >' + contact.firstName + ' ' + contact.lastName + '</div><input data-iconpos="left"  class="allCheckboxesContacts" name="' + hashNumber + '" id="E' + hashNumber + '" type="checkbox" value="true" ' + checkedString + ' /></a></label></li>');
+        	           // id and name gets the letter 'E' (for Edit-page) as prefix, since HTML4 does not support IDs starting with a digit.
+        	           $('#groupList').append('<li style=" padding: 0em;  "><label class="listview" ><a  href="#" class="listview" ><div class="listview" >' + contact.firstName + ' ' + contact.lastName + '</div><input data-iconpos="left"  class="allCheckboxesContacts" name="E' + hashNumber + '" id="E' + hashNumber + '" type="checkbox" value="true" ' + checkedString + ' /></a></label></li>');
         	        
      
         	       });  
@@ -100,12 +99,14 @@ $(function() {
            arrayPhoneNumbers = new Array();
            
            
-         // Get all unchecked line items with their ID (= phoneNumber)... will be stored in the Array arrayPhoneNumbers
+         // Get all unchecked line items with their ID without prefix ( = only md5-hash-phoneNumber)... It will be stored in the Array arrayPhoneNumbers
          $('input[type="checkbox"]').filter('.allCheckboxesContacts').each(function(){
            	   if($(this).is(':checked')){
            	   
-           	   arrayPhoneNumbers.push(this.getAttribute('name'));
-           	    
+           		   idValue =   this.getAttribute('id');
+           		   numberH5 = idValue.substr(1, idValue.length)
+           		   arrayPhoneNumbers.push(numberH5);
+           	             	    
            	   }
            	
            	});

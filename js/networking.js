@@ -3,7 +3,7 @@
 */
 
 $(document).ready( function(){
-	//setInterval(refresh, 5000); --turned off temporarily
+	//setInterval(refresh, 5000);
 });
 
 /*
@@ -98,15 +98,22 @@ function postRequest(requestData){
 * After getting the server response, renders the data into DOM
 */
 function renderResponse(json){
+	var startTime;
+	var endTime;
 	//console.log(json);
 	$("#result_table > tbody").empty();
-	var startTime = new Date(json.timeslot.startTime);
-	var endTime = new Date(json.timeslot.startTime);
+	if(json.timeslot){
+		startTime = new Date(json.timeslot.startTime);
+		endTime = new Date(json.timeslot.endTime);
+	}
+	else{
+		return;
+	}
+	
 	json.subjects.forEach(function(subject){
 		var contact = md5ToContact(subject);
-		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+" "+contact.lastName +"</td>"+startTime.toLocaleString()+"<td>"+endTime.toLocaleString()+"</td></tr>");
+		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+" "+contact.lastName +"</td><td>"+startTime.toLocaleString()+" - "+endTime.toLocaleString()+"</td></tr>");
 	});
-	
 }
 
 

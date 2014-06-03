@@ -3,7 +3,7 @@
 */
 
 $(document).ready( function(){
-	//setInterval(refresh, 5000); --turned off temporarily
+	//setInterval(refresh, 5000);
 });
 
 /*
@@ -77,6 +77,7 @@ function createRequestData(){
 		},
 		timeslots : resultSlots,
 	};
+	console.log(result);
 	return result;
 }
 
@@ -98,15 +99,31 @@ function postRequest(requestData){
 * After getting the server response, renders the data into DOM
 */
 function renderResponse(json){
+	var startTime;
+	var endTime;
 	//console.log(json);
 	$("#result_table > tbody").empty();
-	var startTime = new Date(json.timeslot.startTime);
-	var endTime = new Date(json.timeslot.startTime);
+	if(json.timeslot){
+		startTime = new Date(json.timeslot.startTime);
+		endTime = new Date(json.timeslot.endTime);
+	}
+	else{
+		return;
+	}
+	
 	json.subjects.forEach(function(subject){
 		var contact = md5ToContact(subject);
-		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+" "+contact.lastName +"</td>"+startTime.toLocaleString()+"<td>"+endTime.toLocaleString()+"</td></tr>");
+		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+" "+contact.lastName +"</td></tr>");
 	});
 	
+	/*Render timeslot into DOM*/
+	if(startTime && endTime){
+		var timeSlotRepr = startTime.getDate()+"."+startTime.getMonth()+"."+startTime.getFullYear()+" | "+startTime.getHours()+":"+startTime.getMinutes()+" - "+endTime.getHours()+":"+endTime.getMinutes();
+	}
+	else{
+		var timeSlotRepr = "Keine Übereinstimmung";
+	}
+	$("#timeslot_heading").html(timeSlotRepr);
 }
 
 
@@ -117,7 +134,7 @@ function renderResponse(json){
 function md5ToContact(md5number) {
 	var contactObj;
   	$.each( contacts, function( i, contact ) {
-  		if(md5Number == $.md5(contact.phoneNumber)) {
+  		if(md5number == $.md5(contact.phoneNumber)) {
   		
 			contactObj = { 
 				phoneNumber : contact.phoneNumber,

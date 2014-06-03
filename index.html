@@ -63,24 +63,27 @@
 		    </tr>
 		</table>
         </br>
-        
-			<table id="result_table">
+		<table>
+		<tr><td>
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Ergebnisse: <span id="timeslot_heading">Keine Übereinstimmung</span></h3>
+			<table id="result_table" class="ui-responsive">
 				<thead>
 				<tr>
 					<th>Nummer</th>
 					<th>Name</th>
-					<th>Zeitraum</th>
 				</tr>
 				</thead>
 				<tbody>
 				<tr>
 					<td>0163468749854</td>
 					<td>Max Mustermann</td>
-					<td>12:30 - 13:15</td>
 				</tr>
 				</tbody>
 			</table>
-            
+        </div>
+		</td></tr>
+		</table>
         <table>
 			<tr >
 		<td><button type="button" data-icon="refresh" name="refresh" onclick="refresh()">Ergebnisse aktualisieren</button></td>

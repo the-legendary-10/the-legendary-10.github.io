@@ -50,7 +50,7 @@ function SaveMyTime(){
 			
 			//alert("Stunde: "+myDate.ToTime.getHours());
 			//Check if Times and Dates make sense and are empty
-			if ((myDate.FromTime== null) || (myDate.ToTime== null)){
+			if ((myDate.FromTime== null) || (myDate.ToTime== null) || (myDate.FromTime == undefined)  || (myDate.ToTime == undefined)){
 				alert("Bitte Werte eintragen!");
 				event.preventDefault();
 				

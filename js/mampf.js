@@ -1,6 +1,6 @@
 $(function() {
-			$( "body>[data-role='panel']" ).panel();
-		});
+	$( "body>[data-role='panel']" ).panel();
+});
 
 $(function () {
   $("[data-role=panel]").panel().enhanceWithin();
@@ -33,7 +33,7 @@ function SaveMyTime(){
 				
 		//check if data makes sense
 		if((WhishedDate < today)){
-			alert("Bitte ein Datum in der Zukunft auswählen!");
+			alert("Bitte heutiges Datum oder ein Datum in der Zukunft auswählen!");
 		}
 		else{	
 			//convert times
@@ -93,10 +93,9 @@ function SaveMyTime(){
 					$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von: '+(myDate.FromTime.getHours()-2)+':'+fromMinutes+' bis '+(myDate.ToTime.getHours()-2)+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
 					idcounter++;				
 					// Remove information message, if visible
-					 $('#time-content-msg').remove(); 
-					 
-					 
-					 $('#time-over-list').listview('refresh');
+					$('#time-content-msg').remove(); 
+					
+					$('#time-over-list').listview('refresh');
 				
 				}
 			}

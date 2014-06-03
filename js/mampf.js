@@ -6,6 +6,11 @@ $(function () {
   $("[data-role=panel]").panel().enhanceWithin();
 });
 
+
+
+
+
+
 var dates = new Array();
 var idcounter=0;
 
@@ -84,9 +89,8 @@ function SaveMyTime(){
 				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 				
 				//Ausgabe
-				$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von: '+(myDate.FromTime.getHours()-2)+':'+fromMinutes+' bis '+(myDate.ToTime.getHours()-2)+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
-				idcounter++;
-				
+				$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von: '+(myDate.FromTime.getHours()-2)+':'+fromMinutes+' bis '+(myDate.ToTime.getHours()-2)+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
+				idcounter++;				
 				// Remove information message, if visible
 				 $('#time-content-msg').remove(); 
 				 
@@ -98,6 +102,8 @@ function SaveMyTime(){
 	}	
 }
 
+
+var idcounter=0;
 
 $(document).on("pagecreate","#time-over-page",function(){
 //$("#time-over-page").ready(function(){
@@ -126,10 +132,12 @@ $(document).on("pagecreate","#time-over-page",function(){
 				var toMinutes = to.getMinutes();
 				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 				
-				$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von: '+(from.getHours()-2)+':'+fromMinutes+' bis '+(to.getHours()-2)+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
+				
+				$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von: '+(from.getHours()-2)+':'+fromMinutes+' bis '+(to.getHours()-2)+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
+				idcounter++;
 			}
 		}	
-		//Textfelder mit den letzten Weerten befüllen
+		//Textfelder mit den letzten Werten befüllen
 		$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());
 		$("#fromtime").val((from.getHours()-2)+":"+from.getMinutes());
 		$("#totime").val((to.getHours()-2)+":"+to.getMinutes());

@@ -77,6 +77,7 @@ function createRequestData(){
 		},
 		timeslots : resultSlots,
 	};
+	console.log(result);
 	return result;
 }
 
@@ -112,8 +113,17 @@ function renderResponse(json){
 	
 	json.subjects.forEach(function(subject){
 		var contact = md5ToContact(subject);
-		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+" "+contact.lastName +"</td><td>"+startTime.toLocaleString()+" - "+endTime.toLocaleString()+"</td></tr>");
+		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+" "+contact.lastName +"</td></tr>");
 	});
+	
+	/*Render timeslot into DOM*/
+	if(startTime && endTime){
+		var timeSlotRepr = startTime.getDate()+"."+startTime.getMonth()+"."+startTime.getFullYear()+" | "+startTime.getHours()+":"+startTime.getMinutes()+" - "+endTime.getHours()+":"+endTime.getMinutes();
+	}
+	else{
+		var timeSlotRepr = "Keine Übereinstimmung";
+	}
+	$("#timeslot_heading").html(timeSlotRepr);
 }
 
 

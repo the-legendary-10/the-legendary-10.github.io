@@ -777,6 +777,14 @@ table { width:100%; }
 table caption { text-align:left;  }
 table th, td{ text-align:left; padding:6px;} 
 
+#result_table thead th {
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+#result_table tbody th,
+#result_table tbody td {
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+
 
 /*Style for information message (error)
 -----------------------------------------------------------------------------------------------------------*/

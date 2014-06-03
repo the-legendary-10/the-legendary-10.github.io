@@ -38,7 +38,6 @@ function SaveMyTime(){
 		}
 		else{	
 			//convert times
-			//Die Stunden werden um 2 erhöht, da beim serialisieren zum JSON Objekt die STunden um 2 reduziert werden
 			var unconvFrom = $("#fromtime").val();
 			var unconvFromPart = unconvFrom.split(":");
 			var NewFromTime = new Date(Datum[2], Datum[1]-1, Datum[0], (parseInt(unconvFromPart[0])), unconvFromPart[1], "00");
@@ -63,41 +62,46 @@ function SaveMyTime(){
 					event.preventDefault();
 					
 				}else{
-					
-					//Create a new JSON Object containing the date and time values 
-					var JSONdate = JSON.stringify(myDate);
-					
-					
-					/*
-					if there are already saved values, read them and append the new value, otherwise 
-					just set old to the current JSON object
-					*/
-					var old = localStorage.getItem("dates");
-					
-					if(old!=null){
-						old = old.substring(0, old.length-1) + "," + JSONdate + "]";
+					if((((myDate.ToTime-myDate.FromTime)/1000)/60)<45){
+						alert("Bitte nehmen Sie sich mindestens 45 min Zeit zum Essen!");
+						event.preventDefault();
 					}
 					else{
-						old= "[" + JSONdate + "]";
+					
+						//Create a new JSON Object containing the date and time values 
+						var JSONdate = JSON.stringify(myDate);
+						
+						
+						/*
+						if there are already saved values, read them and append the new value, otherwise 
+						just set old to the current JSON object
+						*/
+						var old = localStorage.getItem("dates");
+						
+						if(old!=null){
+							old = old.substring(0, old.length-1) + "," + JSONdate + "]";
+						}
+						else{
+							old= "[" + JSONdate + "]";
+						}
+						
+						//save the values to localStorage
+						localStorage.dates=old;
+						
+						//Minuten mit einer "0" auffüllen
+						var fromMinutes = myDate.FromTime.getMinutes();
+						fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
+						var toMinutes = myDate.ToTime.getMinutes();
+						toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
+						
+						//Ausgabe
+						$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von: '+(myDate.FromTime.getHours())+':'+fromMinutes+' bis '+(myDate.ToTime.getHours())+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
+						idcounter++;				
+						// Remove information message, if visible
+						$('#time-content-msg').remove(); 
+						
+						$('#time-over-list').listview('refresh');
 					}
-					
-					//save the values to localStorage
-					localStorage.dates=old;
-					
-					//Minuten mit einer "0" auffüllen
-					var fromMinutes = myDate.FromTime.getMinutes();
-					fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
-					var toMinutes = myDate.ToTime.getMinutes();
-					toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
-					
-					//Ausgabe
-					$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von: '+(myDate.FromTime.getHours())+':'+fromMinutes+' bis '+(myDate.ToTime.getHours())+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
-					idcounter++;				
-					// Remove information message, if visible
-					$('#time-content-msg').remove(); 
-					
-					$('#time-over-list').listview('refresh');
-				
 				}
 			}
 		}

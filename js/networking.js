@@ -118,7 +118,7 @@ function renderResponse(json){
 	
 	/*Render timeslot into DOM*/
 	if(startTime && endTime){
-		var timeSlotRepr = startTime.getDate()+"."+startTime.getMonth()+"."+startTime.getFullYear()+" | "+startTime.getHours()+":"+startTime.getMinutes()+" - "+endTime.getHours()+":"+endTime.getMinutes();
+		var timeSlotRepr = startTime.toLocaleDateString() + " | " + startTime.toLocaleTimeString().substring(0,5) + " - " + endTime.toLocaleTimeString().substring(0,5);
 	}
 	else{
 		var timeSlotRepr = "Keine Übereinstimmung";

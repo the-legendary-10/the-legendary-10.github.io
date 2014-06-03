@@ -7,7 +7,7 @@ $(function () {
 });
 
 var dates = new Array();
-
+var idcounter=0;
 
 function SaveMyTime(){	
 
@@ -85,7 +85,7 @@ function SaveMyTime(){
 				
 				//Ausgabe
 				$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von: '+(myDate.FromTime.getHours()-2)+':'+fromMinutes+' bis '+(myDate.ToTime.getHours()-2)+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
-				
+				idcounter++;
 				
 				// Remove information message, if visible
 				 $('#time-content-msg').remove(); 
@@ -114,10 +114,7 @@ $(document).on("pagecreate","#time-over-page",function(){
 		var dates=JSON.parse(localStorage.dates);
 	
 		if(dates != null){
-					
-			// Ausgabe
-			$( "#time-over-list" ).append("Die aktuell gespeicherten Werte sind:<br>");
-			
+							
 			for (var i=0; i<dates.length; i++){
 				//display the values
 				var from = new Date(dates[i].FromTime);

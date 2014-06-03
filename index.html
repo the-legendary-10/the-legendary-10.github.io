@@ -19,6 +19,7 @@
 <script src="js/jquerymd5.js"></script>
 <script src="js/group-edit-page.js"></script>
 <script src="js/group-overview-page.js"></script>
+<script src="js/times-edit-page.js"></script>
 
 <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> 
 <script src="js/maps.js"></script>
@@ -189,7 +190,7 @@
 	</div><!-- /header -->
 	
 	<div data-role="content">
-	<p >Im Folgenden werden alle Zeiten angezeigt, die blablabla <br/> <br /> 
+	<p >Im Folgenden werden alle Zeiten angezeigt, die im Moment gespeichert sind. <br/> <br /> 
 	</p>
 	<div id="time-content-info">
 	
@@ -202,6 +203,28 @@
 		
 		<br / > <br /> 
 					
+	</div><!-- /content -->
+	
+	<div data-role="popup" id="popup-times" 
+	     class="ui-corner-bottom ui-content" data-overlay-theme="a">
+	     <div data-role="header">
+	       <h1>Löschen?</h1>
+	     </div>
+	 
+	     <div data-role="content" >
+	         
+	        		<p id="popup-content-times"></p>
+	         
+	 
+	         <a href="#" data-role="button" data-rel="back" data-inline="true" data-theme="a" >
+	             Abbrechen
+	         </a>
+	 
+	         <a href="#" id="deleteConTimes" class="ui-corner-all" data-role="button" data-inline="true"  data-transition="flow" data-theme="a">
+	            Löschen
+	         </a>
+	     </div>
+			
 	</div><!-- /content -->
 	
 	<div data-role="footer" class="footer-class">

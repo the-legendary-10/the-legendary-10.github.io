@@ -34,18 +34,19 @@ function SaveMyTime(){
 		//check if data makes sense
 		if((WhishedDate < today)){
 			alert("Bitte heutiges Datum oder ein Datum in der Zukunft auswählen!");
+			event.preventDefault();
 		}
 		else{	
 			//convert times
 			//Die Stunden werden um 2 erhöht, da beim serialisieren zum JSON Objekt die STunden um 2 reduziert werden
 			var unconvFrom = $("#fromtime").val();
 			var unconvFromPart = unconvFrom.split(":");
-			var NewFromTime = new Date(Datum[2], Datum[1]-1, Datum[0], (parseInt(unconvFromPart[0])+2), unconvFromPart[1], "00");
+			var NewFromTime = new Date(Datum[2], Datum[1]-1, Datum[0], (parseInt(unconvFromPart[0])), unconvFromPart[1], "00");
 			myDate.FromTime = NewFromTime;
 			
 			var unconvTo = $("#totime").val();
 			var unconvToPart = unconvTo.split(":");
-			var NewToTime = new Date(Datum[2], Datum[1]-1, Datum[0], (parseInt(unconvToPart[0])+2), unconvToPart[1], "00");	
+			var NewToTime = new Date(Datum[2], Datum[1]-1, Datum[0], (parseInt(unconvToPart[0])), unconvToPart[1], "00");	
 			myDate.ToTime = NewToTime;
 			
 			//alert("Stunde: "+myDate.ToTime.getHours());
@@ -90,7 +91,7 @@ function SaveMyTime(){
 					toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 					
 					//Ausgabe
-					$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von: '+(myDate.FromTime.getHours()-2)+':'+fromMinutes+' bis '+(myDate.ToTime.getHours()-2)+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
+					$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von: '+(myDate.FromTime.getHours())+':'+fromMinutes+' bis '+(myDate.ToTime.getHours())+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
 					idcounter++;				
 					// Remove information message, if visible
 					$('#time-content-msg').remove(); 
@@ -136,13 +137,13 @@ $(document).on("pagecreate","#time-over-page",function(){
 				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 				
 				
-				$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von: '+(from.getHours()-2)+':'+fromMinutes+' bis '+(to.getHours()-2)+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
+				$( "#time-over-list" ).append('<li><a class="read-only-list">Am '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von: '+(from.getHours())+':'+fromMinutes+' bis '+(to.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
 				idcounter++;
 			}
 			//Textfelder mit den letzten Werten befüllen
 			$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());
-			$("#fromtime").val((from.getHours()-2)+":"+from.getMinutes());
-			$("#totime").val((to.getHours()-2)+":"+to.getMinutes());
+			$("#fromtime").val((from.getHours())+":"+from.getMinutes());
+			$("#totime").val((to.getHours())+":"+to.getMinutes());
 		}	
 
 		

@@ -117,7 +117,7 @@ function renderResponse(json){
 function md5ToContact(md5number) {
 	var contactObj;
   	$.each( contacts, function( i, contact ) {
-  		if(md5Number == $.md5(contact.phoneNumber)) {
+  		if(md5number == $.md5(contact.phoneNumber)) {
   		
 			contactObj = { 
 				phoneNumber : contact.phoneNumber,

@@ -274,5 +274,43 @@
   </div>
 </div>
 
+
+<div data-role="page" id="time-edit-page" data-theme="a" data-url="time-page">
+	<div data-role="header" data-theme="a">
+	<h1>Zeit ändern</h1>
+	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	<a href="#time-over-page"   data-theme="a" data-icon="delete"   >Abbrechen</a>
+	</div><!-- /header -->
+	
+	<div data-role="content">
+		<p>Zeitauswahl</p></br>
+		
+		<div class="content-primary"> 
+		
+		<!--	<div id="LastValues"></div>  -->
+			
+			<!-- TODO: Default-Werte setzen-->
+			<div data-role="fieldcontain">
+				<label for="deftime">Datum:</label><input name="datefield" id="datefield" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="deftime">Von:</label><input name="fromtime" id="fromtime" type="time" data-role="datebox"  data-options='{"mode": "timebox", "overrideTimeFormat": 24}' />
+			</div>		
+			<div data-role="fieldcontain">
+				<label for="deftime">Bis:</label><input name="totime" id="totime" type="time" data-role="datebox"  data-options='{"mode": "timebox","overrideTimeFormat": 24}' />
+			</div>	
+		</div> 
+		<!-- Die eingegebenen Daten werden mit Klick auf den Button im LocalStorage abgespeichert-->
+		<div>
+			<a href="#time-over-page" data-role="button" id="ButtonChangeTime" data-icon="check" onClick="ChangeTime()">Ändern</a>
+		</div>
+			
+	</div><!-- /content -->
+	
+	<div data-role="footer" class="footer-class">
+		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io" data-rel="close" data-role="button" data-icon="grid" data-iconpos="left">Github</a></br>
+  </div>
+</div>
+
 </body>
 </html>

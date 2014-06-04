@@ -91,22 +91,26 @@
 		</table>
             
 		<br/>
-		<div>
-			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 30%; height: 600px; align: left; display: inline-block;">
-				<!-- map loads here -->
-			</div>						
-			
-			<div data-role="fieldcontain" style="max-width: 30%; width: 20%; float: right; vertical-align: top;">
-			<div class="infobox">
-				Sofern Sie zum Mittagessen nicht Ihren Gerätestandort verwenden möchten, wählen Sie bitte per Klick auf die Karte die gewünschte Location.
+		<!-- to show fieldcontain div next to map: style="max-width: 30%; width: 20%; float: right; vertical-align: top;" -->
+		<div data-role="fieldcontain">
+			<div class="infobox" style="margin: 0px;">
+				Sofern Sie zum Mittagessen nicht Ihren Gerätestandort verwenden möchten, wählen Sie bitte per Klick auf die Karte die gewünschte Location. </br>
+				Über die Radio-Buttons können Sie anschließend die gewünschte Location auswählen.
 			</div>
-			<fieldset data-role="controlgroup" >
+			</br>
+			<fieldset data-role="controlgroup" data-type="horizontal">
 				<input type="radio" name="locationRadios" onclick="switchLocation(this);" id="locationRadios1" value="1"/>
 				<label for="locationRadios1" class="read-only-list" id="locLabel1">Gerätestandort (1)</label>
 				<input type="radio" name="locationRadios" onclick="switchLocation(this);" id="locationRadios2" value="2" class="ui-disabled" />
 				<label for="locationRadios2" class="read-only-list" id="locLabel2">Selbstgewählter Standort (2)</label>
 			</fieldset>
-			</div>
+		</div>
+		<div>
+			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 30%; height: 600px; align: left; display: inline-block;">
+				<!-- map loads here -->
+			</div>						
+			
+			
 		</div>
 		</div><!-- /results -->
 	</div><!-- /content -->

@@ -90,11 +90,25 @@
 		    </tr>
 		</table>
             
-			<br/>
-			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 100px; height: 600px; align: left;">
+		<br/>
+		<div>
+			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 30%; height: 600px; align: left; display: inline-block;">
 				<!-- map loads here -->
+			</div>						
+			
+			<div data-role="fieldcontain" style="max-width: 30%; width: 20%; float: right; vertical-align: top;">
+			<div class="infobox">
+				Sofern Sie zum Mittagessen nicht Ihren Gerätestandort verwenden möchten, wählen Sie bitte per Klick auf die Karte die gewünschte Location.
+			</div>
+			<fieldset data-role="controlgroup" >
+				<input type="radio" name="locationRadios" onclick="switchLocation(this);" id="locationRadios1" value="1"/>
+				<label for="locationRadios1" class="read-only-list" id="locLabel1">Gerätestandort (1)</label>
+				<input type="radio" name="locationRadios" onclick="switchLocation(this);" id="locationRadios2" value="2" class="ui-disabled" />
+				<label for="locationRadios2" class="read-only-list" id="locLabel2">Selbstgewählter Standort (2)</label>
+			</fieldset>
 			</div>
 		</div>
+		</div><!-- /results -->
 	</div><!-- /content -->
 	
 	<div data-role="footer" class="footer-class">

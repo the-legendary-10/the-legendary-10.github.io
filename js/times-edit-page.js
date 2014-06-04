@@ -39,7 +39,7 @@ $(document).on("pagecreate","#time-edit-page",function(){
 		console.log("Aufrufende ID: "+IdToEdit);
 		
 		//dazugehörige Zeit laden
-		var dates=JSON.parse(localStorage.dates);
+//		var dates=JSON.parse(localStorage.dates);
 		
 //		var from = new Date(dates[IdToEdit].FromTime);
 //		var to = new Date (dates[IdToEdit].ToTime);

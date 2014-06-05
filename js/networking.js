@@ -6,6 +6,13 @@ $(document).ready( function(){
 	//setInterval(refresh, 5000);
 });
 
+/*AJAX loading indicator*/
+$(document).ajaxStart(function(){
+	$('#ajaxloader').show();
+}).ajaxStop(function(){
+	$('#ajaxloader').hide();
+});
+
 /*
 * Meta function - gets called every X seconds
 */
@@ -77,7 +84,7 @@ function createRequestData(){
 		},
 		timeslots : resultSlots,
 	};
-	console.log(result);
+	//console.log(result);
 	return result;
 }
 

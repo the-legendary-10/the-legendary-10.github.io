@@ -785,6 +785,18 @@ table th, td{ text-align:left; padding:6px;}
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
+#ajaxloader {
+    background-image: url('images/ajax-loader.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    background-position: right;
+    padding-left: 80%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+	display:none;
+}
+
 
 /*Style for information message (error)
 -----------------------------------------------------------------------------------------------------------*/

@@ -111,7 +111,19 @@ $(function() {
           var hashNumberString = '#I' + numberH5;
           $('li').remove(hashNumberString);
           
-   /      $( "#group-overview-page" ).trigger("pagecreate");
+          
+          // Information message, if no contacts are chosen 
+          if(localStorage.getItem('group')== 0 || localStorage.getItem('group') == undefined ){ 
+   		  			$('#group-over-list').append('<div class="infobox" ><b>Hinweis:</b> <br/> Aktuell befinden sich <b>keine Kontakte</b> in Deiner Mitagessen-Gruppe. Füge welche über "Bearbeiten" hinzu.</div'); 
+   		  
+   		
+   		   }
+          
+          
+   //      $( "#group-overview-page" ).trigger("pagecreate");
+   
+          // Update listview
+          $('#group-over-list').listview('refresh');
           
           
           // Uncheck the checkbox in the group-edit-page (id: E (prefix) + hashNumber)
@@ -125,6 +137,8 @@ $(function() {
      	}
 	);
 }); 
+
+
 
 
 

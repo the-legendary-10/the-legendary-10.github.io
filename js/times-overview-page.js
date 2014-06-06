@@ -11,13 +11,15 @@ $(function() {
 
             
             //append text to popup
-            // id = P (Praefix) + h5-hashNumber
-            var text = '<p class="delTime" >Möchtest du die Zeit <b>' + $(this).parent().text() + ' </b>entfernen?</p>';
+            // id = P (Praefix) + idListItem, since an ID should be unique in an HTML-Document and idListItem is already used 
+            var text = '<p class="delTime" + id="P' + idListItem + '">Möchtest du die Zeit <b>' + $(this).parent().text() + ' </b>entfernen?</p>';
             
              $("#popup-content-times").append(text);
             
             
             
+
+
          });    
          
          
@@ -37,4 +39,42 @@ $(function() {
                 }
           });
 
+}); 
+
+
+
+//------------------------------------------------------------------------------
+// Defines action after clicking on button "Löschen" ("deleteConTimes") in the popup
+
+$(function() {
+      $("#deleteConTimes").click( function() {
+      
+      	  // get MD5-Hash-Number of selected contact
+          var idNumber = $(".delTime").attr("id");    
+          
+          
+          // Remove first letter of string, to get id without the prefix "p"
+           var idWithoutPraefix = idNumber.substr(1, idNumber.length);
+         
+         
+         // Start ToDo ... Remove the time from the localStorage-Array
+         
+         
+         
+         
+         // End ToDo ... Remove the time from the localStorage-Array
+         
+         
+          // Remove the item from the time-overview-page 
+		  $('li').remove('#'+idWithoutPraefix);
+		  
+		  
+		  // Update listview
+          $('#time-over-list').listview('refresh');
+		             
+          // Close the popup
+           $( "#popup-times" ).popup("close");
+                 	
+     	}
+	);
 }); 

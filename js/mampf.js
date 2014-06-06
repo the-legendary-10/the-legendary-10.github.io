@@ -156,7 +156,7 @@ $(document).on("pagecreate","#time-over-page",function(){
 			$("#totime").val((to.getHours())+":"+to.getMinutes());
 		}	
 
-		
+		$('#time-over-list').listview('refresh');
 		
 	}
 	
@@ -164,5 +164,5 @@ $(document).on("pagecreate","#time-over-page",function(){
 		  $.infoTimeMessage();
 	}
 	
-    $('#time-over-list').listview('refresh');
+    
 });

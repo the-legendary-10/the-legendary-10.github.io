@@ -111,11 +111,7 @@ $(function() {
           var hashNumberString = '#I' + numberH5;
           $('li').remove(hashNumberString);
           
-   //       $( "#group-overview-page" ).trigger("pagecreate");
-   
-   
-   		   // Update listview
-           $('#group-over-list').listview('refresh');
+   /      $( "#group-overview-page" ).trigger("pagecreate");
           
           
           // Uncheck the checkbox in the group-edit-page (id: E (prefix) + hashNumber)

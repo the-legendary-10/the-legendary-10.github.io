@@ -66,11 +66,13 @@ $(function() {
          
          
           // Remove the item from the time-overview-page 
-		  $('li').remove('#'+idWithoutPraefix);
+	//	  $('li').remove('#'+idWithoutPraefix);
+		  
+		  $( "#time-over-page" ).trigger("pagecreate");
 		  
 		  
 		  // Update listview
-          $('#time-over-list').listview('refresh');
+    //      $('#time-over-list').listview('refresh');
 		             
           // Close the popup
            $( "#popup-times" ).popup("close");

@@ -5,19 +5,10 @@
 $(function() {
 
          $("body").on("click", ".deleteTime",function(e) {
-        		alert("hallo");
-
-
+        	
             // get id of list item
             var idListItem = $(this).parent().attr("id");
 
-
-			
-			
-			
-            
-            
-            
             
             //append text to popup
             // id = P (Praefix) + h5-hashNumber

@@ -55,6 +55,36 @@ $.infoTimeMessage = function() {
 
 
 
+//------------------------------------------------------------------------------
+// Function defines action after clicking on an existing time (class = editTime)
+
+$(function() {
+
+         $("body").on("click", ".editTime",function(e) {
+			    // get ID of selected time 
+                var idNumber = $(".delTime").attr("id");    
+                
+                // Remove first letter of string, to get id without the prefix "p"
+                var idWithoutPraefix = idNumber.substr(1, idNumber.length);
+         
+
+
+				// TODO: Load existing values into fields
+				
+				// $('#edit-date').val('dd-MM-yyyy');   
+				// $('#edit-from').val(' ');               
+				// $('#edit-to').val(' ');      
+				
+				
+				
+				// Update localStorage (specific ID = time)
+            
+            
+            
+         });    
+         
+         
+}); 
 
 
 //------------------------------------------------------------------------------
@@ -63,7 +93,7 @@ $.infoTimeMessage = function() {
 $(function() {
       $("#deleteConTimes").click( function() {
       
-      	  // get MD5-Hash-Number of selected contact
+      	  // get ID of selected time 
           var idNumber = $(".delTime").attr("id");    
           
           
@@ -136,7 +166,7 @@ $(document).on("pagecreate","#time-over-page",function(){
 				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 				
 				
-				$( "#time-over-list" ).append('<li id="'+ idcounter +'"><a class="read-only-list-time" href="#time-edit-page" id="'+ idcounter +'" > '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von '+(from.getHours())+':'+fromMinutes+' bis '+(to.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
+				$( "#time-over-list" ).append('<li id="'+ idcounter +'" class="editTime"><a class="read-only-list-time" href="#time-edit-page" id="'+ idcounter +'" > '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von '+(from.getHours())+':'+fromMinutes+' bis '+(to.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
 				idcounter++;
 			}
 			//Textfelder mit den letzten Werten befüllen

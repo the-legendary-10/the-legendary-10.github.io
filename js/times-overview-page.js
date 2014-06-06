@@ -100,3 +100,58 @@ $(function() {
      	}
 	);
 }); 
+
+//------------------------------------------------------------------------------
+
+// Is called, while 'time-over-page' is being created
+
+
+var idcounter=0;
+
+$(document).on("pagecreate","#time-over-page",function(){
+//$("#time-over-page").ready(function(){
+
+
+   // Initialize
+   $('#time-over-list').children().remove(); 
+   $('#time-content-msg').remove(); 
+   
+	//if there are already saved values, display them
+	if(localStorage.dates != null){
+	
+		//get dates from localStorage
+		var dates=JSON.parse(localStorage.dates);
+	
+		if(dates != null){
+							
+			for (var i=0; i<dates.length; i++){
+				//display the values
+				var from = new Date(dates[i].FromTime);
+				var to = new Date (dates[i].ToTime);
+				
+				//Minuten mit einer "0" auffüllen
+				var fromMinutes = from.getMinutes();
+				fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
+				var toMinutes = to.getMinutes();
+				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
+				
+				
+				$( "#time-over-list" ).append('<li id="'+ idcounter +'"><a class="read-only-list-time" href="#time-edit-page" id="'+ idcounter +'" > '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von '+(from.getHours())+':'+fromMinutes+' bis '+(to.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
+				idcounter++;
+			}
+			//Textfelder mit den letzten Werten befüllen
+			$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());
+			$("#fromtime").val((from.getHours())+":"+from.getMinutes());
+			$("#totime").val((to.getHours())+":"+to.getMinutes());
+		}	
+
+		$('#time-over-list').listview('refresh');
+		
+	}
+	
+	else {
+		  $.infoTimeMessage();
+	}
+	
+    
+});

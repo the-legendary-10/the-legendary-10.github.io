@@ -157,11 +157,12 @@ $(document).on("pagecreate","#time-over-page",function(){
 		}	
 
 		
-		$('#time-over-list').listview('refresh');
+		
 	}
 	
 	else {
-		  $('#time-content-info').append('<div class="infobox" id="time-content-msg" ><b>Hinweis:</b> <br/> Aktuell hast Du <b>keine Zeiten</b> angelegt. Erstelle Zeiten über den Button "Hinzufügen".</div'); 
+		  $.infoTimeMessage();
 	}
 	
+		  $('#time-over-list').listview('refresh');
 });

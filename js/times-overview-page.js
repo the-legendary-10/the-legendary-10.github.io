@@ -44,6 +44,21 @@ $(function() {
 
 
 //------------------------------------------------------------------------------
+// Function for displaying information message, if no contacts are available 
+
+
+$.infoTimeMessage = function() { 
+			$('#time-content-info').append('<div class="infobox" id="time-content-msg" ><b>Hinweis:</b> <br/> Aktuell hast Du <b>keine Zeiten</b> angelegt. Erstelle Zeiten über den Button "Hinzufügen".</div'); 			
+			
+	
+ }
+
+
+
+
+
+
+//------------------------------------------------------------------------------
 // Defines action after clicking on button "Löschen" ("deleteConTimes") in the popup
 
 $(function() {
@@ -66,13 +81,19 @@ $(function() {
          
          
           // Remove the item from the time-overview-page 
-	//	  $('li').remove('#'+idWithoutPraefix);
+		  $('li').remove('#'+idWithoutPraefix);
 		  
-		  $( "#time-over-page" ).trigger("pagecreate");
+		  
+		  if(localStorage.dates == null)) {
+		  
+		 	 $.infoTimeMessage();
+		 	 
+		 }
+		
 		  
 		  
 		  // Update listview
-    //      $('#time-over-list').listview('refresh');
+          $('#time-over-list').listview('refresh');
 		             
           // Close the popup
            $( "#popup-times" ).popup("close");

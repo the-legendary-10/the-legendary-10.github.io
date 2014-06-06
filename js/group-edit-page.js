@@ -69,9 +69,7 @@ function dynamicListView(contacts) {
         	       // Updating listview
         	        $('#groupList').listview('refresh');
         	        $("[type=checkbox]").checkboxradio();
-        	        $("[data-role=controlgroup]").controlgroup("refresh");
         	   
-
 }
 
 

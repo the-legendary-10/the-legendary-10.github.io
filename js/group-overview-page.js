@@ -38,13 +38,9 @@ $(function() {
 
             
             
-            // get contact based on MD5-Hash-NUmber
-            var contactObj = searchPhoneNumber(numberH5);
-            
-            
             //append text to popup
             // id = P (Praefix) + h5-hashNumber
-            var text = '<p class="toDelete" id ="P' + numberH5 +'">Möchtest du den Kontakt <b>' +  contactObj.firstName + ' ' + contactObj.lastName + '</b> <br />aus der Gruppe entfernen?</p>';
+            var text = '<p class="toDelete" id ="P' + numberH5 +'">Möchtest du den Kontakt <b>' +  $(this).parent().text() + '</b> <br />aus der Gruppe entfernen?</p>';
             
              $("#popup-content").append(text);
             

@@ -95,7 +95,7 @@ function SaveMyTime(){
 						toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 						
 						//Ausgabe
-						$( "#time-over-list" ).append('<li><a class="read-only-list-time" href="#time-edit-page" id="'+ idcounter +'">Am '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von: '+(myDate.FromTime.getHours())+':'+fromMinutes+' bis '+(myDate.ToTime.getHours())+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
+						$( "#time-over-list" ).append('<li><a class="read-only-list-time" href="#time-edit-page" id="'+ idcounter +'"> '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von '+(myDate.FromTime.getHours())+':'+fromMinutes+' bis '+(myDate.ToTime.getHours())+':'+toMinutes+'</a><a href="#popup-Times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
 						idcounter++;				
 						// Remove information message, if visible
 						$('#time-content-msg').remove(); 
@@ -147,7 +147,7 @@ $(document).on("pagecreate","#time-over-page",function(){
 				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 				
 				
-				$( "#time-over-list" ).append('<li><a class="read-only-list-time" href="#time-edit-page" id="'+ idcounter +'" >Am '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von: '+(from.getHours())+':'+fromMinutes+' bis '+(to.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
+				$( "#time-over-list" ).append('<li id="'+ idcounter +'"><a class="read-only-list-time" href="#time-edit-page" id="'+ idcounter +'" > '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von '+(from.getHours())+':'+fromMinutes+' bis '+(to.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
 				idcounter++;
 			}
 			//Textfelder mit den letzten Werten befüllen

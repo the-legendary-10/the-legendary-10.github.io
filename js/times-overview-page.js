@@ -12,7 +12,7 @@ $(function() {
             
             //append text to popup
             // id = P (Praefix) + h5-hashNumber
-            var text = '<p class="delTime" id ="33">Möchtest du die Zeit <b>' + $(this).parent().text() + ' </b>entfernen?</p>';
+            var text = '<p class="delTime" >Möchtest du die Zeit <b>' + $(this).parent().text() + ' </b>entfernen?</p>';
             
              $("#popup-content-times").append(text);
             

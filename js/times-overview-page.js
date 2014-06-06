@@ -50,7 +50,6 @@ $(function() {
 $.infoTimeMessage = function() { 
 			$('#time-content-info').append('<div class="infobox" id="time-content-msg" ><b>Hinweis:</b> <br/> Aktuell hast Du <b>keine Zeiten</b> angelegt. Erstelle Zeiten über den Button "Hinzufügen".</div'); 			
 			
-	
  }
 
 
@@ -84,12 +83,12 @@ $(function() {
 		  $('li').remove('#'+idWithoutPraefix);
 		  
 		  
-		  if(localStorage.dates == null)) {
+		  if(localStorage.dates == null) {
 		  
 		 	 $.infoTimeMessage();
 		 	 
 		 }
-		
+		//  $( "#time-over-page" ).trigger("pagecreate");
 		  
 		  
 		  // Update listview

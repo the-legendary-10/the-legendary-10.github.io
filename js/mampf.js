@@ -164,5 +164,5 @@ $(document).on("pagecreate","#time-over-page",function(){
 		  $.infoTimeMessage();
 	}
 	
-		  $('#time-over-list').listview('refresh');
+    $('#time-over-list').listview('refresh');
 });

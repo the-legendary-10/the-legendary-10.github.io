@@ -19,6 +19,19 @@ var contactObj;
 }
 
 
+//------------------------------------------------------------------------------
+// Function for displaying information message, if no contacts are available 
+
+
+$.infoMessage = function() { 
+            $('#group-over-list').append('<div class="infobox" ><b>Hinweis:</b> <br/> Aktuell befinden sich <b>keine Kontakte</b> in Deiner Mitagessen-Gruppe. Füge welche über "Bearbeiten" hinzu.</div'); 
+			
+			
+		    // Update listview
+            $('#group-over-list').listview('refresh');
+ }
+
+
 
 
 
@@ -107,17 +120,15 @@ $(function() {
             
             
             
-          // Remove the item from the group-overview-page  & trigger pagecreate
+          // Remove the item from the group-overview-page 
           var hashNumberString = '#I' + numberH5;
           $('li').remove(hashNumberString);
           
           
-          // Information message, if no contacts are chosen 
-          if(localStorage.getItem('group')== 0 || localStorage.getItem('group') == undefined ){ 
-   		  			$('#group-over-list').append('<div class="infobox" ><b>Hinweis:</b> <br/> Aktuell befinden sich <b>keine Kontakte</b> in Deiner Mitagessen-Gruppe. Füge welche über "Bearbeiten" hinzu.</div'); 
-   		  
-   		
-   		   }
+          // Show information message, if no contacts are chosen 
+   		  if(localStorage.getItem('group')== 0 || localStorage.getItem('group') == undefined ){ 
+                 $.infoMessage();   		  
+   	      }
           
           
    //      $( "#group-overview-page" ).trigger("pagecreate");
@@ -158,8 +169,7 @@ $(document).on("pagecreate","#group-overview-page",function(){
    
    	   // If no contact is stored in the local Storage, show an information message
    		if(localStorage.getItem('group')== 0 || localStorage.getItem('group') == undefined ){ 
-   		  $('#group-over-list').append('<div class="infobox" ><b>Hinweis:</b> <br/> Aktuell befinden sich <b>keine Kontakte</b> in Deiner Mitagessen-Gruppe. Füge welche über "Bearbeiten" hinzu.</div'); 
-   		  
+                 $.infoMessage();   		  
    		
    		} else{ 					
    				// Get group-value with md5-hash-numbers and convert it to an array	

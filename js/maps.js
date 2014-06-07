@@ -60,9 +60,11 @@ function GetMap() {
             map.entities.push(pin);
 			
 		//enable "Gerätestandort" radio button and check it	
-		$("#locationRadios1").attr("disabled", false);	
-		$("#locLabel1").removeClass("read-only-list");
-		$("#locationRadios1").attr("checked",true).checkboxradio("refresh");	
+		if (($("#locationRadios1").attr("disabled", true))) {
+			$("#locationRadios1").attr("disabled", false);	
+			$("#locLabel1").removeClass("read-only-list");
+		}
+		$("#locationRadios1").trigger("click");
 		
         // Draw circle of area where user is located 		
         var locationArea = drawCircle(userLocation); 
@@ -121,11 +123,12 @@ function GetMap() {
 			userLocation = chosenLocation;
 			
 			//enable "Selbstgewählter Standort" radio button and check it
-			$("#locationRadios2").attr("disabled", false);	
-			$("#locLabel2").removeClass("read-only-list");
-			$("#locationRadios2").attr("checked",true).checkboxradio("refresh");
-			$("#locationRadios1").attr("checked",false).checkboxradio("refresh");            
-
+			if (($("#locationRadios2").attr("disabled", true))) {
+				$("#locationRadios2").attr("disabled", false);	
+				$("#locLabel2").removeClass("read-only-list");
+			}
+			$("#locationRadios2").trigger("click");
+			
 			//add new pin for location chosen by user
             var myLocPin = new Microsoft.Maps.Pushpin(userLocation, {text: '2'}, {'draggable': false});
             map.entities.push(myLocPin);
@@ -139,7 +142,9 @@ function GetMap() {
 		if (locationRadio.value == 1) {
 			if (deviceLocation !== null && deviceLocation !== undefined) {
 				userLocation = deviceLocation;
-				locationRadio.checked = true;
+				//locationRadio.checked = true;
+				$("#locationRadios1").prop('checked', true).checkboxradio('refresh');
+				$("#locationRadios1").attr("checked",true).checkboxradio("refresh");
 			}
 		}
 		//"Selbstgewählter Standort" radio button
@@ -147,7 +152,9 @@ function GetMap() {
 			if (chosenLocation !== null){
 				userLocation = chosenLocation;				
 				$("#locationRadios2").attr("checked",true).checkboxradio("refresh");
-				$("#locationRadios1").attr("checked",false).checkboxradio("refresh");
+				//$("#locationRadios1").attr("checked",false).checkboxradio("refresh");
+				//locationRadio.checked = true;
+				$("#locationRadios2").prop('checked', true).checkboxradio('refresh');
 			}
 		}
 	}

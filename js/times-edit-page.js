@@ -1,10 +1,5 @@
 $(function(){
 	$("#popup-times").click( function(){
-		console.log("popup-times");
+		//console.log("popup-times");
 	});
-
 });
-
-
-
-

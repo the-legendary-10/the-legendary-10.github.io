@@ -32,7 +32,8 @@ $(document).on("pagecreate","#main-page",function(){
 		if(ownPhone != undefined){
 			$("#telephone").val(ownPhone);
 			$("#telephone").removeClass("field-telephone-main-page");
-			$("#telephoneButton").text("Aktualisieren");
+			//Unicode for Ä is \u00c4
+			$("#telephoneButton").text("\u00c4ndern");
 			$("#telephoneButton").addClass("button-save-main-page");
 		}
 	});

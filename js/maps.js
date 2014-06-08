@@ -1,4 +1,8 @@
 var userLocation = undefined;
+
+
+
+
 $(document).on("pagecreate","#main-page",function(){
     var map = null; 
 	var userLocation = null; //Location which will be used for lunch-date calculation
@@ -13,19 +17,36 @@ $(document).on("pagecreate","#main-page",function(){
 	var mapHeight = document.documentElement.clientHeight * 0.9;
 	$( "#mapDiv" ).height(mapHeight);
 
-	var mapWidth = document.documentElement.clientWidth * 0.7;
-	$( "#mapDiv" ).width(mapWidth);
-	
-	//disable radio buttons (will be enabled, if specific location is available
-	$("#locationRadios1").attr("disabled", true);
-	$("#locationRadios2").attr("disabled", true);
-	
-	$("#telephoneButton").on("click",savePhoneNumber);
-	var ownPhone = localStorage.getItem("ownphone");
-	if(ownPhone != undefined){
-		$("#telephone").val(ownPhone);
+		var mapWidth = document.documentElement.clientWidth * 0.7;
+		$( "#mapDiv" ).width(mapWidth);
+		
+		//disable radio buttons (will be enabled, if specific location is available
+		$("#locationRadios1").attr("disabled", true);
+		$("#locationRadios2").attr("disabled", true);
+		
+		// Save phone number
+		$("#telephoneButton").on("click",savePhoneNumber);
+		
+		// Display phone number
+		var ownPhone = localStorage.getItem("ownphone");
+		if(ownPhone != undefined){
+			$("#telephone").val(ownPhone);
+			$("#telephone").removeClass("field-telephone-main-page");
+			$("#telephoneButton").text("Aktualisieren");
+			$("#telephoneButton").addClass("button-save-main-page");
+		}
+	});
+
+
+	/*Independent: save own phone number*/
+	function savePhoneNumber(){
+		var phoneNumber = $('#telephone').val();
+		localStorage.setItem("ownphone", phoneNumber);
+		$("#telephone").removeClass("field-telephone-main-page");
+		$("#telephoneButton").text("Aktualisieren");
+		$("#telephoneButton").addClass("button-save-main-page");		
 	}
-});
+
 function GetMap() { 
             /* Replace YOUR_BING_MAPS_KEY with your own credentials. 
             Obtain a key by signing up for a developer account at 
@@ -166,8 +187,3 @@ function GetMap() {
 	
 
 	
-/*Independent: save own phone number*/
-function savePhoneNumber(){
-	var phoneNumber = $('#telephone').val();
-	localStorage.setItem("ownphone", phoneNumber);
-}

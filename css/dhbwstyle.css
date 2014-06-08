@@ -832,3 +832,20 @@ margin: 15px
     cursor: default !important;
 }
 
+
+/* Readonly style for save button main page
+-----------------------------------------------------------------------------------------------------------*/
+
+.button-save-main-page {
+    background-color: #228B22 !important;
+    color: white !important;
+    text-shadow: 0 !important;
+}
+
+/* Readonly style for telephone field
+-----------------------------------------------------------------------------------------------------------*/
+
+.field-telephone-main-page {
+    background-color: #FFCCCC !important;
+    text-shadow: 0 !important;
+}

@@ -62,13 +62,22 @@ $(function() {
 
          $("body").on("click", ".editTime",function(e) {
 			    // get ID of selected time 
-                var idNumber = $(".delTime").attr("id");    
+                var idNumber = $(".delTime").attr("id");  
+				console.log(idNumber);
                 
                 // Remove first letter of string, to get id without the prefix "p"
                 var idWithoutPraefix = idNumber.substr(1, idNumber.length);
-         
+         		
 
-
+				if((localStorage.dates!=null) && (localStorage.dates!= undefined)){
+					var dates=JSON.parse(localStorage.dates);
+					
+					var from = new Date(dates[idWithoutPraefix].FromTime);
+					var to = new Date (dates[idWithoutPraefix].ToTime);
+					
+					console.log(from);
+					console.log(to);
+				}
 				// TODO: Load existing values into fields
 				
 				// $('#edit-date').val('dd-MM-yyyy');   
@@ -98,15 +107,31 @@ $(function() {
           
           // Remove first letter of string, to get id without the prefix "p"
            var idWithoutPraefix = idNumber.substr(1, idNumber.length);
-         
-         
-         // Start ToDo ... Remove the time from the localStorage-Array
-         
-         
-         
-         
-         // End ToDo ... Remove the time from the localStorage-Array
-         
+
+        var dates=JSON.parse(localStorage.dates);
+		var old;		 
+		
+		for (i=0; i<dates.length; i++){
+		
+			var JSONObj = JSON.stringify(dates[i]);
+
+			if(i==idWithoutPraefix){}
+			else{
+				if(old!=null){
+					old = old.substring(0, old.length-1) + "," + JSONObj + "]";
+				}
+				else{
+					old= "[" + JSONObj + "]";
+				}
+			}
+		 }
+		 
+		 if((old!= null)&& (old!=undefined)){
+			localStorage.dates=old; 
+		 }
+		 else{
+			localStorage.removeItem("dates");		 
+		}        
          
           // Remove the item from the time-overview-page 
 		  $('li').remove('#'+idWithoutPraefix);
@@ -124,8 +149,7 @@ $(function() {
           $('#time-over-list').listview('refresh');
 		             
           // Close the popup
-           $( "#popup-times" ).popup("close");
-                 	
+           $( "#popup-times" ).popup("close");                 	
      	}
 	);
 	

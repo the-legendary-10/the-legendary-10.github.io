@@ -18,8 +18,6 @@ $(function() {
 });
 
 
-
-
 var dates = new Array();
 var idcounter=0;
 
@@ -80,7 +78,6 @@ function SaveMyTime(){
 						//Create a new JSON Object containing the date and time values 
 						var JSONdate = JSON.stringify(myDate);
 						
-						
 						/*
 						if there are already saved values, read them and append the new value, otherwise 
 						just set old to the current JSON object
@@ -105,7 +102,8 @@ function SaveMyTime(){
 						
 						//Ausgabe
 						$( "#time-over-list" ).append('<li id="'+ idcounter +'" class="editTime"><a class="read-only-list-time" href="#time-edit-page" > '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von '+(myDate.FromTime.getHours())+':'+fromMinutes+' bis '+(myDate.ToTime.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
-						idcounter++;				
+						idcounter++;
+						
 						// Remove information message, if visible
 						$('#time-content-msg').remove(); 
 						

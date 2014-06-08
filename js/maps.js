@@ -32,7 +32,7 @@ $(document).on("pagecreate","#main-page",function(){
 		if(ownPhone != undefined){
 			$("#telephone").val(ownPhone);
 			$("#telephone").removeClass("field-telephone-main-page");
-			//Unicode for Ä is \u00c4
+			//$("#telephoneButton").text("Aktualisieren");
 			$("#telephoneButton").text("\u00c4ndern");
 			$("#telephoneButton").addClass("button-save-main-page");
 		}
@@ -44,7 +44,8 @@ $(document).on("pagecreate","#main-page",function(){
 		var phoneNumber = $('#telephone').val();
 		localStorage.setItem("ownphone", phoneNumber);
 		$("#telephone").removeClass("field-telephone-main-page");
-		$("#telephoneButton").text("Aktualisieren");
+		//$("#telephoneButton").text("Aktualisieren");
+		$("#telephoneButton").text("\u00c4ndern");
 		$("#telephoneButton").addClass("button-save-main-page");		
 	}
 

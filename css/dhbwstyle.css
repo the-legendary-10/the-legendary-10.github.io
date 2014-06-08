@@ -842,10 +842,11 @@ margin: 15px
     text-shadow: 0 !important;
 }
 
-/* Readonly style for telephone field
+/* Style for telephone field and collapsible box
 -----------------------------------------------------------------------------------------------------------*/
 
 .field-telephone-main-page {
     background-color: #FFCCCC !important;
     text-shadow: 0 !important;
 }
+

@@ -27,14 +27,22 @@ $(document).on("pagecreate","#main-page",function(){
 		// Save phone number
 		$("#telephoneButton").on("click",savePhoneNumber);
 		
+		
+		// Set background for collapsible box 
+		$("#telephone-titler a").addClass("field-telephone-main-page");
+		
 		// Display phone number
 		var ownPhone = localStorage.getItem("ownphone");
-		if(ownPhone != undefined){
+		if(ownPhone != undefined ){
 			$("#telephone").val(ownPhone);
 			$("#telephone").removeClass("field-telephone-main-page");
 			$("#telephoneButton").text("Aktualisieren");
-			$("#telephoneButton").addClass("button-save-main-page");
+	//		$("#telephoneButton").addClass("button-save-main-page");
+			$("#telephone-titler a").text("Eigene Nummer bearbeiten");
+			$("#telephone-coll").collapsible( "option", "collapsed", true );
+			$("#telephone-titler a").removeClass("field-telephone-main-page");
 		}
+		
 	});
 
 
@@ -44,7 +52,10 @@ $(document).on("pagecreate","#main-page",function(){
 		localStorage.setItem("ownphone", phoneNumber);
 		$("#telephone").removeClass("field-telephone-main-page");
 		$("#telephoneButton").text("Aktualisieren");
-		$("#telephoneButton").addClass("button-save-main-page");		
+	//	$("#telephoneButton").addClass("button-save-main-page");		
+		$("#telephone-titler a").text("Eigene Nummer bearbeiten");
+		$("#telephone-coll").collapsible( "option", "collapsed", true );
+		$("#telephone-titler a").removeClass("field-telephone-main-page");	
 	}
 
 function GetMap() { 

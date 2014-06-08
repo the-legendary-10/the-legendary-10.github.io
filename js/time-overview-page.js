@@ -138,15 +138,18 @@ $(function() {
 		}        
          
         // Remove the item from the time-overview-page 
-		$('li').remove('#'+idWithoutPraefix);
+//		$('li').remove('#'+idWithoutPraefix);
  
 		if(localStorage.dates == null) {
 			$.infoTimeMessage();
 		}
-		//  $( "#time-over-page" ).trigger("pagecreate");
+		
+		
+		// Create new time list with new IDs
+	    $( "#time-over-page" ).trigger("pagecreate");
 
 		// Update listview
-		$('#time-over-list').listview('refresh');
+	//	$('#time-over-list').listview('refresh');
 				 
 		// Close the popup
 		$( "#popup-times" ).popup("close");                 	
@@ -158,11 +161,12 @@ $(function() {
 // Is called, while 'time-over-page' is being created
 
 
-var idcounter=0;
+
 
 $(document).on("pagecreate","#time-over-page",function(){
 //$("#time-over-page").ready(function(){
 
+	var idcounter=0;
 
    // Initialize
    $('#time-over-list').children().remove(); 

@@ -18,10 +18,12 @@ $(function() {
 });
 
 
-var dates = new Array();
-var idcounter=0;
+
 
 function SaveMyTime(){	
+
+	var dates = new Array();
+	var idcounter=0;
 
 	var myDate = new Object();
 	

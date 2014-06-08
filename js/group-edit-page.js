@@ -8,7 +8,6 @@ function compareLettersContacts(a,b) {
   return 0;
 }
 
-
 //------------------------------------------------------------------------------
 
 // Function checks whether md5-cash value is already in the local storage.

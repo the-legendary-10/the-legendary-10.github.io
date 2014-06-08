@@ -10,7 +10,6 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
-
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
 <script src="js/networking.js"></script>
@@ -36,9 +35,9 @@
 
 <body>
 <div data-role="panel" id="left-panel" data-position="left" data-display="overlay" data-theme="a">
-		<a href="#main-page" id="mainpage" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right" >Home</a></br>
-		<a href="#group-overview-page" id="contacts" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
-		<a href="#time-over-page"   id="calendar" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
+		<a href="#main-page" class="ui-panel-active ui-date-persist ui-panel-nav" id="mainpage" data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right">Home</a></br>
+		<a href="#group-overview-page"  class="ui-panel-nav" id="group-page" data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
+		<a href="#time-over-page"  class="ui-panel-nav"  id="time-page" data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
 		<!--<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>-->
 </div><!-- /leftpanel1 -->
 	

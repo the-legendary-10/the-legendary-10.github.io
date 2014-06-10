@@ -36,11 +36,12 @@ $.infoTimeMessage = function() {
 //------------------------------------------------------------------------------
 // Function for saving new times 
  
-var dates = new Array();
-var idcounter=0;
+
 
 function SaveMyTime(){	
 
+	var dates = new Array();
+	var idcounter=0;
 	var myDate = new Object();
 	
 	//Read Values from input fields
@@ -164,9 +165,9 @@ $(function() {
 		var toZeit=(to.getHours())+":"+toMinutes;
 		
 
-		console.log("edit hier "+Datum);
-		console.log("edit hier "+fromZeit);
-		console.log("edit hier "+toZeit);
+		console.log("edit "+Datum);
+		console.log("edit "+fromZeit);
+		console.log("edit "+toZeit);
 		
 
 		
@@ -258,6 +259,7 @@ $(function() {
 $(document).on("pagecreate","#time-over-page",function(){
 //$("#time-over-page").ready(function(){
 
+	var idcounter=0;
 
    // Initialize
    $('#time-over-list').children().remove(); 

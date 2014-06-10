@@ -151,22 +151,29 @@ $(function() {
 		var from = new Date(dates[idNumber].FromTime);
 		var to = new Date (dates[idNumber].ToTime);
 
-		console.log("Edit "+from);
-		console.log("Edit "+to);
+		//console.log("Edit "+from);
+		//console.log("Edit "+to);
 			
 		// TODO: Load existing values into fields
 		var Datum=from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear();
 		var fromZeit= (from.getHours())+":"+from.getMinutes();
 		var toZeit=(to.getHours())+":"+to.getMinutes();
 		
-		console.log("edit "+Datum);
-		console.log("edit "+fromZeit);
-		console.log("edit "+toZeit);
+		alert("HIER");
+		console.log("edit hier "+Datum);
+		console.log("edit hier "+fromZeit);
+		console.log("edit hier "+toZeit);
 		
-		$("#datefield").val(Datum);
-		$("#fromtime").val(fromZeit);
-		$("#totime").val(toZeit);   
+		$("#edit-date").val(Datum);
+		$("#edit-from").val(fromZeit);
+		$("#edit-to").val(toZeit);   
 
+		//Textfelder mit den letzten Werten befüllen
+//		$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());
+	//	$("#fromtime").val((from.getHours())+":"+from.getMinutes());
+		//$("#totime").val((to.getHours())+":"+to.getMinutes());
+		
+		
 		// Update localStorage (specific ID = time)
          
 	});          
@@ -273,9 +280,34 @@ $(document).on("pagecreate","#time-over-page",function(){
 				idcounter++;
 			}
 			//Textfelder mit den letzten Werten befüllen
-			$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());
-			$("#fromtime").val((from.getHours())+":"+from.getMinutes());
-			$("#totime").val((to.getHours())+":"+to.getMinutes());
+			//$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());
+			//$("#fromtime").val((from.getHours())+":"+from.getMinutes());
+			//$("#totime").val((to.getHours())+":"+to.getMinutes());
+		
+
+
+
+			alert("DORT");
+		// TODO: Load existing values into fields
+		var fromMinutes = from.getMinutes();
+		fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
+		var toMinutes = to.getMinutes();
+		toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
+
+		
+		var Datum=from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear();
+		var fromZeit= (from.getHours())+":"+fromMinutes;
+		var toZeit=(to.getHours())+":"+toMinutes;
+		
+		console.log("edit dort "+Datum);
+		console.log("edit dort "+fromZeit);
+		console.log("edit dort "+toZeit);
+		
+		$("#edit-datefield").val(Datum);
+		$("#edit-fromtime").val(fromZeit);
+		$("#edit-totime").val(toZeit);
+		
+			
 		}	
 
 		$('#time-over-list').listview('refresh');		

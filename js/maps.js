@@ -17,51 +17,14 @@ $(document).on("pagecreate","#main-page",function(){
 	var mapHeight = document.documentElement.clientHeight * 0.9;
 	$( "#mapDiv" ).height(mapHeight);
 
-		var mapWidth = document.documentElement.clientWidth * 0.7;
-		$( "#mapDiv" ).width(mapWidth);
-		
-		//disable radio buttons (will be enabled, if specific location is available
-		$("#locationRadios1").attr("disabled", true);
-		$("#locationRadios2").attr("disabled", true);
-		
-		// Save phone number
-		$("#telephoneButton").on("click",savePhoneNumber);
-		
-		
-		// Set background for collapsible box 
-		$("#telephone-title a").addClass("field-telephone-main-page");
-		
-		// Display phone number
-		var ownPhone = localStorage.getItem("ownphone");
-		if(ownPhone != undefined ){
-			$("#telephone").val(ownPhone);
-			$("#telephone").removeClass("field-telephone-main-page");
-
-			$("#telephoneButton").text("Aktualisieren");
-	//		$("#telephoneButton").text("\u00c4ndern");
-	//		$("#telephoneButton").addClass("button-save-main-page");
-			$("#telephone-title a").text("Eigene Nummer bearbeiten");
-			$("#telephone-coll").collapsible( "option", "collapsed", true );
-			$("#telephone-title a").removeClass("field-telephone-main-page");
-
-		}
-		
-	});
-
-
-	/*Independent: save own phone number*/
-	function savePhoneNumber(){
-		var phoneNumber = $('#telephone').val();
-		localStorage.setItem("ownphone", phoneNumber);
-		$("#telephone").removeClass("field-telephone-main-page");
-
-	//	$("#telephoneButton").text("Aktualisieren");
-		$("#telephoneButton").text("\u00c4ndern");
-	//	$("#telephoneButton").addClass("button-save-main-page");		
-		$("#telephone-title a").text("Eigene Nummer bearbeiten");
-		$("#telephone-coll").collapsible( "option", "collapsed", true );
-		$("#telephone-title a").removeClass("field-telephone-main-page");	
-	}
+	var mapWidth = document.documentElement.clientWidth * 0.7;
+	$( "#mapDiv" ).width(mapWidth);
+	
+	//disable radio buttons (will be enabled, if specific location is available
+	$("#locationRadios1").attr("disabled", true);
+	$("#locationRadios2").attr("disabled", true);	
+	
+});
 
 function GetMap() { 
             /* Replace YOUR_BING_MAPS_KEY with your own credentials. 

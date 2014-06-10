@@ -125,20 +125,15 @@ function renderResponse(json){
 	//console.log(json);
 	$("#result_table > tbody").empty();
 	
-	/*Render timeslot into DOM*/
-	if(startTime && endTime){
-		var timeSlotRepr = startTime.toLocaleDateString() + " | " + startTime.toLocaleTimeString().substring(0,5) + " - " + endTime.toLocaleTimeString().substring(0,5);
-	}
-	else{
-		var timeSlotRepr = "Keine Übereinstimmung";
-	}
-	$("#timeslot_heading").html(timeSlotRepr);
-	
 	if(json.timeslot){
 		startTime = new Date(json.timeslot.startTime);
 		endTime = new Date(json.timeslot.endTime);
+		var timeSlotRepr = startTime.toLocaleDateString() + " | " + startTime.toLocaleTimeString().substring(0,5) + " - " + endTime.toLocaleTimeString().substring(0,5);
+		$("#timeslot_heading").html(timeSlotRepr);
 	}
 	else{
+		var timeSlotRepr = "Keine Übereinstimmung";
+		$("#timeslot_heading").html(timeSlotRepr);
 		return;
 	}
 	

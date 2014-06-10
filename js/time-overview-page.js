@@ -40,7 +40,7 @@ $.infoTimeMessage = function() {
 
 function SaveMyTime(){	
 
-	var dates = new Array();
+	//var dates = new Array();
 	var idcounter=0;
 	var myDate = new Object();
 	
@@ -102,9 +102,16 @@ function SaveMyTime(){
 						just set old to the current JSON object
 						*/
 						var old = localStorage.getItem("dates");
+	
+						
 						
 						if(old!=null){
 							old = old.substring(0, old.length-1) + "," + JSONdate + "]";
+							
+							//idcounter hochzählen
+							var dates=JSON.parse(localStorage.dates);
+							idcounter=dates.length;
+
 						}
 						else{
 							old= "[" + JSONdate + "]";
@@ -127,6 +134,7 @@ function SaveMyTime(){
 						$('#time-content-msg').remove(); 
 						
 						$('#time-over-list').listview('refresh');
+						
 					}
 				}
 			}

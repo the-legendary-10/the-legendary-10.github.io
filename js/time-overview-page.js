@@ -258,7 +258,6 @@ $(function() {
 $(document).on("pagecreate","#time-over-page",function(){
 //$("#time-over-page").ready(function(){
 
-	var idcounter=0;
 
    // Initialize
    $('#time-over-list').children().remove(); 

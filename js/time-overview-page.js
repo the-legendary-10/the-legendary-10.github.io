@@ -1,4 +1,5 @@
-
+//Globale Variable welcher Zeitslot geändert wird
+var editNumberId=0;
 //------------------------------------------------------------------------------
 // Function defines text that should appear in the popup after clicking on a delete icon
 
@@ -153,6 +154,7 @@ $(function() {
 	$("body").on("click", ".editTime",function(e) {
 
 		var idNumber = $(this).attr("id");
+		editNumberId = idNumber;
 		console.log("idNumber: "+idNumber);
 	         		
 		var dates=JSON.parse(localStorage.dates);

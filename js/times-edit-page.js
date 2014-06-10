@@ -7,7 +7,9 @@ $(function(){
 var dates = new Array();
 var idcounter=0;
 
-function ChangeTime(){
+$(function() {
+	$("#ButtonChangeTime").click( function() {
+//function ChangeTime(){
 	console.log("Änderungen werden gespeichert");
 	var myDate = new Object();
 	
@@ -108,4 +110,5 @@ function ChangeTime(){
 	}else{
 		alert("Datum ist nicht definiert!");
 	}
-}
+	});
+});

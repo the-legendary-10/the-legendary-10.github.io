@@ -121,7 +121,6 @@ function SaveMyTime(){
 						//Ausgabe
 						$( "#time-over-list" ).append('<li id="'+ idcounter +'" class="editTime"><a class="read-only-list-time" href="#time-edit-page" > '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von '+(myDate.FromTime.getHours())+':'+fromMinutes+' bis '+(myDate.ToTime.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
 						idcounter++;
-						console.log("idcounter ++:" +idcounter);
 						
 						// Remove information message, if visible
 						$('#time-content-msg').remove(); 
@@ -143,37 +142,43 @@ function SaveMyTime(){
 
 $(function() {
 	$("body").on("click", ".editTime",function(e) {
-		// get ID of selected time 
-	//	var idNumber = $(".editTime").attr("id");  
-		var idNumber = $(this).attr("id"); 
+
+		var idNumber = $(this).attr("id");
 		console.log("idNumber: "+idNumber);
-		         		
+	         		
 		var dates=JSON.parse(localStorage.dates);
 
 		var from = new Date(dates[idNumber].FromTime);
 		var to = new Date (dates[idNumber].ToTime);
-
-		//console.log("Edit "+from);
-		//console.log("Edit "+to);
 			
+			
+		//Minuten mit einer "0" auffüllen
+		var fromMinutes = from.getMinutes();
+		fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
+		var toMinutes = to.getMinutes();
+		toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
+		
 		// TODO: Load existing values into fields
 		var Datum=from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear();
-		var fromZeit= (from.getHours())+":"+from.getMinutes();
-		var toZeit=(to.getHours())+":"+to.getMinutes();
+		var fromZeit= (from.getHours())+":"+fromMinutes;
+		var toZeit=(to.getHours())+":"+toMinutes;
 		
-		alert("HIER");
+
 		console.log("edit hier "+Datum);
 		console.log("edit hier "+fromZeit);
 		console.log("edit hier "+toZeit);
 		
-		$("#edit-date").val(Datum);
-		$("#edit-from").val(fromZeit);
-		$("#edit-to").val(toZeit);   
 
+		
 		//Textfelder mit den letzten Werten befüllen
-//		$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());
-	//	$("#fromtime").val((from.getHours())+":"+from.getMinutes());
-		//$("#totime").val((to.getHours())+":"+to.getMinutes());
+		$("#edit-datefield").val(Datum);
+		$("#edit-fromtime").val(fromZeit);
+		$("#edit-totime").val(toZeit);   
+		$("#date").val(Datum);
+		$("#from").val(fromZeit);
+		$("#to").val(toZeit);  
+		
+
 		
 		
 		// Update localStorage (specific ID = time)
@@ -280,17 +285,9 @@ $(document).on("pagecreate","#time-over-page",function(){
 					
 				$( "#time-over-list" ).append('<li id="'+ idcounter +'" class="editTime"><a class="read-only-list-time" href="#time-edit-page" id="'+ idcounter +'" > '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von '+(from.getHours())+':'+fromMinutes+' bis '+(to.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
 				idcounter++;
-				console.log("idcounter ++:" +idcounter);
 			}
-			//Textfelder mit den letzten Werten befüllen
-			//$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());
-			//$("#fromtime").val((from.getHours())+":"+from.getMinutes());
-			//$("#totime").val((to.getHours())+":"+to.getMinutes());
-		
 
-
-
-			alert("DORT");
+			
 		// TODO: Load existing values into fields
 		var fromMinutes = from.getMinutes();
 		fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
@@ -302,14 +299,16 @@ $(document).on("pagecreate","#time-over-page",function(){
 		var fromZeit= (from.getHours())+":"+fromMinutes;
 		var toZeit=(to.getHours())+":"+toMinutes;
 		
-		console.log("edit dort "+Datum);
-		console.log("edit dort "+fromZeit);
-		console.log("edit dort "+toZeit);
+		console.log("edit "+Datum);
+		console.log("edit "+fromZeit);
+		console.log("edit "+toZeit);
 		
 		$("#edit-datefield").val(Datum);
 		$("#edit-fromtime").val(fromZeit);
 		$("#edit-totime").val(toZeit);
-		
+		$("#date").val(Datum);
+		$("#from").val(fromZeit);
+		$("#to").val(toZeit);  		
 			
 		}	
 

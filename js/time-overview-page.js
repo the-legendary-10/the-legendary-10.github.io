@@ -330,3 +330,42 @@ $(document).on("pagecreate","#time-over-page",function(){
 		  $.infoTimeMessage();
 	}
 });
+
+function sorting(dates) {
+	
+	zwischen = new Array(dates.length);
+	vorher = new Array(dates.length);
+	
+	for (i=0;i<zwischen.length;i++) {
+		zwischen[i]=dates[i].FromTime;
+	}
+	
+	zwischen.sort();
+	
+	for (j=0;j<zwischen.length;j++) {
+		for (i=0; i<dates.length; i++) {	
+			if (dates[i].FromTime==zwischen[j]) {
+				vorher[j]=i;
+			}
+		}
+	}
+	
+	neu = new Array(dates.length);
+	
+	for(i=0;i<neu.length;i++) {
+		neu[i]=dates[vorher[i]];
+	}
+	
+	dates=neu;
+	
+	//test(dates);
+	
+	return dates;
+
+}
+
+function test(dates) {
+	for(i=0;i<dates.length;i++) {
+		alert(dates[i].FromTime);
+	}
+}

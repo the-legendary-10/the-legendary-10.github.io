@@ -164,5 +164,12 @@ function GetMap() {
 		return userLocation;
 	}
 	
+//resize Map on orientation change	
+function resizeMap() {
+	var mapHeight = document.documentElement.clientHeight * 0.9;
+	$( "#mapDiv" ).height(mapHeight);
 
+	var mapWidth = document.documentElement.clientWidth * 0.7;
+	$( "#mapDiv" ).width(mapWidth);
+}
 	

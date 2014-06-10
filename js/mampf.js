@@ -54,3 +54,8 @@ function savePhoneNumber(){
 	$("#telephone-coll").collapsible( "option", "collapsed", true );
 	$("#telephone-title a").removeClass("field-telephone-main-page");	
 }
+
+//on changed device orientation
+$( window ).on( "orientationchange", function( event ) {
+	resizeMap();
+});

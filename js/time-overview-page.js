@@ -167,8 +167,6 @@ $(function() {
 		$("#fromtime").val(fromZeit);
 		$("#totime").val(toZeit);   
 
-
-
 		// Update localStorage (specific ID = time)
          
 	});          

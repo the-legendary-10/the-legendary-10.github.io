@@ -49,8 +49,11 @@
 	</div><!-- /header -->
 	<div data-role="content">
 		<div id="results">
-			
 		<table>
+		<tr><td>
+		<div data-role="collapsible" data-content-theme="a" id="telephone-coll" data-collapsed="false" >
+		<h3 id="telephone-title"  >Eigene Nummer pflegen</h3>
+		<table class="ui-responsive">
 			<tr >
 				<td style="width:11%">Eigene Nummer</td>
 				<td> <input name="vorname" type="tel" size="30" maxlength="30" id="telephone" class="field-telephone-main-page" placeholder="4916726799466"> </td>
@@ -58,15 +61,18 @@
 			</tr>
 		
 		</table>
+		
 		<table>
 			<tr >
 		<td> <a href="#" data-role="button" id="telephoneButton"  data-icon="check">Speichern</a></td>
 		    </tr>
 		</table>
-        </br>
+		</div>
+		</td></tr>
+		</table>
 		<table>
 		<tr><td>
-		<div data-role="collapsible" data-content-theme="c">
+		<div data-role="collapsible" data-content-theme="a">
 			<h3>Erg.: <span id="timeslot_heading">Keine Übereinstimmung</span><span id="ajaxloader" ></span></h3>
 			<table id="result_table" class="ui-responsive">
 				<thead>

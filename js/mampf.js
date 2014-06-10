@@ -12,3 +12,4 @@ $(function() {
 		$(this).addClass('ui-panel-active ui-date-persist');
 	});
 });
+

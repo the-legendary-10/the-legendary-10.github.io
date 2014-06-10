@@ -1,9 +1,11 @@
 /* 
 * This file contains the AJAX-Polling Javascript Code
 */
+$( document ).on( "pageinit", "#main-page", refreshHome);
+
 
 $(document).ready( function(){
-	//setInterval(refresh, 5000);
+	$( "#main-page" ).on( "pageshow", refreshHome );
 });
 
 /*AJAX loading indicator*/
@@ -12,6 +14,16 @@ $(document).ajaxStart(function(){
 }).ajaxStop(function(){
 	$('#ajaxloader').hide();
 });
+
+function refreshHome() {
+	var ownPhone = localStorage.getItem("ownphone");
+	var location = getLocation();
+	var phoneNumbersMD5 = localStorage.getItem('group');
+	var timeslots = localStorage.getItem('dates');
+	if(ownPhone && location && phoneNumbersMD5 && timeslots){
+		refresh();
+	}
+}
 
 /*
 * Meta function - gets called every X seconds
@@ -72,6 +84,8 @@ function createRequestData(){
 		resultSlots.push({
 			startTime : startDate.getTime(),
 			endTime : endDate.getTime(),
+			//startTime : startDate.toString(),
+			//endTime : endDate.toString()
 		});
 	});
 

@@ -798,6 +798,10 @@ table th, td{ text-align:left; padding:6px;}
 	display:none;
 }
 
+.ui-input-datebox{
+	width: 100% !important;
+}
+
 
 /*Style for information message (error)
 -----------------------------------------------------------------------------------------------------------*/

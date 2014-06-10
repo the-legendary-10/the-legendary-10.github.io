@@ -121,6 +121,7 @@ function SaveMyTime(){
 						//Ausgabe
 						$( "#time-over-list" ).append('<li id="'+ idcounter +'" class="editTime"><a class="read-only-list-time" href="#time-edit-page" > '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von '+(myDate.FromTime.getHours())+':'+fromMinutes+' bis '+(myDate.ToTime.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
 						idcounter++;
+						console.log("idcounter ++:" +idcounter);
 						
 						// Remove information message, if visible
 						$('#time-content-msg').remove(); 
@@ -143,7 +144,8 @@ function SaveMyTime(){
 $(function() {
 	$("body").on("click", ".editTime",function(e) {
 		// get ID of selected time 
-		var idNumber = $(".editTime").attr("id");  
+	//	var idNumber = $(".editTime").attr("id");  
+		var idNumber = $(this).attr("id"); 
 		console.log("idNumber: "+idNumber);
 		         		
 		var dates=JSON.parse(localStorage.dates);
@@ -278,6 +280,7 @@ $(document).on("pagecreate","#time-over-page",function(){
 					
 				$( "#time-over-list" ).append('<li id="'+ idcounter +'" class="editTime"><a class="read-only-list-time" href="#time-edit-page" id="'+ idcounter +'" > '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von '+(from.getHours())+':'+fromMinutes+' bis '+(to.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
 				idcounter++;
+				console.log("idcounter ++:" +idcounter);
 			}
 			//Textfelder mit den letzten Werten befüllen
 			//$("#datefield").val(from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear());

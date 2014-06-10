@@ -5,32 +5,35 @@ $(function(){
 });
 
 var dates = new Array();
-var idcounter=0;
+//var idcounter=0;
 
 $(function() {
 	$("#ButtonChangeTime").click( function() {
 //function ChangeTime(){
-	console.log("Änderungen werden gespeichert");
+	console.log("Ã„nderungen werden gespeichert");
 	var myDate = new Object();
+	
+	var id = editNumberId; 
+	console.log("id: "+id);
 	
 	//Read Values from input fields
 	
 	//convert Date in usable format
-	//Datum wird um 1 reduziert, um eine Vergleichbarkeit mit today zu ermöglichen (JS fängt bei 0 an!)
+	//Datum wird um 1 reduziert, um eine Vergleichbarkeit mit today zu ermÃ¶glichen (JS fÃ¤ngt bei 0 an!)
 	var unconvDate = $("#edit-datefield").val();
 //	console.log("unconvDate :"+unconvDate);
 
 	if((unconvDate != undefined) && (unconvDate !="")){
 		var Datum = unconvDate.split(".");
 		var WhishedDate = new Date(Datum[2],Datum[1]-1,Datum[0],23,59,59);
-//		console.log("WhishedDate: "+WhishedDate);
+		console.log("WhishedDate: "+WhishedDate);
 			
 		//get todays date
 		var today = new Date();
 				
 		//check if data makes sense
 		if((WhishedDate < today)){
-			alert("Bitte heutiges Datum oder ein Datum in der Zukunft auswählen!");
+			alert("Bitte heutiges Datum oder ein Datum in der Zukunft auswÃ¤hlen!");
 			event.preventDefault();
 		}
 		else{	
@@ -66,15 +69,63 @@ $(function() {
 						event.preventDefault();
 					}
 					else{
-					
+						console.log("AB JETZT WIRDS GEÃ„NDERT");
 						//Create a new JSON Object containing the date and time values 
-						var JSONdate = JSON.stringify(myDate);
-						console.log("JSONdate = "+JSONdate);
+						//var JSONdate = JSON.stringify(myDate);
+						//console.log("JSONdate = "+JSONdate);
 						/*
 						if there are already saved values, read them and append the new value, otherwise 
 						just set old to the current JSON object
 						*/
+		
+		
+						//get the data from localStorage
+						var dates=JSON.parse(localStorage.dates);
+						var old;		 
 						
+						//iterate through the array and copy the remaining dates in a new array
+						for (i=0; i<dates.length; i++){	
+							
+					
+							if(i==id){
+								console.log("i==id");
+								var JSONObj = JSON.stringify(myDate);}
+							else{
+								//copy every date that should not be modified
+								var JSONObj = JSON.stringify(dates[i]);
+							}
+								//make sure, that the new array with the remaining dates is not undefined
+								//and readable
+								console.log(i+" "+JSONObj);
+								if(old!=null){
+									old = old.substring(0, old.length-1) + "," + JSONObj + "]";
+								}
+								else{
+									old= "[" + JSONObj + "]";
+								}
+							
+						}//for
+						 console.log("old"+old);
+						//if there are dates left, save them to the localStorage, overwriting the old data
+						if((old!= null)&& (old!=undefined)){
+							console.log("Ins LocalStorage gespeichert");
+							localStorage.dates=old; 
+						}
+						//if there are no dates left, delete the key from localStorage
+						else{
+							localStorage.removeItem("dates");		 
+						}        
+						 
+						// Remove the item from the time-overview-page 
+				//		$('li').remove('#'+idWithoutPraefix);
+				 
+						if(localStorage.dates == null) {
+							$.infoTimeMessage();
+						}
+						
+						
+						// Create new time list with new IDs
+						$( "#time-over-page" ).trigger("pagecreate");
 			/*			
 						var old = localStorage.getItem("dates");
 						
@@ -88,7 +139,7 @@ $(function() {
 						//save the values to localStorage
 						localStorage.dates=old;
 					
-						//Minuten mit einer "0" auffüllen
+						//Minuten mit einer "0" auffÃ¼llen
 						var fromMinutes = myDate.FromTime.getMinutes();
 						fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
 						var toMinutes = myDate.ToTime.getMinutes();

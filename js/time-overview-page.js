@@ -134,7 +134,7 @@ function SaveMyTime(){
 						// Remove information message, if visible
 						$('#time-content-msg').remove(); 
 						
-						sorting();
+					//	sorting();
 						$( "#time-over-page" ).trigger("pagecreate");
 						
 					}
@@ -262,6 +262,13 @@ $(document).on("pagecreate","#time-over-page",function(){
    $('#time-over-list').children().remove(); 
    $('#time-content-msg').remove(); 
    
+   
+   // Sorting of localStorage dates
+   if(localStorage.dates != null){ 
+   			sorting();
+   }
+   
+   
 	//if there are already saved values, display them
 	if(localStorage.dates != null){
 	
@@ -305,7 +312,6 @@ $(document).on("pagecreate","#time-over-page",function(){
 		$("#to").val(toZeit);  		
 			
 		}	
-		sorting();
 		$('#time-over-list').listview('refresh');		
 	}
 	
@@ -318,7 +324,7 @@ function sorting() {
 	var dates=JSON.parse(localStorage.dates);
 	
 	zwischen = new Array(dates.length);
-	vorher = new Array(dates.length);
+	vorher = new Array();
 	
 	for (i=0;i<zwischen.length;i++) {
 		zwischen[i]=dates[i].FromTime;
@@ -326,17 +332,28 @@ function sorting() {
 	
 	zwischen.sort();
 	
+	
+	// Used for comparision, if date is in the past
+	var currentDate = new Date().toISOString();
+	
+	
+	k = 0;
+	
 	for (j=0;j<zwischen.length;j++) {
 		for (i=0; i<dates.length; i++) {	
-			if (dates[i].FromTime==zwischen[j]) {
-				vorher[j]=i;
+		
+			// If date is in the past, do NOT add it to the vorher-array 
+			if (dates[i].FromTime==zwischen[j] && dates[i] && dates[i].ToTime > currentDate   ) { 
+				vorher[k]=i;
+				k++;
 			}
+			
 		}
 	}
 	
 	var neu;
 	
-	for(i=0;i<dates.length;i++) {
+	for(i=0;i<vorher.length;i++) {
 		var JSONObj= JSON.stringify(dates[vorher[i]]);
 		
 		if(neu!=null){
@@ -346,5 +363,11 @@ function sorting() {
 			neu= "[" + JSONObj + "]";
 		}
 	}
-	localStorage.dates=neu;
+	
+	// Set the localStorage dates or delete it, if all dates are deleted 
+	if(neu!=null) {
+		localStorage.dates=neu;
+	} else {
+		localStorage.removeItem("dates");	
+	}
 }

@@ -8,7 +8,7 @@ var dates = new Array();
 //var idcounter=0;
 
 $(function() {
-	$("#ButtonChangeTime").click( function() {
+	$("#ButtonChangeTime").click( function(event) {
 //function ChangeTime(){
 	console.log("Änderungen werden gespeichert");
 	var myDate = new Object();

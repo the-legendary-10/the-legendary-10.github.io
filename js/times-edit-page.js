@@ -78,7 +78,6 @@ $(function() {
 						just set old to the current JSON object
 						*/
 		
-		
 						//get the data from localStorage
 						var dates=JSON.parse(localStorage.dates);
 						var old;		 
@@ -115,45 +114,13 @@ $(function() {
 						else{
 							localStorage.removeItem("dates");		 
 						}        
-						 
-						// Remove the item from the time-overview-page 
-				//		$('li').remove('#'+idWithoutPraefix);
 				 
 						if(localStorage.dates == null) {
 							$.infoTimeMessage();
 						}
 						
-						
 						// Create new time list with new IDs
 						$( "#time-over-page" ).trigger("pagecreate");
-			/*			
-						var old = localStorage.getItem("dates");
-						
-						if(old!=null){
-							old = old.substring(0, old.length-1) + "," + JSONdate + "]";
-						}
-						else{
-							old= "[" + JSONdate + "]";
-						}
-						
-						//save the values to localStorage
-						localStorage.dates=old;
-					
-						//Minuten mit einer "0" auffüllen
-						var fromMinutes = myDate.FromTime.getMinutes();
-						fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
-						var toMinutes = myDate.ToTime.getMinutes();
-						toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
-						
-						//Ausgabe
-						$( "#time-over-list" ).append('<li id="'+ idcounter +'" class="editTime"><a class="read-only-list-time" href="#time-edit-page" > '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von '+(myDate.FromTime.getHours())+':'+fromMinutes+' bis '+(myDate.ToTime.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
-						idcounter++;
-						
-						// Remove information message, if visible
-						$('#time-content-msg').remove(); 
-						
-						$('#time-over-list').listview('refresh');
-					*/	
 					}
 				}
 			}

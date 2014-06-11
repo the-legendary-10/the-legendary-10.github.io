@@ -134,7 +134,8 @@ function SaveMyTime(){
 						// Remove information message, if visible
 						$('#time-content-msg').remove(); 
 						
-						$('#time-over-list').listview('refresh');
+						sorting();
+						$( "#time-over-page" ).trigger("pagecreate");
 						
 					}
 				}
@@ -155,7 +156,6 @@ $(function() {
 
 		var idNumber = $(this).attr("id");
 		editNumberId = idNumber;
-		console.log("idNumber: "+idNumber);
 	         		
 		var dates=JSON.parse(localStorage.dates);
 
@@ -173,14 +173,7 @@ $(function() {
 		var Datum=from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear();
 		var fromZeit= (from.getHours())+":"+fromMinutes;
 		var toZeit=(to.getHours())+":"+toMinutes;
-		
-
-		console.log("edit "+Datum);
-		console.log("edit "+fromZeit);
-		console.log("edit "+toZeit);
-		
-
-		
+			
 		//Textfelder mit den letzten Werten befüllen
 		$("#edit-datefield").val(Datum);
 		$("#edit-fromtime").val(fromZeit);
@@ -188,12 +181,6 @@ $(function() {
 		$("#date").val(Datum);
 		$("#from").val(fromZeit);
 		$("#to").val(toZeit);  
-		
-
-		
-		
-		// Update localStorage (specific ID = time)
-         
 	});          
 }); 
 
@@ -310,10 +297,6 @@ $(document).on("pagecreate","#time-over-page",function(){
 		var fromZeit= (from.getHours())+":"+fromMinutes;
 		var toZeit=(to.getHours())+":"+toMinutes;
 		
-		console.log("edit "+Datum);
-		console.log("edit "+fromZeit);
-		console.log("edit "+toZeit);
-		
 		$("#edit-datefield").val(Datum);
 		$("#edit-fromtime").val(fromZeit);
 		$("#edit-totime").val(toZeit);
@@ -322,7 +305,7 @@ $(document).on("pagecreate","#time-over-page",function(){
 		$("#to").val(toZeit);  		
 			
 		}	
-
+		sorting();
 		$('#time-over-list').listview('refresh');		
 	}
 	
@@ -331,7 +314,8 @@ $(document).on("pagecreate","#time-over-page",function(){
 	}
 });
 
-function sorting(dates) {
+function sorting() {
+	var dates=JSON.parse(localStorage.dates);
 	
 	zwischen = new Array(dates.length);
 	vorher = new Array(dates.length);
@@ -350,22 +334,17 @@ function sorting(dates) {
 		}
 	}
 	
-	neu = new Array(dates.length);
+	var neu;
 	
-	for(i=0;i<neu.length;i++) {
-		neu[i]=dates[vorher[i]];
-	}
-	
-	dates=neu;
-	
-	//test(dates);
-	
-	return dates;
-
-}
-
-function test(dates) {
 	for(i=0;i<dates.length;i++) {
-		alert(dates[i].FromTime);
+		var JSONObj= JSON.stringify(dates[vorher[i]]);
+		
+		if(neu!=null){
+			neu = neu.substring(0, neu.length-1) + "," + JSONObj + "]";
+		}
+		else{
+			neu= "[" + JSONObj + "]";
+		}
 	}
+	localStorage.dates=neu;
 }

@@ -35,6 +35,7 @@ $(function() {
 		if((WhishedDate < today)){
 			alert("Bitte heutiges Datum oder ein Datum in der Zukunft auswählen!");
 			event.preventDefault();
+			return;
 		}
 		else{	
 			//convert times

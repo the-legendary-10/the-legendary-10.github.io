@@ -353,7 +353,7 @@ $(document).on("pagecreate","#time-over-page",function(){
 			
 			// Check, if date is in the past
 			if ( dates[i].FromTime > currentDate  ) {   
-			
+	´
 				 // Leave the for-loop, if i = 0 ... We expect an sorted dates array. If the first element is in the future,
 				 //   the other dates will be in the future either. 
 				 if(i == 0) {

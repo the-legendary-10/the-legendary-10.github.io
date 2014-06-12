@@ -9,12 +9,9 @@ var dates = new Array();
 
 $(function() {
 	$("#ButtonChangeTime").click( function(event) {
-//function ChangeTime(){
-	console.log("Änderungen werden gespeichert");
 	var myDate = new Object();
-	
 	var id = editNumberId; 
-	console.log("id: "+id);
+	console.log("Editid: "+id);
 	
 	//Read Values from input fields
 	
@@ -26,7 +23,7 @@ $(function() {
 	if((unconvDate != undefined) && (unconvDate !="")){
 		var Datum = unconvDate.split(".");
 		var WhishedDate = new Date(Datum[2],Datum[1]-1,Datum[0],23,59,59);
-		console.log("WhishedDate: "+WhishedDate);
+//		console.log("WhishedDate: "+WhishedDate);
 			
 		//get todays date
 		var today = new Date();
@@ -69,7 +66,6 @@ $(function() {
 						event.preventDefault();
 					}
 					else{
-						console.log("AB JETZT WIRDS GEÄNDERT");
 						//Create a new JSON Object containing the date and time values 
 						//var JSONdate = JSON.stringify(myDate);
 						//console.log("JSONdate = "+JSONdate);
@@ -80,22 +76,26 @@ $(function() {
 		
 						//get the data from localStorage
 						var dates=JSON.parse(localStorage.dates);
-						var old;		 
+						var old;	
+						var JSONObj;
 						
 						//iterate through the array and copy the remaining dates in a new array
 						for (i=0; i<dates.length; i++){	
 							
-					
+						//	console.log("i: "+i);
 							if(i==id){
-								console.log("i==id");
-								var JSONObj = JSON.stringify(myDate);}
+							//	console.log("i==id");
+								JSONObj = JSON.stringify(myDate);
+							//	console.log("JSONObj: "+JSONObj);
+							}
 							else{
 								//copy every date that should not be modified
-								var JSONObj = JSON.stringify(dates[i]);
+								JSONObj = JSON.stringify(dates[i]);
+							//	console.log("JSONObj: "+JSONObj);
 							}
 								//make sure, that the new array with the remaining dates is not undefined
 								//and readable
-								console.log(i+" "+JSONObj);
+							//	console.log(i+" "+JSONObj);
 								if(old!=null){
 									old = old.substring(0, old.length-1) + "," + JSONObj + "]";
 								}
@@ -109,9 +109,11 @@ $(function() {
 						if((old!= null)&& (old!=undefined)){
 							console.log("Ins LocalStorage gespeichert");
 							localStorage.dates=old; 
+							console.log(localStorage.dates);
 						}
 						//if there are no dates left, delete the key from localStorage
 						else{
+							console.log("dates from localStorage removed");
 							localStorage.removeItem("dates");		 
 						}        
 				 

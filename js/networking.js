@@ -1,20 +1,29 @@
 /* 
-* This file contains the AJAX-Polling Javascript Code
+* This file contains the AJAX-Polling Javascript Code, as well as
+* the code for fetching data from the UI and rendering responses 
+* back into the DOM
+*/
+
+/*
+* Do an AJAX request whenever we open the HOME-screen
 */
 $( document ).on( "pageinit", "#main-page", refreshHome);
-
-
 $(document).ready( function(){
 	$( "#main-page" ).on( "pageshow", refreshHome );
 });
 
-/*AJAX loading indicator*/
+/*
+* AJAX loading indicator
+*/
 $(document).ajaxStart(function(){
 	$('#ajaxloader').show();
 }).ajaxStop(function(){
 	$('#ajaxloader').hide();
 });
 
+/*
+* AJAX polling without error messages
+*/
 function refreshHome() {
 	var ownPhone = localStorage.getItem("ownphone");
 	var location = getLocation();
@@ -26,7 +35,7 @@ function refreshHome() {
 }
 
 /*
-* Meta function - gets called every X seconds
+* Do a request and render the result
 */
 function refresh(){
 	var requestData=createRequestData();
@@ -34,7 +43,6 @@ function refresh(){
 		return;
 	}
 	postRequest(requestData);
-	//renderResponse(JSON.parse('{"subjects":["B25BF7426FABCADF01103045FD7707CE"],"timeslot":{"startTime":1401390559163,"endTime":1401397759164}}'));
 }
 
 /*
@@ -61,12 +69,8 @@ function createRequestData(){
 	/*Location */
 	var location = getLocation();
 	if(location == undefined){
-	/* temporary change to work with location unavailable*/
-	//	alert("Bitte Locationabfrage erlauben");
-	//	return undefined;
-		location = new Object();
-		location.longitude = 80;
-		location.latitude = 80;
+		alert("Bitte Standort angeben");
+		return undefined;
 	}
 
 	/* Timeslots*/
@@ -82,10 +86,9 @@ function createRequestData(){
 		startDate = new Date(slot.FromTime);
 		endDate = new Date(slot.ToTime);
 		resultSlots.push({
+			/*UNIX-timestamp*/
 			startTime : startDate.getTime(),
 			endTime : endDate.getTime(),
-			//startTime : startDate.toString(),
-			//endTime : endDate.toString()
 		});
 	});
 
@@ -98,7 +101,6 @@ function createRequestData(){
 		},
 		timeslots : resultSlots,
 	};
-	//console.log(result);
 	return result;
 }
 
@@ -122,9 +124,9 @@ function postRequest(requestData){
 function renderResponse(json){
 	var startTime;
 	var endTime;
-	//console.log(json);
 	$("#result_table > tbody").empty();
 	
+	/*create dates if we got something back*/
 	if(json.timeslot){
 		startTime = new Date(json.timeslot.startTime);
 		endTime = new Date(json.timeslot.endTime);
@@ -137,6 +139,7 @@ function renderResponse(json){
 		return;
 	}
 	
+	/*Render into #result_table*/
 	json.subjects.forEach(function(subject){
 		var contact = md5ToContact(subject);
 		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+" "+contact.lastName +"</td></tr>");
@@ -145,9 +148,8 @@ function renderResponse(json){
 
 
 /*
-* Converts an MD5-Hashed phone number to a contact
+* Convert an MD5-hashed phone number to a contact
 */
-
 function md5ToContact(md5number) {
 	var contactObj;
   	$.each( contacts, function( i, contact ) {

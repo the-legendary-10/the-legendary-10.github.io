@@ -70,7 +70,7 @@ function SaveMyTime(){
 			var NewToTime = new Date(Datum[2], Datum[1]-1, Datum[0], (parseInt(unconvToPart[0])), unconvToPart[1], "00");	
 			myDate.ToTime = NewToTime;
 			
-			//Check if Times and Dates make sense and are empty
+			//Check if Times and Dates are empty or undefined
 			if ((myDate.FromTime== null) || (myDate.ToTime== null) || (myDate.FromTime == undefined)  || (myDate.ToTime == undefined)){
 				alert("Bitte Werte eintragen!");
 				event.preventDefault();

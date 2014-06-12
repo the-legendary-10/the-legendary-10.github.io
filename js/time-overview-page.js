@@ -348,11 +348,11 @@ $(document).on("pagecreate","#time-over-page",function(){
 		
 		var k = 0;
 		
-		alert(currentDates.length);
+	//	alert(currentDates.length);
 		for (i=0;i<currentDates.length;i++) {
 		
 			if (currentDates[i].ToTime > currentDate   ) { 
-				 alert("test");
+			//	 alert("test");
 			//     newDates[k]=currentDates[i].FromTime;
 			//     k++;
 		    } else {

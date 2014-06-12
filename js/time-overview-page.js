@@ -255,7 +255,6 @@ $(function() {
 
 $(document).on("pagecreate","#time-over-page",function(){
 //$("#time-over-page").ready(function(){
-
 	var idcounter=0;
 
    // Initialize
@@ -320,6 +319,68 @@ $(document).on("pagecreate","#time-over-page",function(){
 	}
 });
 
+//------------------------------------------------------------------------------
+
+// Is called every time a new (sub)page is shown
+
+
+
+ $( document ).on( "pagecontainershow", function( event, ui ) {
+ 
+ 
+	activePage = $.mobile.activePage.attr('id');
+	
+	// Is executed, if the subpage is time-overview-page
+    if(activePage == 'time-over-page') {
+    
+    
+    	// Used for comparision, if date is in the past
+	    var currentDate = new Date().toISOString(); 
+	    
+	    var dateDeleted = false;
+	
+	
+    	var dates=JSON.parse(localStorage.dates);
+	
+		currentDates = new Array(dates.length);
+		newDates = new Array();
+		
+		
+		var k = 0;
+		
+		alert(currentDates.length);
+		for (i=0;i<currentDates.length;i++) {
+		
+			if (currentDates[i].ToTime > currentDate   ) { 
+				 alert("test");
+			//     newDates[k]=currentDates[i].FromTime;
+			//     k++;
+		    } else {
+		    		dateDeleted = true; 
+		    }
+		}
+		
+		
+		
+		if(dateDeleted == true && newDates != null) {
+			
+			// Set the localStorage dates or delete it, if all dates are deleted 
+			if(neu!=null) {
+				localStorage.dates=newDates;
+			} else {
+				localStorage.removeItem("dates");	
+			}
+		
+			$( "#time-over-page" ).trigger("pagecreate");
+		
+		}
+    
+    	
+    }
+  } );
+  
+  
+
 function sorting() {
 	var dates=JSON.parse(localStorage.dates);
 	
@@ -336,20 +397,15 @@ function sorting() {
 	// Used for comparision, if date is in the past
 	var currentDate = new Date().toISOString();
 	
-	
-	k = 0;
+
 	
 	for (j=0;j<zwischen.length;j++) {
-		for (i=0; i<dates.length; i++) {	
-		
-			// If date is in the past, do NOT add it to the vorher-array 
-			if (dates[i].FromTime==zwischen[j] && dates[i] && dates[i].ToTime > currentDate   ) { 
-				vorher[k]=i;
-				k++;
-			}
-			
-		}
-	}
+ 		for (i=0; i<dates.length; i++) {	
+ 			if (dates[i].FromTime==zwischen[j]) {
+ 				vorher[j]=i;
+ 			}
+ 		}
+ 	}
 	
 	var neu;
 	
@@ -363,11 +419,7 @@ function sorting() {
 			neu= "[" + JSONObj + "]";
 		}
 	}
-	
-	// Set the localStorage dates or delete it, if all dates are deleted 
-	if(neu!=null) {
+
 		localStorage.dates=neu;
-	} else {
-		localStorage.removeItem("dates");	
-	}
+
 }

@@ -114,7 +114,7 @@ $(function() {
            
            
            // Trigger update of group-overview-page
-            $( "#group-overview-page" ).trigger("pagecreate");
+            $( "#group-ov-panel" ).trigger("pagecreate");
            	 
            	 
            }
@@ -133,5 +133,9 @@ $(document).on("pagecreate","#group-edit-page",function(){
 		    // Creation of dynamic listview
 		    dynamicListView(contacts);
 		    
+		    
+		// Highlight group-overview-page in panel 
+		$(".ui-panel-nav").removeClass('ui-panel-active ui-date-persist');
+		$("#group-ov-panel").addClass('ui-panel-active ui-date-persist');
 		     		
 });

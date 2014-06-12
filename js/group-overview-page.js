@@ -197,5 +197,9 @@ $(document).on("pagecreate","#group-overview-page",function(){
    				
    								   			
    		}  
+   		
+   		// Highlight current subpage in panel 
+   		$(".ui-panel-nav").removeClass('ui-panel-active ui-date-persist');
+		$("#group-ov-panel").addClass('ui-panel-active ui-date-persist');
 		
 });

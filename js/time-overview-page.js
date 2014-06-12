@@ -304,6 +304,10 @@ $(document).on("pagecreate","#time-over-page",function(){
 	else {
 		  $.infoTimeMessage();
 	}
+	
+	    // Highlight current subpage in panel 
+	    $(".ui-panel-nav").removeClass('ui-panel-active ui-date-persist');
+		$("#time-ov-panel").addClass('ui-panel-active ui-date-persist');
 });
 
 

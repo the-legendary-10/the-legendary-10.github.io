@@ -365,7 +365,7 @@ function sorting() {
 	zwischen = new Array(dates.length);
 	vorher = new Array();
 	
-	//copy dates into zwischen-Array
+	//copy from time into zwischen-Array
 	for (i=0;i<zwischen.length;i++) {
 		zwischen[i]=dates[i].FromTime;
 	}
@@ -399,5 +399,4 @@ function sorting() {
 	}
 
 	localStorage.dates=neu;
-
 }

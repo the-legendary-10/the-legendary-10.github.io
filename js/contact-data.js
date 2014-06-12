@@ -1,7 +1,7 @@
 // // Test data for contacts ... Array of objects
 
 var contacts = [
-         {firstName: "Simon", lastName: "Rech", phoneNumber: "4912345678",},
+         {firstName: "Simon", lastName: "Rech", phoneNumber: "4915142425248",},
          {firstName: "Lisa", lastName: "Hanstein", phoneNumber: "49123654678",}, 
          {firstName: "Patrick", lastName: "Heinze", phoneNumber: "4975454458",},    
          {firstName: "Christian", lastName: "Müller", phoneNumber: "4933335678",}, 

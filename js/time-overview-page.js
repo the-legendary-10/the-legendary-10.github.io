@@ -36,22 +36,17 @@ $.infoTimeMessage = function() {
 
 //------------------------------------------------------------------------------
 // Function for saving new times 
- 
-
-
 function SaveMyTime(){	
-
-	//var dates = new Array();
+	//declare used variables
 	var idcounter=0;
 	var myDate = new Object();
 	
-	//Read Values from input fields
-	
 	//convert Date in usable format
-	//Datum wird um 1 reduziert, um eine Vergleichbarkeit mit today zu ermöglichen (JS fängt bei 0 an!)
+	//Date is reduced by 1 to enable comparability with today (JS starts counting with 0)
 	var unconvDate = $("#datefield").val();
 
-	if((unconvDate != undefined) && (unconvDate !="")){
+	//check if date is undefined or empty
+	if((unconvDate != undefined) && (unconvDate !="")&& (unconvDate !=null)){
 		var Datum = unconvDate.split(".");
 		var WhishedDate = new Date(Datum[2],Datum[1]-1,Datum[0],23,59,59);
 			
@@ -64,7 +59,7 @@ function SaveMyTime(){
 			event.preventDefault();
 		}
 		else{	
-			//convert times
+			//convert times and save them to myDate
 			var unconvFrom = $("#fromtime").val();
 			var unconvFromPart = unconvFrom.split(":");
 			var NewFromTime = new Date(Datum[2], Datum[1]-1, Datum[0], (parseInt(unconvFromPart[0])), unconvFromPart[1], "00");
@@ -75,20 +70,20 @@ function SaveMyTime(){
 			var NewToTime = new Date(Datum[2], Datum[1]-1, Datum[0], (parseInt(unconvToPart[0])), unconvToPart[1], "00");	
 			myDate.ToTime = NewToTime;
 			
-			//alert("Stunde: "+myDate.ToTime.getHours());
 			//Check if Times and Dates make sense and are empty
 			if ((myDate.FromTime== null) || (myDate.ToTime== null) || (myDate.FromTime == undefined)  || (myDate.ToTime == undefined)){
 				alert("Bitte Werte eintragen!");
 				event.preventDefault();
+			}
+			else{
 				
-			}else{
-				
-				//Check ob die Endzeit vor der Beginzeit liegt
+				//Check if end time is before start time
 				if(myDate.FromTime > myDate.ToTime){
 					alert("Bitte die Zeiten anpassen");
 					event.preventDefault();
-					
-				}else{
+				}
+				else{
+					//check if duration is >=45 minutes
 					if((((myDate.ToTime-myDate.FromTime)/1000)/60)<45){
 						alert("Bitte nehmen Sie sich mindestens 45 min Zeit zum Essen!");
 						event.preventDefault();
@@ -103,16 +98,13 @@ function SaveMyTime(){
 						just set old to the current JSON object
 						*/
 						var old = localStorage.getItem("dates");
-	
-						
-						
+							
 						if(old!=null){
 							old = old.substring(0, old.length-1) + "," + JSONdate + "]";
-							
-							//idcounter hochzählen
 							var dates=JSON.parse(localStorage.dates);
+							
+							//set idcounter to dates.length
 							idcounter=dates.length;
-
 						}
 						else{
 							old= "[" + JSONdate + "]";
@@ -121,28 +113,29 @@ function SaveMyTime(){
 						//save the values to localStorage
 						localStorage.dates=old;
 						
-						//Minuten mit einer "0" auffüllen
+						//fill up minutes with zeros
 						var fromMinutes = myDate.FromTime.getMinutes();
 						fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
 						var toMinutes = myDate.ToTime.getMinutes();
 						toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 						
-						//Ausgabe
+						//create output
 						$( "#time-over-list" ).append('<li id="'+ idcounter +'" class="editTime"><a class="read-only-list-time" href="#time-edit-page" > '+myDate.FromTime.getDate()+'.'+(myDate.FromTime.getMonth()+1)+'.'+myDate.FromTime.getUTCFullYear()+' von '+(myDate.FromTime.getHours())+':'+fromMinutes+' bis '+(myDate.ToTime.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" id="'+ idcounter +'">Delete</a></li>');
 						idcounter++;
 						
 						// Remove information message, if visible
 						$('#time-content-msg').remove(); 
 						
-					//	sorting();
-						$( "#time-over-page" ).trigger("pagecreate");
-						
+						//reload page to update changes
+						$( "#time-over-page" ).trigger("pagecreate");			
 					}
 				}
 			}
 		}
-	}else{
+	}
+	else{
 		alert("Datum ist nicht definiert!");
+		event.preventDefault();
 	}
 }
 
@@ -154,27 +147,28 @@ function SaveMyTime(){
 $(function() {
 	$("body").on("click", ".editTime",function(e) {
 
+		//get id of the element to be modified
 		var idNumber = $(this).attr("id");
 		editNumberId = idNumber;
-	         		
+	    
+		//get dates from localStorage
 		var dates=JSON.parse(localStorage.dates);
 
+		//extract times from dates
 		var from = new Date(dates[idNumber].FromTime);
 		var to = new Date (dates[idNumber].ToTime);
 			
-			
-		//Minuten mit einer "0" auffüllen
+		//fill up minutes with zeros
 		var fromMinutes = from.getMinutes();
 		fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
 		var toMinutes = to.getMinutes();
 		toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 		
-		// TODO: Load existing values into fields
+		//Load existing values into fields
 		var Datum=from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear();
 		var fromZeit= (from.getHours())+":"+fromMinutes;
 		var toZeit=(to.getHours())+":"+toMinutes;
-			
-		//Textfelder mit den letzten Werten befüllen
+		
 		$("#edit-datefield").val(Datum);
 		$("#edit-fromtime").val(fromZeit);
 		$("#edit-totime").val(toZeit);   
@@ -226,48 +220,36 @@ $(function() {
 		else{
 			localStorage.removeItem("dates");		 
 		}        
-         
-        // Remove the item from the time-overview-page 
-//		$('li').remove('#'+idWithoutPraefix);
  
 		if(localStorage.dates == null) {
 			$.infoTimeMessage();
 		}
-		
-		
+			
 		// Create new time list with new IDs
 	    $( "#time-over-page" ).trigger("pagecreate");
-
-		// Update listview
-	//	$('#time-over-list').listview('refresh');
 				 
 		// Close the popup
 		$( "#popup-times" ).popup("close");                 	
     });
 }); 
 
+
+
 //------------------------------------------------------------------------------
-
 // Is called, while 'time-over-page' is being created
-
-
-
-
 $(document).on("pagecreate","#time-over-page",function(){
-//$("#time-over-page").ready(function(){
+	//set idcounter to 0
 	var idcounter=0;
 
    // Initialize
    $('#time-over-list').children().remove(); 
    $('#time-content-msg').remove(); 
    
-   
    // Sorting of localStorage dates
    if(localStorage.dates != null){ 
-   			sorting();
+		sorting();
    }
-   
-   
+
 	//if there are already saved values, display them
 	if(localStorage.dates != null){
 	
@@ -281,52 +263,46 @@ $(document).on("pagecreate","#time-over-page",function(){
 				var from = new Date(dates[i].FromTime);
 				var to = new Date (dates[i].ToTime);
 				
-				//Minuten mit einer "0" auffüllen
+				//fill up minutes with zeros
 				var fromMinutes = from.getMinutes();
 				fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
 				var toMinutes = to.getMinutes();
 				toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
-					
+				
+				//create list of saved times to display
 				$( "#time-over-list" ).append('<li id="'+ idcounter +'" class="editTime"><a class="read-only-list-time" href="#time-edit-page" id="'+ idcounter +'" > '+from.getDate()+'.'+(from.getMonth()+1)+'.'+ from.getUTCFullYear()+' von '+(from.getHours())+':'+fromMinutes+' bis '+(to.getHours())+':'+toMinutes+'</a><a href="#popup-times" class="deleteTime" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>');
 				idcounter++;
 			}
-
-			
-		// TODO: Load existing values into fields
-		var fromMinutes = from.getMinutes();
-		fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
-		var toMinutes = to.getMinutes();
-		toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
-
 		
-		var Datum=from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear();
-		var fromZeit= (from.getHours())+":"+fromMinutes;
-		var toZeit=(to.getHours())+":"+toMinutes;
-		
-		$("#edit-datefield").val(Datum);
-		$("#edit-fromtime").val(fromZeit);
-		$("#edit-totime").val(toZeit);
-		$("#date").val(Datum);
-		$("#from").val(fromZeit);
-		$("#to").val(toZeit);  		
+			//Load existing values into fields
+			var fromMinutes = from.getMinutes();
+			fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
+			var toMinutes = to.getMinutes();
+			toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
 			
+			var Datum=from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear();
+			var fromZeit= (from.getHours())+":"+fromMinutes;
+			var toZeit=(to.getHours())+":"+toMinutes;
+			
+			$("#edit-datefield").val(Datum);
+			$("#edit-fromtime").val(fromZeit);
+			$("#edit-totime").val(toZeit);
+			$("#date").val(Datum);
+			$("#from").val(fromZeit);
+			$("#to").val(toZeit);  		
 		}	
+		//refresh page view
 		$('#time-over-list').listview('refresh');		
 	}
-	
 	else {
 		  $.infoTimeMessage();
 	}
 });
 
+
 //------------------------------------------------------------------------------
-
 // Is called every time a new (sub)page is shown
-
-
-
  $( document ).on( "pagecontainershow", function( event, ui ) {
- 
  
 	activePage = $.mobile.activePage.attr('id');
 	
@@ -382,23 +358,25 @@ $(document).on("pagecreate","#time-over-page",function(){
   
 
 function sorting() {
+	//get Dates from localStorage
 	var dates=JSON.parse(localStorage.dates);
 	
+	//declare arrays
 	zwischen = new Array(dates.length);
 	vorher = new Array();
 	
+	//copy dates into zwischen-Array
 	for (i=0;i<zwischen.length;i++) {
 		zwischen[i]=dates[i].FromTime;
 	}
 	
+	//sort zwischen-Array
 	zwischen.sort();
-	
 	
 	// Used for comparision, if date is in the past
 	var currentDate = new Date().toISOString();
 	
-
-	
+	//
 	for (j=0;j<zwischen.length;j++) {
  		for (i=0; i<dates.length; i++) {	
  			if (dates[i].FromTime==zwischen[j]) {
@@ -420,6 +398,6 @@ function sorting() {
 		}
 	}
 
-		localStorage.dates=neu;
+	localStorage.dates=neu;
 
 }

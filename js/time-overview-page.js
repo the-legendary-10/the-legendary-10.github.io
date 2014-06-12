@@ -300,61 +300,74 @@ $(document).on("pagecreate","#time-over-page",function(){
 });
 
 
-//------------------------------------------------------------------------------
-// Is called every time a new (sub)page is shown
+// Is called every time a new (sub)page is shown ... Delete times from the past
  $( document ).on( "pagecontainershow", function( event, ui ) {
  
+ 	// Get ID of current sub-page
 	activePage = $.mobile.activePage.attr('id');
 	
 	// Is executed, if the subpage is time-overview-page
     if(activePage == 'time-over-page') {
     
     
-    	// Used for comparision, if date is in the past
+    	// Get current time 
 	    var currentDate = new Date().toISOString(); 
 	    
+	    
+	    // Boolean variable ... is set to true, if a date is older than the current date
 	    var dateDeleted = false;
 	
-	
+		
+		// Get date from localStorage
     	var dates=JSON.parse(localStorage.dates);
 	
-		currentDates = new Array(dates.length);
-		newDates = new Array();
-		
 		
 		var k = 0;
+		var newDates;
 		
-	//	alert(currentDates.length);
-		for (i=0;i<currentDates.length;i++) {
-		
-			if (currentDates[i].ToTime > currentDate   ) { 
-			//	 alert("test");
-			//     newDates[k]=currentDates[i].FromTime;
-			//     k++;
+		for (i=0;i<dates.length;i++) {
+			var JSONObj= JSON.stringify(dates[i]);
+			
+			// Check, if date is in the past
+			if ( dates[i].ToTime > currentDate  ) {   
+
+				 // Leave the for-loop, if i = 0 ... We expect an sorted dates array. If the first element is in the future,
+				 //   the other dates will be in the future either. 
+				 if(i == 0) {
+				 	break;
+				 }
+				 
+				 if(newDates!=null){
+					newDates = newDates.substring(0, newDates.length-1) + "," + JSONObj + "]";
+				  }
+				  else{
+					newDates= "[" + JSONObj + "]";
+				}
+		        k++;
 		    } else {
-		    		dateDeleted = true; 
+		    	dateDeleted = true; 
 		    }
 		}
 		
 		
-		
-		if(dateDeleted == true && newDates != null) {
+		// If at least one date is in the past, update the page 
+		if(dateDeleted == true ) {
 			
-			// Set the localStorage dates or delete it, if all dates are deleted 
-			if(neu!=null) {
+			// Set the localStorage dates or remove it, if all dates are deleted 
+			if(newDates!=null) {
 				localStorage.dates=newDates;
+				
 			} else {
 				localStorage.removeItem("dates");	
 			}
-		
+			
+			// Update page
 			$( "#time-over-page" ).trigger("pagecreate");
 		
 		}
-    
     	
     }
   } );
-  
   
 
 function sorting() {

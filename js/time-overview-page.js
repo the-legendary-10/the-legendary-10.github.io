@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 // Function for displaying information message, if no contacts are available 
 $.infoTimeMessage = function() { 
-			$('#time-content-info').append('<div class="infobox" id="time-content-msg" ><b>Hinweis:</b> <br/> Aktuell hast Du <b>keine Zeiten</b> angelegt. Erstelle Zeiten über den Button "Hinzufügen".</div'); 					
+	$('#time-content-info').append('<div class="infobox" id="time-content-msg" ><b>Hinweis:</b> <br/> Aktuell hast Du <b>keine Zeiten</b> angelegt. Erstelle Zeiten über den Button "Hinzufügen".</div'); 					
 }
 
 
@@ -28,7 +28,7 @@ $(function() {
 // Removes individual text in the popup after closing the popup
 $(function() {
 	$( "#popup-times" ).bind({popupafterclose: function(event, ui) {
-			$(".delTime").remove();        
+		$(".delTime").remove();        
 	}});
 }); 
 
@@ -128,18 +128,11 @@ $(document).on("pagecreate","#time-over-page",function(){
 			var JSONObj= JSON.stringify(dates[i]);
 			
 			// Check, if date is in the past
-			if ( dates[i].ToTime > currentDate  ) {   
-
-	//			 // Leave the for-loop, if i = 0 ... We expect an sorted dates array. If the first element is in the future,
-	//			 //   the other dates will be in the future either. 
-	//			 if(i == 0) {
-	//			 	break;
-	//			 }
-				 
-				 if(newDates!=null){
+			if ( dates[i].ToTime > currentDate  ) {   				 
+				if(newDates!=null){
 					newDates = newDates.substring(0, newDates.length-1) + "," + JSONObj + "]";
-				  }
-				  else{
+				}
+				else{
 					newDates= "[" + JSONObj + "]";
 				}
 		        k++;
@@ -147,22 +140,19 @@ $(document).on("pagecreate","#time-over-page",function(){
 		    	dateDeleted = true; 
 		    }
 		}
-		
-		
+				
 		// If at least one date is in the past, update the page 
 		if(dateDeleted == true ) {
 			
 			// Set the localStorage dates or remove it, if all dates are deleted 
 			if(newDates!=null) {
-				localStorage.dates=newDates;
-				
+				localStorage.dates=newDates;	
 			} else {
 				localStorage.removeItem("dates");	
 			}
 			
 			// Update page
 			$( "#time-over-page" ).trigger("pagecreate");
-		
 		}
     }
 });

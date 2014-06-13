@@ -41,8 +41,10 @@ $(document).on("pagecreate","#main-page",function(){
 
 /*Independent: save own phone number*/
 function savePhoneNumber(){
+
 	var phoneNumber = $('#telephone').val();
 	
+	// Check if telephone number exists of any string
 	for(i = 0; i<phoneNumber.length;i++) {
         if(phoneNumber.charAt(i) < "0" || phoneNumber.charAt(i) > "9" ) {
             alert("Bitte Ziffern eingeben.");
@@ -52,12 +54,13 @@ function savePhoneNumber(){
     }
 
 
-	if(phoneNumber.length <= 7 || phoneNumber.length > 20 ) {
+	// Check if telephone number has between 7 and 20 chars
+	if(phoneNumber.length < 7 || phoneNumber.length > 20 ) {
         alert("Bitte mindestens 7 und höchstens 20 Ziffern eingeben.");
         event.preventDefault();
     }
 
-
+	// Save telephone number in local storage
     else {
         localStorage.setItem("ownphone", phoneNumber);
         $("#telephone").removeClass("field-telephone-main-page");

@@ -31,7 +31,6 @@ $(document).on("pagecreate","#main-page",function(){
 		$("#telephone").removeClass("field-telephone-main-page");
 
 		$("#telephoneButton").text("\u00c4ndern");
-//		$("#telephoneButton").addClass("button-save-main-page");
 		$("#telephone-title a").text("Eigene Nummer bearbeiten");
 		$("#telephone-coll").collapsible( "option", "collapsed", true );
 		$("#telephone-title a").removeClass("field-telephone-main-page");

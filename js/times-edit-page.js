@@ -1,11 +1,4 @@
-$(function(){
-	$("#popup-times").click( function(){
-		//console.log("popup-times");
-	});
-});
-
 var dates = new Array();
-//var idcounter=0;
 
 $(function() {
 	$("#ButtonChangeTime").click( function(event) {

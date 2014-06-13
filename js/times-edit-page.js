@@ -95,7 +95,7 @@ $(function() {
 					
 				}else{
 					if((((myDate.ToTime-myDate.FromTime)/1000)/60)<45){
-						alert("Bitte nehmen Sie sich mindestens 45 min Zeit zum Essen!");
+						alert("Bitte nimm dir mindestens 45 min Zeit zum Essen!");
 						event.preventDefault();
 					}
 					else{

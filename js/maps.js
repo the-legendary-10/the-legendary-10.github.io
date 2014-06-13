@@ -76,18 +76,19 @@ function GetMap() {
 		$("#locationRadios1").attr("disabled", true);
         switch (geoPositionError.code) { 
             case 0: // UNKNOWN_ERROR 
-                alert('An unknown error occurred, sorry'); 
+                alert('Ein unbekannter Fehler ist aufgetreten, sorry.'); 
                 break; 
             case 1: // PERMISSION_DENIED 
-                alert('Permission to use Geolocation was denied'); 
+                alert('Die Erlaubnis zur Standortbestimmung wurde verweigert.'); 
                 break; 
             case 2: // POSITION_UNAVAILABLE 
-                alert('Couldn\'t find you...'); 
+                alert('Position zur Zeit nicht verfügbar...'); 
                 break; 
             case 3: // TIMEOUT 
-                alert('The Geolocation request took too long and timed out'); 
+                alert('Die Standortbestimmung hat zu lange gedauert und es ist ein Timeout aufgetreten.'); 
                 break; 
             default: 
+				break;
         } 
     }
     // Draw blue circle on top of user's location 

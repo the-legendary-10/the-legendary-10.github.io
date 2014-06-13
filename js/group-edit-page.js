@@ -113,6 +113,10 @@ $(function() {
            localStorage.setItem("group", arrayPhoneNumbers);
            
            
+           // Clears search filter 
+           $( "#filterContacts" ).val("");
+           $('#filterContacts').trigger("keyup");
+           
            // Trigger update of group-overview-page
             $( "#group-overview-page" ).trigger("pagecreate");
            	 

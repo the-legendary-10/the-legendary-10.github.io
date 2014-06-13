@@ -1,3 +1,43 @@
+//------------------------------------------------------------------------------
+// Function defines action after clicking on an existing time (class = editTime)
+
+$(function() {
+	$("body").on("click", ".editTime",function(e) {
+
+		//get id of the element to be modified
+		var idNumber = $(this).attr("id");
+		editNumberId = idNumber;
+	    
+		//get dates from localStorage
+		var dates=JSON.parse(localStorage.dates);
+
+		//extract times from dates
+		var from = new Date(dates[idNumber].FromTime);
+		var to = new Date (dates[idNumber].ToTime);
+			
+		//fill up minutes with zeros
+		var fromMinutes = from.getMinutes();
+		fromMinutes = fromMinutes > 9 ? fromMinutes : '0' + fromMinutes;
+		var toMinutes = to.getMinutes();
+		toMinutes = toMinutes > 9 ? toMinutes : '0' + toMinutes;
+		
+		//Load existing values into fields
+		var Datum=from.getDate()+"."+(from.getMonth()+1)+"."+from.getUTCFullYear();
+		var fromZeit= (from.getHours())+":"+fromMinutes;
+		var toZeit=(to.getHours())+":"+toMinutes;
+		
+		$("#edit-datefield").val(Datum);
+		$("#edit-fromtime").val(fromZeit);
+		$("#edit-totime").val(toZeit);   
+		$("#date").val(Datum);
+		$("#from").val(fromZeit);
+		$("#to").val(toZeit);  
+	});          
+}); 
+
+
+//------------------------------------------------------------------------------
+//Function to save changes at a timeslot
 var dates = new Array();
 
 $(function() {
@@ -77,6 +117,7 @@ $(function() {
 							
 						//	console.log("i: "+i);
 							if(i==id){
+								//replace old content with the new changed times
 							//	console.log("i==id");
 								JSONObj = JSON.stringify(myDate);
 							//	console.log("JSONObj: "+JSONObj);

@@ -19,7 +19,7 @@ function SaveMyTime(){
 				
 		//check if data makes sense
 		if((WhishedDate < today)){
-			alert("Bitte heutiges Datum oder ein Datum in der Zukunft auswählen!");
+			alert("Bitte heutiges Datum oder ein Datum in der Zukunft ausw\u00E4hlen!");
 			event.preventDefault();
 		}
 		else{	
@@ -55,7 +55,7 @@ function SaveMyTime(){
 					else{
 						//check if duration is >=45 minutes
 						if((((myDate.ToTime-myDate.FromTime)/1000)/60)<45){
-							alert("Bitte nehmen Sie sich mindestens 45 min Zeit zum Essen!");
+							alert("Bitte nimm dir mindestens 45 min Zeit zum Essen!");
 							event.preventDefault();
 						}
 						else{

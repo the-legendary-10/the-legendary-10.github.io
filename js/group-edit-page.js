@@ -114,7 +114,7 @@ $(function() {
            
            
            // Trigger update of group-overview-page
-            $( "#group-ov-panel" ).trigger("pagecreate");
+            $( "#group-overview-panel" ).trigger("pagecreate");
            	 
            	 
            }

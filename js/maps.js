@@ -151,9 +151,7 @@ function GetMap() {
 		if (locationRadio.value == 2) {
 			if (chosenLocation !== null){
 				userLocation = chosenLocation;				
-				$("#locationRadios2").attr("checked",true).checkboxradio("refresh");
-				//$("#locationRadios1").attr("checked",false).checkboxradio("refresh");
-				//locationRadio.checked = true;
+				$("#locationRadios2").attr("checked",true).checkboxradio("refresh");				
 				$("#locationRadios2").prop('checked', true).checkboxradio('refresh');
 			}
 		}

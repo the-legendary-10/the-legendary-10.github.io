@@ -183,21 +183,26 @@ function sorting() {
 		zwischen[i]=dates[i].FromTime;
 	}
 	
-	//sort zwischen-Array
+	//sort-function for automated sorting of the FromTimes ONLY
 	zwischen.sort();
 	
 	// Used for comparision, if date is in the past
 	var currentDate = new Date().toISOString();
 	
+	//"Saving" the OLD order of dates !! This will be necessary for re-ordering the dates-array in a new one
 	for (j=0;j<zwischen.length;j++) {
  		for (i=0; i<dates.length; i++) {	
  			if (dates[i].FromTime==zwischen[j]) {
- 				vorher[j]=i;
+ 				//Saving the OLD index "i" in an array. The index "j" is the NEW index.
+				vorher[j]=i;
  			}
  		}
  	}
 	
-	var neu;	
+	//new array in wich the objects should be sorted at the end!
+	var neu;
+	
+	//saving sorted "dates" in JSON-Object
 	for(i=0;i<vorher.length;i++) {
 		var JSONObj= JSON.stringify(dates[vorher[i]]);
 		

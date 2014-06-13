@@ -1,7 +1,5 @@
 MAMPF!
 =============
-Implementierung über jQuery Mobile
--------------
 
 Bleibe in Kontakt mit deinen Freunden und Kollegen!
 

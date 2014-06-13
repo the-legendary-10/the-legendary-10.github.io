@@ -42,7 +42,7 @@ function GetMap() {
             navigator.geolocation.getCurrentPosition(locateSuccess, locateFail);
         } 
         else { 
-            alert('I\'m sorry, but Geolocation is not supported in your current browser.'); 
+            alert('Entschuldigung, Geolocation wird in deinem Browser aktuell nicht unterstützt.'); 
 			$("#locationRadios1").attr("disabled", true);
         } 
     } 

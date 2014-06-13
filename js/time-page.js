@@ -19,7 +19,7 @@ function SaveMyTime(){
 				
 		//check if data makes sense
 		if((WhishedDate < today)){
-			alert("Bitte heutiges Datum oder ein Datum in der Zukunft auswählen!");
+			alert("Bitte heutiges Datum oder ein Datum in der Zukunft ausw\u00E4hlen!");
 			event.preventDefault();
 		}
 		else{	

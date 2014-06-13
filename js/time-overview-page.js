@@ -179,7 +179,8 @@ function sorting() {
 	// Used for comparision, if date is in the past
 	var currentDate = new Date().toISOString();
 	
-	//"Saving" the OLD order of dates !! This will be necessary for re-ordering the dates-array in a new one
+	//"Saving" the OLD order of dates.
+	//This will be necessary for re-ordering the dates-array in a new one
 	for (j=0;j<zwischen.length;j++) {
  		for (i=0; i<dates.length; i++) {	
  			if (dates[i].FromTime==zwischen[j]) {
@@ -196,12 +197,15 @@ function sorting() {
 	for(i=0;i<vorher.length;i++) {
 		var JSONObj= JSON.stringify(dates[vorher[i]]);
 		
+		//if the new array has already data in it, append new JSON object
 		if(neu!=null){
 			neu = neu.substring(0, neu.length-1) + "," + JSONObj + "]";
 		}
+		//if the neu array is empty, create it and initialize it with the first data set
 		else{
 			neu= "[" + JSONObj + "]";
 		}
 	}
+	//update data in localStorage
 	localStorage.dates=neu;
 }

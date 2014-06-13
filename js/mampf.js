@@ -30,8 +30,7 @@ $(document).on("pagecreate","#main-page",function(){
 		$("#telephone").val(ownPhone);
 		$("#telephone").removeClass("field-telephone-main-page");
 
-		$("#telephoneButton").text("Aktualisieren");
-//		$("#telephoneButton").text("\u00c4ndern");
+		$("#telephoneButton").text("\u00c4ndern");
 //		$("#telephoneButton").addClass("button-save-main-page");
 		$("#telephone-title a").text("Eigene Nummer bearbeiten");
 		$("#telephone-coll").collapsible( "option", "collapsed", true );
@@ -47,7 +46,6 @@ function savePhoneNumber(){
 	localStorage.setItem("ownphone", phoneNumber);
 	$("#telephone").removeClass("field-telephone-main-page");
 
-//	$("#telephoneButton").text("Aktualisieren");
 	$("#telephoneButton").text("\u00c4ndern");
 //	$("#telephoneButton").addClass("button-save-main-page");		
 	$("#telephone-title a").text("Eigene Nummer bearbeiten");

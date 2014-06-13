@@ -136,6 +136,7 @@ function renderResponse(json){
 	else{
 		var timeSlotRepr = "Keine Übereinstimmung";
 		$("#timeslot_heading").html(timeSlotRepr);
+		$( "#result_collapsible" ).collapsible( "option", "collapsed", true );
 		return;
 	}
 	
@@ -144,6 +145,8 @@ function renderResponse(json){
 		var contact = md5ToContact(subject);
 		$("#result_table > tbody").append("<tr><td>"+contact.phoneNumber+"</td><td>"+contact.firstName+" "+contact.lastName +"</td></tr>");
 	});
+	
+	$( "#result_collapsible" ).collapsible( "option", "collapsed", false );
 }
 
 

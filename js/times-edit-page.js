@@ -163,6 +163,7 @@ $(function() {
 		}
 	}else{
 		alert("Datum ist nicht definiert!");
+		event.preventDefault();
 	}
 	});
 });

@@ -90,6 +90,11 @@ function GetMap() {
             default: 
 				break;
         } 
+		
+		// Zoom in on Germany on map 
+		// Set default location 
+        defaultLocation = new Microsoft.Maps.Location(50.9802538, 10.3156194); 
+        map.setView({ center: defaultLocation, zoom: 8 });
     }
     // Draw blue circle on top of user's location 
     function drawCircle(loc) { 

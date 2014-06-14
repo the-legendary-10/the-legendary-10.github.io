@@ -144,7 +144,7 @@ $(document).on("pagecreate","#time-over-page",function(){
 		// If at least one date is in the past, update the page 
 		if(dateDeleted == true ) {
 			
-			// Set the localStorage dates or remove it, if all dates are deleted 
+			// Update the localStorage "dates" or remove it, if all dates are deleted 
 			if(newDates!=null) {
 				localStorage.dates=newDates;	
 			} else {

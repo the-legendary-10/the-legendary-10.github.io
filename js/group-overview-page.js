@@ -52,7 +52,6 @@ $(function() {
             
             
             //append text to popup
-            // id = P (Praefix) + h5-hashNumber
             var text = '<p class="toDelete" id ="P' + numberH5 +'">Möchtest du den Kontakt <b>' +  $(this).parent().text() + '</b> <br />aus der Gruppe entfernen?</p>';
             
              $("#popup-content").append(text);
@@ -131,7 +130,6 @@ $(function() {
    	      }
           
           
-   //      $( "#group-overview-page" ).trigger("pagecreate");
    
           // Update listview
           $('#group-over-list').listview('refresh');
@@ -157,7 +155,7 @@ $(function() {
 
 //------------------------------------------------------------------------------
 
-// Is called, while 'contact-overview-page' is being created and after changes in the group-edit-page (save-button)
+// Is called, while 'group-overview-page' is being created and after changes in the group-edit-page (save-button)
 $(document).on("pagecreate","#group-overview-page",function(){
     
     

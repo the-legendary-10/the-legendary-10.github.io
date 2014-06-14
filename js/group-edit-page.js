@@ -72,19 +72,6 @@ function dynamicListView(contacts) {
 }
 
 
-//------------------------------------------------------------------------------
-// // Probably we do not need it. 
-// Enables the save-button, if at least one checkbox is checked 
-//$(document).on("change", ".allCheckboxesContacts", function () {
-//  var checkkboxesChecked = $('.allCheckboxesContacts:checked')
-//    if (checkkboxesChecked.length > 0) {
-//        $("#saveContacts").removeClass('ui-disabled');
-//
-//    } else {
-//        $("#saveContacts").addClass('ui-disabled');
-//       
-//    }
-//});
 
 
 //------------------------------------------------------------------------------
@@ -126,7 +113,7 @@ $(function() {
 });   
 //------------------------------------------------------------------------------
 
-// Is called, while 'contact-page' is being created 
+// Is called, while 'group-edit-page' is being created 
 $(document).on("pagecreate","#group-edit-page",function(){
 		      
 		 

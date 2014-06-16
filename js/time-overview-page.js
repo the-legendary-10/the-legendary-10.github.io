@@ -5,7 +5,7 @@ $.infoTimeMessage = function() {
 }
 
 
-//Globale Variable welcher Zeitslot geändert wird
+//Global variable which timeslot will be edited
 var editNumberId=0;
 //------------------------------------------------------------------------------
 // Function defines text that should appear in the popup after clicking on a delete icon

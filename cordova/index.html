@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta charset="utf-8"> 
+<link rel="stylesheet" href="css/dhbwstyle.css" />
+
+<link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.min.css" />
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.mobile-1.4.2.min.js"></script>
+<script src="js/maps.js"></script>
+<script src="js/networking.js"></script>
+<script src="js/mampf.js"></script>
+<script src="js/contact-data.js"></script>
+<script src="js/jquerymd5.js"></script>
+<script src="js/group-edit-page.js"></script>
+<script src="js/group-overview-page.js"></script>
+<script src="js/times-edit-page.js"></script>
+<script src="js/time-overview-page.js"></script>
+<script src="js/time-page.js"></script>
+<script src="js/time-delete.js"></script>
+
+<script type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1"></script> 
+<script src="js/maps.js"></script>
+
+<link type="text/css" href="css/jqm-datebox.min.css" rel="stylesheet" /> 
+
+<script src="js/jqm-datebox.core.min.js"></script>
+<script src="js/jqm-datebox.mode.calbox.min.js"></script>
+<script src="js/jqm-datebox.mode.datebox.min.js"></script>
+<script src="js/jquery.mobile.datebox.german.js"></script>
+
+</head>
+
+<body>
+<div data-role="panel" id="left-panel" data-position="left" data-display="overlay" data-theme="a">
+		<a href="#main-page" class="ui-panel-active ui-date-persist ui-panel-nav"  data-rel="close" data-role="button" data-mini="true"  data-icon="home" data-iconpos="right">Home</a></br>
+		<a href="#group-overview-page"  id="group-ov-panel" class="ui-panel-nav"  data-rel="close" data-role="button" data-mini="true"  data-icon="user" data-iconpos="right">Gruppe</a></br>
+		<a href="#time-over-page"  id="time-ov-panel" class="ui-panel-nav"   data-rel="close" data-role="button" data-mini="true"  data-icon="calendar" data-iconpos="right">Zeit</a></br>
+		<!--<a href="#" data-rel="close" data-role="button" data-mini="true"  data-icon="delete" data-iconpos="right">Close</a></br>-->
+</div><!-- /leftpanel1 -->
+	
+<div data-role="page" id="main-page" data-theme="a" data-url="main">
+	<div data-role="header" data-theme="a">
+	<h1>MAMPF!</h1>
+	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	</div><!-- /header -->
+	<div data-role="content">
+		<div id="results">
+		<table>
+		<tr><td>
+		<div data-role="collapsible" data-content-theme="a" id="telephone-coll" data-collapsed="false" >
+		<h3 id="telephone-title"  >Eigene Nummer pflegen</h3>
+		<table class="ui-responsive">
+			<tr >
+				<td style="width:11%">Eigene Nummer</td>
+				<td> <input name="vorname" type="tel" size="30" maxlength="30" id="telephone" class="field-telephone-main-page" placeholder="4916726799466"> </td>
+				
+			</tr>
+		
+		</table>
+		
+		<table>
+			<tr >
+		<td> <a href="#" data-role="button" id="telephoneButton"  data-icon="check">Speichern</a></td>
+		    </tr>
+		</table>
+		</div>
+		</td></tr>
+		</table>
+		<table>
+		<tr><td>
+		<div data-role="collapsible" data-content-theme="a" id="result_collapsible">
+			<h3>Erg.: <span id="timeslot_heading">Keine Übereinstimmung</span><span id="ajaxloader" ></span></h3>
+			<table id="result_table" class="ui-responsive">
+				<thead>
+				<tr>
+					<th>Nummer</th>
+					<th>Name</th>
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+        </div>
+		</td></tr>
+		</table>
+        <table>
+			<tr >
+		<td><button type="button" data-icon="refresh" name="refresh" onclick="refresh()">Ergebnisse aktualisieren</button></td>
+		    </tr>
+		</table>
+            
+		<br/>
+		<!-- to show fieldcontain div next to map: style="max-width: 30%; width: 20%; float: right; vertical-align: top;" -->
+		<div data-role="fieldcontain">
+			<div class="infobox" style="margin: 0px;">
+				<!--Sofern Sie zum Mittagessen nicht Ihren Gerätestandort verwenden möchten, wählen Sie bitte per Klick auf die Karte die gewünschte Location. </br>
+				Über die Radio-Buttons können Sie anschließend die gewünschte Location auswählen. -->
+				Durch Klicken auf die Karte kann bei Bedarf ein eigener Standort bestimmt werden.
+			</div>
+			</br>
+			<fieldset data-role="controlgroup">
+				<input type="radio" name="locationRadios" onclick="switchLocation(this);" id="locationRadios1" value="1"/>
+				<label for="locationRadios1" class="read-only-list" id="locLabel1">Gerätestandort (1)</label>
+				<input type="radio" name="locationRadios" onclick="switchLocation(this);" id="locationRadios2" value="2" class="ui-disabled" />
+				<label for="locationRadios2" class="read-only-list" id="locLabel2">Selbstgewählter Standort (2)</label>
+			</fieldset>
+		</div>
+		<div>
+			<div class="mapClass" id="mapDiv" style="position: relative; width: device-width - 30%; height: 600px; align: left; display: inline-block;">
+				<!-- map loads here -->
+			</div>						
+			
+			
+		</div>
+		</div><!-- /results -->
+	</div><!-- /content -->
+	
+	<div data-role="footer" class="footer-class">
+		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io" data-rel="close" data-role="button" data-icon="grid" data-iconpos="left">Github</a></br>
+  </div>
+</div>
+
+
+<!-- Begin: group-overview-page - overview -->
+<div data-role="page" id="group-overview-page" data-theme="a" data-url="group-overview-page">
+	<div data-role="header" data-theme="a" data-position="fixed"  data-id="group-header" data-tap-toggle="false">
+	<h1>Übersicht</h1>
+	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	<a href="#group-edit-page"  id="editContacts" data-theme="a" data-icon="check"   >Bearbeiten</a>
+	</div><!-- /header -->
+	<div data-role="content">
+	<p >Im Folgenden werden alle Kontakte angezeigt, die derzeit zu Deiner Mittagessen-Gruppe gehören. <br/> <br /> 
+	</p>
+	 <ul data-role="listview" id="group-over-list" >
+	 
+	 </ul>
+	 
+	 <div data-role="popup" id="popup-action" 
+	     class="ui-corner-bottom ui-content" data-overlay-theme="a">
+	     <div data-role="header">
+	       <h1>Löschen?</h1>
+	     </div>
+	 
+	     <div data-role="content" >
+	         
+	        		<p id="popup-content"></p>
+	         
+	 
+	         <a href="#" data-role="button" data-rel="back" data-inline="true" data-theme="a" >
+	             Abbrechen
+	         </a>
+	 
+	         <a href="#" id="deleteCon" class="ui-corner-all" data-role="button" data-inline="true"  data-transition="flow" data-theme="a">
+	            Löschen
+	         </a>
+	     </div>
+			
+	</div><!-- /content -->
+	</div>
+	
+	
+</div>
+<!-- End: group-overview-page - overview -->
+
+
+<!-- Begin: group-edit-page - edit group -->
+<div data-role="page" id="group-edit-page" data-theme="a" data-url="group-edit-page">
+	<div data-role="header" data-theme="a" data-position="fixed"  data-id="group-header" data-tap-toggle="false">
+	<h1>Bearbeiten</h1>
+	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	<a href="#group-overview-page"  id="saveContacts" data-theme="a" data-icon="check"   >Speichern</a>
+	</div><!-- /header -->
+	<div data-role="content">
+	   <p>Füge neue Kontakte Deiner Mittagessen-Gruppe hinzu bzw. entferne alte.
+		</p>
+		
+		<!-- Filter contacts: via first and second name -->
+
+	<!-- Filter contacts: via first and second name -->
+	<form id="selectContacts" class="ui-filterable">
+		  <input id="filterContacts" data-type="search" placeholder="Suche">
+	
+	</form>
+	
+	<!-- Fieldset covers all checkboxes -->
+	<fieldset data-role="controlgroup">
+	
+	<!-- Listview is divided by capital letters ...  Connection to filter-field via data-input --> 
+	<ul data-role="listview"  data-autodividers="true" data-inset="true" data-filter="true" data-icon="false" data-input="#filterContacts" id="groupList">
+	
+	<!-- Display of a contact with a checkbox. Building a workaround, since JQM does not provide standard listview functionality with integrated checkboxes -->
+	
+	</ul>
+	</fieldset>
+
+
+	</div><!-- /content -->
+	
+	 
+</div>
+<!-- End: group-edit-page - edit group -->
+
+
+
+<div data-role="page" id="time-over-page" data-theme="a" data-url="time-over-page">
+	<div data-role="header" data-theme="a">
+	<h1>Übersicht</h1>
+	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	<a href="#time-page"  id="addTimes" data-theme="a" data-icon="check"   >Hinzufügen</a>
+	</div><!-- /header -->
+	
+	<div data-role="content">
+	<p >Im Folgenden werden alle Zeiten angezeigt, die im Moment gespeichert sind. Durch Klick auf eine Zeit, kann diese bearbeitet werden.<br/> <br /> 
+	</p>
+	<div id="time-content-info">
+	
+	</div>
+	
+		
+		<ul data-role="listview" id="time-over-list" >
+		
+		</ul>
+		
+		<br / > <br /> 
+					
+	</div><!-- /content -->
+	
+	<div data-role="popup" id="popup-times" 
+	     class="ui-corner-bottom ui-content" data-overlay-theme="a">
+	     <div data-role="header">
+	       <h1>Löschen?</h1>
+	     </div>
+	 
+	     <div data-role="content" >
+	         
+	        		<p id="popup-content-times"></p>
+	         
+	 
+	         <a href="#" data-role="button" data-rel="back" data-inline="true" data-theme="a" >
+	             Abbrechen
+	         </a>
+	 
+	         <a href="#" id="deleteConTimes" class="ui-corner-all" data-role="button" data-inline="true"  data-transition="flow" data-theme="a">
+	            Löschen
+	         </a>
+	     </div>
+			
+	</div><!-- /content -->
+	
+	<div data-role="footer" class="footer-class">
+		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io" data-rel="close" data-role="button" data-icon="grid" data-iconpos="left">Github</a></br>
+  </div>
+</div>
+
+
+
+<div data-role="page" id="time-page" data-theme="a" data-url="time-page">
+	<div data-role="header" data-theme="a">
+	<h1>Hinzufügen</h1>
+	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	<a href="#time-over-page"   data-theme="a" data-icon="delete"   >Abbrechen</a>
+	</div><!-- /header -->
+	
+	<div data-role="content">
+		<p>Zeitauswahl</p></br>
+		
+		<div class="content-primary"> 
+		
+		<!--	<div id="LastValues"></div>  -->
+			
+			<!-- TODO: Default-Werte setzen-->
+			<div data-role="fieldcontain">
+				<label for="deftime">Datum:</label><input name="datefield" id="datefield" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="deftime">Von:</label><input name="fromtime" id="fromtime" type="time" data-role="datebox"  data-options='{"mode": "timebox", "overrideTimeFormat": 24}' />
+			</div>		
+			<div data-role="fieldcontain">
+				<label for="deftime">Bis:</label><input name="totime" id="totime" type="time" data-role="datebox"  data-options='{"mode": "timebox","overrideTimeFormat": 24}' />
+			</div>	
+		</div> 
+		<!-- Die eingegebenen Daten werden mit Klick auf den Button im LocalStorage abgespeichert-->
+		<div>
+			<a href="#time-over-page" data-role="button" id="ButtonSaveTime" data-icon="check" onClick="SaveMyTime()">Hinzufügen</a>
+		</div>
+			
+	</div><!-- /content -->
+	
+	<div data-role="footer" class="footer-class">
+		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io" data-rel="close" data-role="button" data-icon="grid" data-iconpos="left">Github</a></br>
+  </div>
+</div>
+
+
+<div data-role="page" id="time-edit-page" data-theme="a" data-url="time-edit-page">
+	<div data-role="header" data-theme="a">
+	<h1>Zeit ändern</h1>
+	<a href="#left-panel" data-theme="a" data-icon="bullets" data-iconpos="notext" data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"></a>
+	<a href="#time-over-page"   data-theme="a" data-icon="delete"   >Abbrechen</a>
+	</div><!-- /header -->
+	
+	<div data-role="content">
+		<p>Zeitauswahl</p></br>
+		
+		<div class="content-primary"> 
+		
+		<!--	<div id="LastValues"></div>  -->
+			
+			<!-- TODO: Default-Werte setzen-->
+			<div data-role="fieldcontain">
+				<label for="deftime" id="edit-date">Datum:</label><input name="datefield" id="edit-datefield" type="text" data-role="datebox" data-options='{"mode":"calbox", "useNewStyle":true}' />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="deftime" id="edit-from">Von:</label><input name="fromtime" id="edit-fromtime" type="time" data-role="datebox"  data-options='{"mode": "timebox", "overrideTimeFormat": 24}' />
+			</div>		
+			<div data-role="fieldcontain">
+				<label for="deftime" id="edit-to">Bis:</label><input name="totime" id="edit-totime" type="time" data-role="datebox"  data-options='{"mode": "timebox","overrideTimeFormat": 24}' />
+			</div>	
+		</div> 
+		<!-- Die eingegebenen Daten werden mit Klick auf den Button im LocalStorage abgespeichert-->
+		<div>
+			<a href="#time-over-page" data-role="button" id="ButtonChangeTime" data-icon="check">Ändern</a>
+		</div>
+			
+	</div><!-- /content -->
+	
+	<div data-role="footer" class="footer-class">
+		<a href="https://github.com/the-legendary-10/the-legendary-10.github.io" data-rel="close" data-role="button" data-icon="grid" data-iconpos="left">Github</a></br>
+  </div>
+</div>
+
+</body>
+</html>

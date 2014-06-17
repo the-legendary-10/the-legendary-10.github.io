@@ -1,3 +1,17 @@
+/*Replace default JS alert on cordova*/
+document.addEventListener('deviceready',function(){
+	if(navigator.notification){
+		window.alert = function(message){
+			navigator.notification.alert(
+				message,
+				null,
+				"Mampf will was",
+				"OK"
+			);
+		};
+		alert = window.alert;
+	}
+}, false);
 /*Append and show the panel on Page-Initiation*/
 $(function() {
 	$( "body>[data-role='panel']" ).panel();

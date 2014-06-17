@@ -1,7 +1,8 @@
 // // Test data for contacts ... Array of objects
-
-document.addEventListener("deviceready", onDeviceReady, false);
 var contacts = [];
+if(navigator.contacts){
+document.addEventListener("deviceready", onDeviceReady, false);
+
 function onDeviceReady(){
 	var options = new ContactFindOptions();
 	options.multiple=true;
@@ -11,19 +12,22 @@ function onDeviceReady(){
 
 function onSuccess(deviceContacts){
 	for (var i = 0; i < deviceContacts.length; i++) {
-		contacts.push({
-			firstName : deviceContacts[i].name.givenName ,
-			lastName : deviceContacts[i].name.familyName ? deviceContacts[i].name.familyName : "" ,
-			phoneNumber : deviceContacts[i].phoneNumbers[0].value ,
-		});
+		if(deviceContacts[i].phoneNumbers){
+			contacts.push({
+				firstName : deviceContacts[i].name.givenName ? deviceContacts[i].name.givenName : "",
+				lastName : deviceContacts[i].name.familyName ? deviceContacts[i].name.familyName : "" ,
+				phoneNumber : deviceContacts[i].phoneNumbers[0].value,
+			});
+		}
     }
 }
 
 function onError(){
 	alert("Konnte Kontakte nicht auslesen");
 }
-/*
-var contacts = [
+}
+else{
+contacts = [
          {firstName: "Simon", lastName: "Rech", phoneNumber: "4915142425248",},
          {firstName: "Lisa", lastName: "Hanstein", phoneNumber: "49123654678",}, 
          {firstName: "Patrick", lastName: "Heinze", phoneNumber: "4975454458",},    
@@ -36,4 +40,5 @@ var contacts = [
          {firstName: "Philipp", lastName: "Schramm", phoneNumber: "49123999678",},
          {firstName: "Ulrike", lastName: "Piontek", phoneNumber: "494101010678",},
          {firstName: "Kevin", lastName: "Sandermann", phoneNumber: "49313131678",} 
-         ]; */
+         ];
+}

@@ -2,13 +2,16 @@
 <widget id="com.mampf" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MAMPF!</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Mampf Mampf!
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
 	<gap:plugin name="org.apache.cordova.contacts" />
 	<gap:plugin name="org.apache.cordova.geolocation" />
+	<gap:plugin name="org.apache.cordova.dialogs" />
     <content src="index.html" />
     <access origin="*" />
+	<icon src="img/icon.png" />
+	<gap:splash src="splash.png" />
 </widget>

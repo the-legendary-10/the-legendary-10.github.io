@@ -179,14 +179,14 @@ $(document).on("pagecreate","#group-overview-page",function(){
    				// Generate listitem for each md5-hash-number (contact) and append it to the listview
    			    for (var k = 0; k < phoneNumbersArray.length; k++) {
    			    
-   				  contactObj = searchPhoneNumber(phoneNumbersArray[k]);
+					contactObj = searchPhoneNumber(phoneNumbersArray[k]);
+					if(contactObj != undefined){
    			
-   			
-   				  // id gets the letter 'I' as prefix, since HTML4 does not support IDs starting with a digit.
-   			      appendString  =	'<li id="I' + $.md5(contactObj.phoneNumber) + '"><a class="read-only-list">' + contactObj.firstName + ' ' + contactObj.lastName + '</a><a href="#popup-action" class="deleteField" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>';
+					// id gets the letter 'I' as prefix, since HTML4 does not support IDs starting with a digit.
+					appendString  =	'<li id="I' + $.md5(contactObj.phoneNumber) + '"><a class="read-only-list">' + contactObj.firstName + ' ' + contactObj.lastName + '</a><a href="#popup-action" class="deleteField" data-rel="popup"  data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-icon="delete" data-iconpos="right" >Delete</a></li>';
    				
-   				   $('#group-over-list').append(appendString);
-   				
+					$('#group-over-list').append(appendString);
+					}
    				}
    				
    			
